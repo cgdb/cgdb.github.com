@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="cgdb : the curses debugger" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>cgdb</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/cgdb">View on GitHub</a>
+
+          <h1 id="project_title">cgdb</h1>
+          <h2 id="project_tagline">the curses debugger</h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>Welcome</h3>
+
+<p>cgdb is a curses (terminal-based) interface to the GNU Debugger (GDB).
+Its goal is to be lightweight and responsive; not encumbered with
+unnecessary features.</p>
+
+<p>The primary feature of cgdb is the constant presence of a source
+display (screenshots), updated as the program executes, to help keep
+you focused while debugging. The interface is inspired by the classic
+Unix text editor, vi. Those familiar with vi (or vim) should feel
+right at home using cgdb. </p>
+
+<h3>Features</h3>
+
+<ul>
+<li>Syntax-highlighted source window</li>
+<li>Visual breakpoint setting</li>
+<li>Keyboard shortcuts for common functions</li>
+<li>Searching source window (using regexp)</li>
+<li>Scrollable gdb history of entire session</li>
+<li>Tab completion</li>
+<li>Key mappings (macros)</li>
+</ul><h3>Installing</h3>
+
+<p>Normally you can just install cgdb through your distribution's package
+manager.  If you would like to build from the latest sources, you can:</p>
+
+<pre><code>$ git clone git://github.com/cgdb/cgdb.git
+$ ./configure --prefix=/usr/local
+$ make
+$ sudo make install
+</code></pre>
+
+<p>cgdb depends on a recent libreadline and ncurses.</p>
+
+<h3>Support or Contact</h3>
+
+<p>Feel free to stop by our IRC channel <code>#cgdb</code> on freenode.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
