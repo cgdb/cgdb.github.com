@@ -29,15 +29,15 @@
       <section id="main_content" class="inner">
         <h3>Welcome</h3>
 
-<p>cgdb is a curses (terminal-based) interface to the GNU Debugger (GDB).
-Its goal is to be lightweight and responsive; not encumbered with
-unnecessary features.</p>
+<p>cgdb is a lightweight curses (terminal-based) interface to the GNU Debugger
+(GDB).  In addition to the standard gdb console, cgdb provides a split screen
+view that displays the source code as it executes.  The keyboard interface is
+modeled after vim, so vim users should feel at home using cgdb.</p>
 
-<p>The primary feature of cgdb is the constant presence of a source
-display (screenshots), updated as the program executes, to help keep
-you focused while debugging. The interface is inspired by the classic
-Unix text editor, vi. Those familiar with vi (or vim) should feel
-right at home using cgdb. </p>
+<h3>Screenshot</h3>
+
+<img src="images/screenshot_debugging.png"
+     alt="Screenshot" width="508" height="498" />
 
 <h3>Features</h3>
 
@@ -49,18 +49,25 @@ right at home using cgdb. </p>
 <li>Scrollable gdb history of entire session</li>
 <li>Tab completion</li>
 <li>Key mappings (macros)</li>
-</ul><h3>Installing</h3>
+</ul>
 
-<p>Normally you can just install cgdb through your distribution's package
-manager.  If you would like to build from the latest sources, you can:</p>
+<h3>Stable Release</h3>
+Download source package: <a href="https://github.com/downloads/cgdb/cgdb/cgdb-0.6.6.tar.gz">cgdb-0.6.6.tar.gz</a>
+(<a href="https://github.com/cgdb/cgdb/blob/11f0ad87/NEWS">changes</a>)
+
+<h3>Latest Sources</h3>
 
 <pre><code>$ git clone git://github.com/cgdb/cgdb.git
-$ ./configure --prefix=/usr/local
+</code></pre>
+
+<h3>Installing</h3>
+
+<p>cgdb depends on libreadline and ncurses development libraries.</p>
+
+<pre><code>$ ./configure --prefix=/usr/local
 $ make
 $ sudo make install
 </code></pre>
-
-<p>cgdb depends on a recent libreadline and ncurses.</p>
 
 <h3>Support or Contact</h3>
 
