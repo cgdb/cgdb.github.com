@@ -1,0 +1,144 @@
+<html lang="en">
+<head>
+<title>CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being "A GNU Manual," and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     "GNU Free Documentation License."
+
+     (a) The FSF's Back-Cover Text is: "You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development."
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">CGDB Manual 0.6.6</h1>
+<div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="index.html#Top">CGDB</a>
+<li><a name="toc_Summary" href="Summary.html#Summary">Summary of CGDB</a>
+<li><a name="toc_Invocation" href="Invocation.html#Invocation">1 Getting In and Out of CGDB</a>
+<li><a name="toc_Understanding-CGDB" href="Understanding-CGDB.html#Understanding-CGDB">2 Understanding the core concepts of CGDB</a>
+<ul>
+<li><a href="Source-Window.html#Source-Window">2.1 Understanding the source window.</a>
+<li><a href="GDB-Window.html#GDB-Window">2.2 Understanding the GDB window.</a>
+<li><a href="File-Dialog-Window.html#File-Dialog-Window">2.3 Understanding the file dialog window.</a>
+<li><a href="TTY-Window.html#TTY-Window">2.4 Understanding the TTY window.</a>
+<li><a href="Status-Bar.html#Status-Bar">2.5 Understanding the status bar.</a>
+<li><a href="Switching-Windows.html#Switching-Windows">2.6 Switch between windows</a>
+</li></ul>
+<li><a name="toc_Controlling-CGDB" href="Controlling-CGDB.html#Controlling-CGDB">3 CGDB commands</a>
+<ul>
+<li><a href="CGDB-Mode.html#CGDB-Mode">3.1 Commands available during CGDB mode</a>
+<li><a href="GDB-Mode.html#GDB-Mode">3.2 Commands available during GDB mode</a>
+<li><a href="File-Dialog-Mode.html#File-Dialog-Mode">3.3 Commands available during the file dialog mode</a>
+<li><a href="TTY-Mode.html#TTY-Mode">3.4 Commands available during TTY mode</a>
+</li></ul>
+<li><a name="toc_Configuring-CGDB" href="Configuring-CGDB.html#Configuring-CGDB">4 CGDB configuration commands</a>
+<li><a name="toc_Highlighting-Groups" href="Highlighting-Groups.html#Highlighting-Groups">5 CGDB highlighting groups</a>
+<ul>
+<li><a href="Available-Highlighting-Groups.html#Available-Highlighting-Groups">5.1 The different highlighting groups</a>
+<li><a href="Available-Attributes.html#Available-Attributes">5.2 The different attributes</a>
+<li><a href="Available-Colors.html#Available-Colors">5.3 The different colors</a>
+</li></ul>
+<li><a name="toc_Key-User-Interface" href="Key-User-Interface.html#Key-User-Interface">6 CGDB key user interface</a>
+<ul>
+<li><a href="Configuring-the-KUI-Time-Out-Options.html#Configuring-the-KUI-Time-Out-Options">6.1 The KUI's time out options</a>
+<li><a href="Using-Maps.html#Using-Maps">6.2 Using maps</a>
+<li><a href="Understanding-Keycodes.html#Understanding-Keycodes">6.3 Understanding keycodes</a>
+</li></ul>
+<li><a name="toc_Sending-I_002fO-to-Inferior" href="Sending-I_002fO-to-Inferior.html#Sending-I_002fO-to-Inferior">7 Sending I/O to the program being debugged</a>
+<li><a name="toc_Terminal-Control-Flow" href="Terminal-Control-Flow.html#Terminal-Control-Flow">8 Allowing terminal control flow in CGDB</a>
+<li><a name="toc_Building-CGDB" href="Building-CGDB.html#Building-CGDB">9 Building CGDB from source</a>
+<li><a name="toc_Copying-This-Manual" href="Copying-This-Manual.html#Copying-This-Manual">Appendix A Copying This Manual</a>
+<ul>
+<li><a href="GNU-Free-Documentation-License.html#GNU-Free-Documentation-License">A.1 GNU Free Documentation License</a>
+<ul>
+<li><a href="GNU-Free-Documentation-License.html#GNU-Free-Documentation-License">A.1.1 ADDENDUM: How to use this License for your documents</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Index" href="Index.html#Index">Index</a>
+</li></ul>
+</div>
+
+
+
+<div class="node">
+<a name="Top"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Summary.html#Summary">Summary</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="../index.html#dir">(dir)</a>
+<hr>
+</div>
+
+<h2 class="unnumbered">CGDB</h2>
+
+<p>This manual is for <acronym>GNU</acronym> CGDB
+(version 0.6.6, 13 July 2012),
+the <acronym>GNU</acronym> ncurses based front end to GDB.
+
+   <p>Copyright &copy; 2011 CGDB Team
+
+   <blockquote>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being &ldquo;A GNU Manual,&rdquo;
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled &ldquo;GNU Free Documentation
+License.&rdquo;
+
+   <p>(a) The FSF's Back-Cover Text is: &ldquo;You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.&rdquo;
+</blockquote>
+
+<ul class="menu">
+<li><a accesskey="1" href="Summary.html#Summary">Summary</a>:                      Summary of CGDB
+
+<li><a accesskey="2" href="Invocation.html#Invocation">Invocation</a>:                   Getting in and out of CGDB
+<li><a accesskey="3" href="Understanding-CGDB.html#Understanding-CGDB">Understanding CGDB</a>:           Understanding the core concepts of CGDB
+<li><a accesskey="4" href="Controlling-CGDB.html#Controlling-CGDB">Controlling CGDB</a>:             CGDB commands
+<li><a accesskey="5" href="Configuring-CGDB.html#Configuring-CGDB">Configuring CGDB</a>:             CGDB configuration commands
+<li><a accesskey="6" href="Highlighting-Groups.html#Highlighting-Groups">Highlighting Groups</a>:          CGDB highlighting groups
+<li><a accesskey="7" href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>:           CGDB key user interface
+<li><a accesskey="8" href="Sending-I_002fO-to-Inferior.html#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>:      Sending I/O to the program being debugged
+<li><a accesskey="9" href="Terminal-Control-Flow.html#Terminal-Control-Flow">Terminal Control Flow</a>:        Allowing terminal control flow in CGDB
+
+<li><a href="Building-CGDB.html#Building-CGDB">Building CGDB</a>:                Building CGDB from source
+
+<li><a href="Copying-This-Manual.html#Copying-This-Manual">Copying This Manual</a>
+
+<li><a href="Index.html#Index">Index</a>
+</ul>
+
+   </body></html>
+

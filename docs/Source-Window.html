@@ -1,0 +1,98 @@
+<html lang="en">
+<head>
+<title>Source Window - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Understanding-CGDB.html#Understanding-CGDB" title="Understanding CGDB">
+<link rel="next" href="GDB-Window.html#GDB-Window" title="GDB Window">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Source-Window"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="GDB-Window.html#GDB-Window">GDB Window</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Understanding-CGDB.html#Understanding-CGDB">Understanding CGDB</a>
+<hr>
+</div>
+
+<h3 class="section">2.1 Understanding the source window.</h3>
+
+<p><a name="index-source-window-7"></a>
+The <dfn>source window</dfn> is the window that provides you a view of the source
+code that the debugged program is made up of.  It will display to the user a
+single source file at a time.  While the user is debugging, via <code>next</code>
+and <code>step</code>, CGDB will update the source file and line number to keep you
+informed as to where GDB is debugging.
+
+   <p>CGDB has several features that make debugging easier than using plain old GDB. 
+One feature you will notice right away while debugging a C, C++ or ADA program,
+is that the source files are syntax highlighted.  This allows the user to
+easily navigate through the source file to look for certain places in the
+source code.  If you would like to see another source language highlighted,
+contact us.  To understanding how to navigate through the source window look
+at the commands in <a href="CGDB-Mode.html#CGDB-Mode">CGDB Mode</a>.
+
+   <p>In addition to showing the source code, CGDB also displays to the user the
+currently executing line. The line number will be highlighted green, to
+represent that the particular line, is the current line being debugged by GDB. 
+Also, CGDB will display an arrow extending from the line number, to the
+source line.  You can configure what type of arrow CGDB uses with the
+<code>:set arrowstyle</code> configuration option. By default, the <code>short</code>
+arrow is used.  However, my personal favorite is the <code>long</code> arrow.
+
+   <p>As you navigate through the source window, the current line the cursor is
+on will be highlighted white.  This simply helps you keep track of where you
+are in the file.
+
+   <p>Also, you can set or delete breakpoints in CGDB from the source window.  Simply
+navigate to the line that you are interested in setting a breakpoint, and hit
+the space bar.  This will set a breakpoint on the line if one did not already
+exist.  The line number should turn red to indicate that a breakpoint has
+been set.  Hitting the space bar again will delete the breakpoint.  If you
+disable the breakpoint, the line number will turn yellow, to represent the
+disabled breakpoint.
+
+   <p><a name="index-regular-expression-search-8"></a>CGDB also supports regular expression searching within the source window.  If
+you type <kbd>/</kbd> or <kbd>?</kbd> you can search in the source window for a string
+of interest.  The C library regular expression functions are used to perform
+this search, which honors things like &lsquo;<samp><span class="samp">*</span></samp>&rsquo; or &lsquo;<samp><span class="samp">+</span></samp>&rsquo;.
+
+   <p>The full list of commands that are available in the source window is in
+<a href="CGDB-Mode.html#CGDB-Mode">CGDB Mode</a>.
+
+   </body></html>
+

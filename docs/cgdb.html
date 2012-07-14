@@ -1,0 +1,1866 @@
+<html lang="en">
+<head>
+<title>CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being "A GNU Manual," and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     "GNU Free Documentation License."
+
+     (a) The FSF's Back-Cover Text is: "You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development."
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<h1 class="settitle">CGDB Manual 0.6.6</h1>
+<div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">CGDB</a>
+<li><a name="toc_Summary" href="#Summary">Summary of CGDB</a>
+<li><a name="toc_Invocation" href="#Invocation">1 Getting In and Out of CGDB</a>
+<li><a name="toc_Understanding-CGDB" href="#Understanding-CGDB">2 Understanding the core concepts of CGDB</a>
+<ul>
+<li><a href="#Source-Window">2.1 Understanding the source window.</a>
+<li><a href="#GDB-Window">2.2 Understanding the GDB window.</a>
+<li><a href="#File-Dialog-Window">2.3 Understanding the file dialog window.</a>
+<li><a href="#TTY-Window">2.4 Understanding the TTY window.</a>
+<li><a href="#Status-Bar">2.5 Understanding the status bar.</a>
+<li><a href="#Switching-Windows">2.6 Switch between windows</a>
+</li></ul>
+<li><a name="toc_Controlling-CGDB" href="#Controlling-CGDB">3 CGDB commands</a>
+<ul>
+<li><a href="#CGDB-Mode">3.1 Commands available during CGDB mode</a>
+<li><a href="#GDB-Mode">3.2 Commands available during GDB mode</a>
+<li><a href="#File-Dialog-Mode">3.3 Commands available during the file dialog mode</a>
+<li><a href="#TTY-Mode">3.4 Commands available during TTY mode</a>
+</li></ul>
+<li><a name="toc_Configuring-CGDB" href="#Configuring-CGDB">4 CGDB configuration commands</a>
+<li><a name="toc_Highlighting-Groups" href="#Highlighting-Groups">5 CGDB highlighting groups</a>
+<ul>
+<li><a href="#Available-Highlighting-Groups">5.1 The different highlighting groups</a>
+<li><a href="#Available-Attributes">5.2 The different attributes</a>
+<li><a href="#Available-Colors">5.3 The different colors</a>
+</li></ul>
+<li><a name="toc_Key-User-Interface" href="#Key-User-Interface">6 CGDB key user interface</a>
+<ul>
+<li><a href="#Configuring-the-KUI-Time-Out-Options">6.1 The KUI's time out options</a>
+<li><a href="#Using-Maps">6.2 Using maps</a>
+<li><a href="#Understanding-Keycodes">6.3 Understanding keycodes</a>
+</li></ul>
+<li><a name="toc_Sending-I_002fO-to-Inferior" href="#Sending-I_002fO-to-Inferior">7 Sending I/O to the program being debugged</a>
+<li><a name="toc_Terminal-Control-Flow" href="#Terminal-Control-Flow">8 Allowing terminal control flow in CGDB</a>
+<li><a name="toc_Building-CGDB" href="#Building-CGDB">9 Building CGDB from source</a>
+<li><a name="toc_Copying-This-Manual" href="#Copying-This-Manual">Appendix A Copying This Manual</a>
+<ul>
+<li><a href="#GNU-Free-Documentation-License">A.1 GNU Free Documentation License</a>
+<ul>
+<li><a href="#GNU-Free-Documentation-License">A.1.1 ADDENDUM: How to use this License for your documents</a>
+</li></ul>
+</li></ul>
+<li><a name="toc_Index" href="#Index">Index</a>
+</li></ul>
+</div>
+
+
+
+<div class="node">
+<a name="Top"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Summary">Summary</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#dir">(dir)</a>
+
+</div>
+
+<h2 class="unnumbered">CGDB</h2>
+
+<p>This manual is for <acronym>GNU</acronym> CGDB
+(version 0.6.6, 13 July 2012),
+the <acronym>GNU</acronym> ncurses based front end to GDB.
+
+   <p>Copyright &copy; 2011 CGDB Team
+
+   <blockquote>
+Permission is granted to copy, distribute and/or modify this document
+under the terms of the GNU Free Documentation License, Version 1.1 or
+any later version published by the Free Software Foundation; with no
+Invariant Sections, with the Front-Cover Texts being &ldquo;A GNU Manual,&rdquo;
+and with the Back-Cover Texts as in (a) below.  A copy of the
+license is included in the section entitled &ldquo;GNU Free Documentation
+License.&rdquo;
+
+   <p>(a) The FSF's Back-Cover Text is: &ldquo;You have freedom to copy and modify
+this GNU Manual, like GNU software.  Copies published by the Free
+Software Foundation raise funds for GNU development.&rdquo;
+</blockquote>
+
+<ul class="menu">
+<li><a accesskey="1" href="#Summary">Summary</a>:                      Summary of CGDB
+
+<li><a accesskey="2" href="#Invocation">Invocation</a>:                   Getting in and out of CGDB
+<li><a accesskey="3" href="#Understanding-CGDB">Understanding CGDB</a>:           Understanding the core concepts of CGDB
+<li><a accesskey="4" href="#Controlling-CGDB">Controlling CGDB</a>:             CGDB commands
+<li><a accesskey="5" href="#Configuring-CGDB">Configuring CGDB</a>:             CGDB configuration commands
+<li><a accesskey="6" href="#Highlighting-Groups">Highlighting Groups</a>:          CGDB highlighting groups
+<li><a accesskey="7" href="#Key-User-Interface">Key User Interface</a>:           CGDB key user interface
+<li><a accesskey="8" href="#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>:      Sending I/O to the program being debugged
+<li><a accesskey="9" href="#Terminal-Control-Flow">Terminal Control Flow</a>:        Allowing terminal control flow in CGDB
+
+<li><a href="#Building-CGDB">Building CGDB</a>:                Building CGDB from source
+
+<li><a href="#Copying-This-Manual">Copying This Manual</a>
+
+<li><a href="#Index">Index</a>
+</ul>
+
+<div class="node">
+<a name="Summary"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Invocation">Invocation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="unnumbered">Summary of CGDB</h2>
+
+<p>CGDB is a curses-based interface to the GNU Debugger (GDB).  The goal of CGDB
+is to be lightweight and responsive; not encumbered with unnecessary features.
+
+   <p>The interface is designed to deliver the familiar GDB text interface, with a
+split screen showing the source as it executes.  The UI is modeled on the
+classic Unix text editor, vi.  Those familiar with vi should feel right at
+home using CGDB.
+
+   <p>The library responsible for communicating with GDB is called Trivial GDB
+(tgdb, or more accurately, libtgdb).  This abstraction allows the UI code to
+be independent of the debugger, as well as greatly simplifying its
+implementation.
+
+   <p>Those wanting to develop other interfaces to GDB are welcome to use libtgdb
+as the basis for their program.  Many of the headaches of parsing GDB's output
+and annotations can be avoided by using it.
+
+   <p>Some features offered by CGDB are:
+
+     <ul>
+<li>Syntax-highlighted source window
+
+     <li>Visual breakpoint setting
+
+     <li>Keyboard shortcuts for common functions
+
+     <li>Searching source window (using regexp)
+</ul>
+
+<div class="node">
+<a name="Invocation"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Understanding-CGDB">Understanding CGDB</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Summary">Summary</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">1 Getting In and Out of CGDB</h2>
+
+<p><a name="index-invocation-CGDB-1"></a>
+This chapter discusses how to start CGDB, and how to get out of it. 
+The essentials are:
+     <ul>
+<li>type &lsquo;<samp><span class="samp">cgdb</span></samp>&rsquo; to start CGDB.
+
+     <li>type <kbd>quit</kbd> or <kbd>C-d</kbd> in the GDB window to exit.
+
+     <li>type <kbd>:quit</kbd> in the source window to exit.  This even works if GDB is
+currently hanging, or operating a long command. 
+</ul>
+
+<div class="node">
+<a name="Understanding-CGDB"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Controlling-CGDB">Controlling CGDB</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Invocation">Invocation</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">2 Understanding the core concepts of CGDB</h2>
+
+<p><a name="index-understanding-CGDB-2"></a>
+<a name="index-status-bar-3"></a><a name="index-CGDB-mode-4"></a><a name="index-GDB-mode-5"></a><a name="index-TTY-mode-6"></a>The CGDB user interface currently consists of two windows and a status bar. 
+The source window is currently on the top and the GDB window is on the
+bottom.  The <dfn>status bar</dfn> currently separates the two windows.
+
+   <p>The interface has several modes depending on which window is focused. 
+<dfn>CGDB mode</dfn> is when the source window is focused, <dfn>GDB mode</dfn> is when
+the GDB window is focused and <dfn>TTY mode</dfn> is when the TTY window is focused.
+
+   <p>Beginning with CGDB version 1.0, the windows are movable,
+and the user will be able to create as many or as few that is desired. 
+Currently however, all of my time is spent developing the interface between
+CGDB and GDB. Once this is complete, the UI of CGDB will become much more
+polished.  If you are a ncurses developer, and have spare time to work on this
+task, please contact me.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Source-Window">Source Window</a>:                Understanding the source window. 
+<li><a accesskey="2" href="#GDB-Window">GDB Window</a>:                   Understanding the GDB window. 
+<li><a accesskey="3" href="#File-Dialog-Window">File Dialog Window</a>:           Understanding the file dialog window. 
+<li><a accesskey="4" href="#TTY-Window">TTY Window</a>:                   Understanding the TTY window. 
+<li><a accesskey="5" href="#Status-Bar">Status Bar</a>:                   Understanding the status bar. 
+<li><a accesskey="6" href="#Switching-Windows">Switching Windows</a>:            Switching between windows. 
+</ul>
+
+<div class="node">
+<a name="Source-Window"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#GDB-Window">GDB Window</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Understanding-CGDB">Understanding CGDB</a>
+
+</div>
+
+<h3 class="section">2.1 Understanding the source window.</h3>
+
+<p><a name="index-source-window-7"></a>
+The <dfn>source window</dfn> is the window that provides you a view of the source
+code that the debugged program is made up of.  It will display to the user a
+single source file at a time.  While the user is debugging, via <code>next</code>
+and <code>step</code>, CGDB will update the source file and line number to keep you
+informed as to where GDB is debugging.
+
+   <p>CGDB has several features that make debugging easier than using plain old GDB. 
+One feature you will notice right away while debugging a C, C++ or ADA program,
+is that the source files are syntax highlighted.  This allows the user to
+easily navigate through the source file to look for certain places in the
+source code.  If you would like to see another source language highlighted,
+contact us.  To understanding how to navigate through the source window look
+at the commands in <a href="#CGDB-Mode">CGDB Mode</a>.
+
+   <p>In addition to showing the source code, CGDB also displays to the user the
+currently executing line. The line number will be highlighted green, to
+represent that the particular line, is the current line being debugged by GDB. 
+Also, CGDB will display an arrow extending from the line number, to the
+source line.  You can configure what type of arrow CGDB uses with the
+<code>:set arrowstyle</code> configuration option. By default, the <code>short</code>
+arrow is used.  However, my personal favorite is the <code>long</code> arrow.
+
+   <p>As you navigate through the source window, the current line the cursor is
+on will be highlighted white.  This simply helps you keep track of where you
+are in the file.
+
+   <p>Also, you can set or delete breakpoints in CGDB from the source window.  Simply
+navigate to the line that you are interested in setting a breakpoint, and hit
+the space bar.  This will set a breakpoint on the line if one did not already
+exist.  The line number should turn red to indicate that a breakpoint has
+been set.  Hitting the space bar again will delete the breakpoint.  If you
+disable the breakpoint, the line number will turn yellow, to represent the
+disabled breakpoint.
+
+   <p><a name="index-regular-expression-search-8"></a>CGDB also supports regular expression searching within the source window.  If
+you type <kbd>/</kbd> or <kbd>?</kbd> you can search in the source window for a string
+of interest.  The C library regular expression functions are used to perform
+this search, which honors things like &lsquo;<samp><span class="samp">*</span></samp>&rsquo; or &lsquo;<samp><span class="samp">+</span></samp>&rsquo;.
+
+   <p>The full list of commands that are available in the source window is in
+<a href="#CGDB-Mode">CGDB Mode</a>.
+
+<div class="node">
+<a name="GDB-Window"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#File-Dialog-Window">File Dialog Window</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Source-Window">Source Window</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Understanding-CGDB">Understanding CGDB</a>
+
+</div>
+
+<h3 class="section">2.2 Understanding the GDB window.</h3>
+
+<p><a name="index-GDB-window-9"></a>
+<a name="index-GDB-window-10"></a>The <dfn>GDB window</dfn> is how CGDB allows the user to interface with the GNU
+debugger.  If you wish to pass a command to GDB, simply type it into this
+window and GDB will receive the command.  This interface is intended to be
+100% identical to using GDB on a terminal.
+
+   <p>There is a limited set of keys that can be typed into this window that CGDB
+interprets and handles, instead of sending to GDB.  They are all available in
+<a href="#GDB-Mode">GDB Mode</a>.
+
+   <p>CGDB attempts to buffer commands the same way they would be if you typed them
+at the terminal.  So, if you type several commands before a single one
+finishes, they will each be run in order.  There will be no way to stop these
+commands from being run besides from typing <kbd>Ctrl-C</kbd>, like you would at any
+normal terminal when working with GDB.
+
+<div class="node">
+<a name="File-Dialog-Window"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#TTY-Window">TTY Window</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#GDB-Window">GDB Window</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Understanding-CGDB">Understanding CGDB</a>
+
+</div>
+
+<h3 class="section">2.3 Understanding the file dialog window.</h3>
+
+<p><a name="index-file-dialog-window-11"></a>
+<a name="index-file-dialog-window-12"></a>The <dfn>file dialog window</dfn> is available to help the user view and select
+which file they would like to view.  It provides the user with a list of all
+the files that make up the program being debugged.  If there are no files
+available, because there is no program being debugged or because there is
+no debug symbols, then the file dialog will not open and a message will be
+displayed at the status bar.
+
+   <p>You can get to the file dialog by hitting <code>o</code> when you are at the source
+window.  Once you enter the file dialog, it is possible to leave it by hitting
+<code>q</code>.  You can navigate the file dialog using the standard direction keys
+and you can even use regular expression to find your file.  This can save a
+lot of time as the number of files grow.
+
+   <p>The full list of commands that are available in the source window is in
+<a href="#File-Dialog-Mode">File Dialog Mode</a>.
+
+<div class="node">
+<a name="TTY-Window"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Status-Bar">Status Bar</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#File-Dialog-Window">File Dialog Window</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Understanding-CGDB">Understanding CGDB</a>
+
+</div>
+
+<h3 class="section">2.4 Understanding the TTY window.</h3>
+
+<p><a name="index-tty-window-13"></a>
+<a name="index-TTY-window-14"></a>The <dfn>TTY window</dfn> is available to allow the user to pass input to the program
+being debugged. This window will act similar to the GDB window, except that
+the data you type will get sent to the program being debugged. 
+See <a href="#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>.
+
+   <p>You will notice that the TTY window has a terminal device between it and the
+program being debugged.  So, if the program being debugged uses say readline,
+which allows command line editing, the same interface will be provided via the
+TTY window as at the terminal.  You can see the name of the terminal device
+in the TTY status bar.
+
+   <p>The full list of commands that are available in the source window is in
+<a href="#TTY-Mode">TTY Mode</a>.
+
+   <p>Sending I/O to the program being debugged can be confusing.  It is described
+better in <a href="#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>.  Unless the I/O with the program
+being debugged is simple, I usually prefer starting the application on a
+separate terminal and attaching to it with CGDB.
+
+<div class="node">
+<a name="Status-Bar"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Switching-Windows">Switching Windows</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#TTY-Window">TTY Window</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Understanding-CGDB">Understanding CGDB</a>
+
+</div>
+
+<h3 class="section">2.5 Understanding the status bar.</h3>
+
+<p><a name="index-status-bar-15"></a>
+<a name="index-status-bar-16"></a>The <dfn>status bar</dfn> is the general purpose way for CGDB to show the user
+which commands they are currently typing or report errors to the user when
+they occur.  CGDB does not use popup's or other forms of I/O to alert the
+user of information or problems.
+
+   <p>While CGDB is running, you can configure it with any of the commands that
+are valid in CGDB's configuration file.  Simply type <kbd>:</kbd> in the source
+window, and you will see the colon, and the rest of the command you type
+appear in the status bar.  When you are finished typing the command that
+you are interested in, type <code>enter</code>.  This will alert CGDB to execute
+the command.  If at any point you would like to cancel the current
+command typed so far, type the cgdb mode key.  This will put you back
+into CGDB mode.  For a description of the cgdb mode key, see
+<a href="#Switching-Windows">Switching Windows</a>.
+
+   <p>The full list of commands that are available in the source window is in
+<a href="#Configuring-CGDB">Configuring CGDB</a>.
+
+<div class="node">
+<a name="Switching-Windows"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Status-Bar">Status Bar</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Understanding-CGDB">Understanding CGDB</a>
+
+</div>
+
+<h3 class="section">2.6 Switch between windows</h3>
+
+<p><a name="index-switch-between-windows-17"></a>
+When CGDB is invoked, the interface is in <dfn>GDB mode</dfn>.  A &lsquo;<samp><span class="samp">*</span></samp>&rsquo; at the
+right of the status bar indicates that input will be passed to GDB.  To change
+the focus to the source window, hit the &lt;ESC&gt; key.  The
+<dfn>cgdb mode key</dfn> is the key that is responsible for switching the user
+into <dfn>CGDB mode</dfn> from a different mode.  The cgdb mode
+key is defaulted to the &lt;ESC&gt; key.  To change this value, look at the
+configuration options for CGDB.  See <a href="#Configuring-CGDB">Configuring CGDB</a>.
+
+   <p>The interface is now in <dfn>CGDB mode</dfn>.  To switch back into <dfn>GDB mode</dfn>,
+press <kbd>i</kbd>.  This syntax is based on the popular Unix text-editor, vi.
+
+<div class="node">
+<a name="Controlling-CGDB"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Configuring-CGDB">Configuring CGDB</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Understanding-CGDB">Understanding CGDB</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">3 CGDB commands</h2>
+
+<p><a name="index-controlling-CGDB-18"></a>
+CGDB can be controlled in a variety of different ways.  Each mode that CGDB
+is in acts differently. Currently CGDB implicitly changes modes depending on
+which window is active.  The following information will help you determine
+what commands are accessible during which modes.
+
+<ul class="menu">
+<li><a accesskey="1" href="#CGDB-Mode">CGDB Mode</a>:                    Commands available during CGDB mode
+<li><a accesskey="2" href="#GDB-Mode">GDB Mode</a>:                     Commands available during GDB mode
+<li><a accesskey="3" href="#File-Dialog-Mode">File Dialog Mode</a>:             Commands available during the file dialog mode
+<li><a accesskey="4" href="#TTY-Mode">TTY Mode</a>:                     Commands available during TTY mode
+</ul>
+
+<div class="node">
+<a name="CGDB-Mode"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#GDB-Mode">GDB Mode</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Controlling-CGDB">Controlling CGDB</a>
+
+</div>
+
+<h3 class="section">3.1 Commands available during CGDB mode</h3>
+
+<p><a name="index-commands_002c-in-CGDB-mode-19"></a>
+When you are in the source window, you are implicitly in <dfn>CGDB mode</dfn>. 
+All of the below commands are available during this mode.  This mode is
+primarily available for the user to view the current source file, search it,
+or switch to a different mode.
+
+     <dl>
+<dt><kbd>cgdbmodekey</kbd><dd>Puts the user into command mode. However, you are already in this mode. 
+This is defaulted to the &lt;ESC&gt; key.
+
+     <br><dt><kbd>i</kbd><dd>Puts the user into <dfn>GDB mode</dfn>.
+
+     <br><dt><kbd>I</kbd><dd>Puts the user into <dfn>TTY mode</dfn>.
+
+     <br><dt><kbd>T</kbd><dd>Opens a window to give input to the debugged program.
+
+     <br><dt><kbd>Ctrl-T</kbd><dd>Opens a new tty for the debugged program.
+
+     <br><dt><kbd>k</kbd><dt><kbd>up arrow</kbd><dd>Move up a line.
+
+     <br><dt><kbd>j</kbd><dt><kbd>down arrow</kbd><dd>Move down a line.
+
+     <br><dt><kbd>h</kbd><dt><kbd>left arrow</kbd><dd>Move left a line.
+
+     <br><dt><kbd>l</kbd><dt><kbd>right arrow</kbd><dd>Move right a line.
+
+     <br><dt><kbd>Ctrl-b</kbd><dt><kbd>page up</kbd><dd>Move up a page.
+
+     <br><dt><kbd>Ctrl-u</kbd><dd>Move up 1/2 a page.
+
+     <br><dt><kbd>Ctrl-f</kbd><dt><kbd>page down</kbd><dd>Move down a page.
+
+     <br><dt><kbd>Ctrl-d</kbd><dd>Move down 1/2 a page.
+
+     <br><dt><kbd>gg</kbd><dd>Move to the top of file.
+
+     <br><dt><kbd>G</kbd><dd>Move to the bottom of file.
+
+     <br><dt><kbd>/</kbd><dd>search from current cursor position.
+
+     <br><dt><kbd>?</kbd><dd>reverse search from current cursor position.
+
+     <br><dt><kbd>n</kbd><dd>next forward search.
+
+     <br><dt><kbd>N</kbd><dd>next reverse search.
+
+     <br><dt><kbd>o</kbd><dd>open the file dialog.
+
+     <br><dt><kbd>spacebar</kbd><dd>Sets a breakpoint at the current line number.
+
+     <br><dt><kbd>t</kbd><dd>Sets a temporary breakpoint at the current line number.
+
+     <br><dt><kbd>-</kbd><dd>Shrink source window 1 line.
+
+     <br><dt><kbd>=</kbd><dd>Grow source window 1 line.
+
+     <br><dt><kbd>_</kbd><dd>Shrink source window 25% (or, shrink tty window 1 line, if visible).
+
+     <br><dt><kbd>+</kbd><dd>Grow source window 25% (or, grow tty window 1 line, if visible).
+
+     <br><dt><kbd>Ctrl-l</kbd><dd>Clear and redraw the screen.
+
+     <br><dt><kbd>F5</kbd><dd>Send a run command to GDB.
+
+     <br><dt><kbd>F6</kbd><dd>Send a continue command to GDB.
+
+     <br><dt><kbd>F7</kbd><dd>Send a finish command to GDB.
+
+     <br><dt><kbd>F8</kbd><dd>Send a next command to GDB.
+
+     <br><dt><kbd>F10</kbd><dd>Send a step command to GDB. 
+</dl>
+
+<div class="node">
+<a name="GDB-Mode"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#File-Dialog-Mode">File Dialog Mode</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#CGDB-Mode">CGDB Mode</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Controlling-CGDB">Controlling CGDB</a>
+
+</div>
+
+<h3 class="section">3.2 Commands available during GDB mode</h3>
+
+<p><a name="index-commands_002c-in-GDB-mode-20"></a>
+When in <dfn>GDB mode</dfn>, the user is mostly interested in working with the GDB
+console.  That is, sending commands to GDB and receiving data back from GDB. 
+Almost all data passed into this window is directly sent to readline and then
+to GDB.
+
+   <p>It is important to understand that CGDB parses the keys entered in
+the GDB window and has the first chance at dealing with them.  If it is
+interested in the keys, it will handle them. Below is a list of keys that
+CGDB is interested in, and does not pass along any further.
+
+     <dl>
+<dt><kbd>cgdbmodekey</kbd><dd>Switch back to source window.  This is defaulted to the &lt;ESC&gt; key.
+
+     <br><dt><kbd>page up</kbd><dd>Move up a page.
+
+     <br><dt><kbd>page down</kbd><dd>Move down a page.
+
+     <br><dt><kbd>F11</kbd><dd>Go to the beginning of the GDB buffer.
+
+     <br><dt><kbd>F12</kbd><dd>Go to the end of the GDB buffer. 
+</dl>
+
+   <p>Any other keys, besides the ones above, CGDB is currently not interested in. 
+CGDB will pass along these keys to the readline library. When readline has
+determined that a command has been received, it alerts CGDB, and a command is
+then sent to GDB. This is the same method used when invoking GDB directly.
+
+<div class="node">
+<a name="File-Dialog-Mode"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#TTY-Mode">TTY Mode</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#GDB-Mode">GDB Mode</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Controlling-CGDB">Controlling CGDB</a>
+
+</div>
+
+<h3 class="section">3.3 Commands available during the file dialog mode</h3>
+
+<p><a name="index-commands_002c-in-File-Dialog-mode-21"></a>
+The file dialog is primarily used to allow the user to find and open a source
+file that the program they are debugging is made up of.  The file dialog will
+be full screen, and will list each file that the debugged program is made up
+of.  A usual instance of the file dialog would be to open it up from the
+source window using the <kbd>o</kbd> key, and then to search for the file of
+interest. If you are looking for foo.c type <code>/foo.c</code>, press <kbd>enter</kbd>
+once to finish the regular expression and again to select the file.
+
+   <p>The commands available in the file dialog are:
+
+     <dl>
+<dt><kbd>q</kbd><dd>Will exit the file dialog, and return to the source window.
+
+     <br><dt><kbd>k</kbd><dt><kbd>up arrow</kbd><dd>Move up a line.
+
+     <br><dt><kbd>j</kbd><dt><kbd>down arrow</kbd><dd>Move down a line.
+
+     <br><dt><kbd>h</kbd><dt><kbd>left arrow</kbd><dd>Move left a line.
+
+     <br><dt><kbd>l</kbd><dt><kbd>right arrow</kbd><dd>Move right a line.
+
+     <br><dt><kbd>Ctrl-b</kbd><dt><kbd>page up</kbd><dd>Move up a page.
+
+     <br><dt><kbd>Ctrl-f</kbd><dt><kbd>page down</kbd><dd>Move down a page.
+
+     <br><dt><kbd>/</kbd><dd>search from current cursor position.
+
+     <br><dt><kbd>?</kbd><dd>reverse search from current cursor position.
+
+     <br><dt><kbd>n</kbd><dd>next forward search.
+
+     <br><dt><kbd>N</kbd><dd>next reverse search.
+
+     <br><dt><kbd>enter</kbd><dd>Select the current file. 
+</dl>
+
+<div class="node">
+<a name="TTY-Mode"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#File-Dialog-Mode">File Dialog Mode</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Controlling-CGDB">Controlling CGDB</a>
+
+</div>
+
+<h3 class="section">3.4 Commands available during TTY mode</h3>
+
+<p><a name="index-commands_002c-in-TTY-mode-22"></a>
+     <dl>
+<dt><kbd>cgdbmodekey</kbd><dd>Switch back to source window. This is defaulted to the &lt;ESC&gt; key. 
+<br><dt><kbd>page up</kbd><dd>Move up a page.
+
+     <br><dt><kbd>page down</kbd><dd>Move down a page.
+
+     <br><dt><kbd>F11</kbd><dd>Go to the beginning of the GDB buffer.
+
+     <br><dt><kbd>F12</kbd><dd>Go to the end of the GDB buffer. 
+</dl>
+
+<div class="node">
+<a name="Configuring-CGDB"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Highlighting-Groups">Highlighting Groups</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Controlling-CGDB">Controlling CGDB</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">4 CGDB configuration commands</h2>
+
+<p><a name="index-configuring-CGDB-23"></a>
+There may be several features that you find useful in CGDB.  CGDB is capable
+of automating any of these commands through the use of the config file called
+<samp><span class="file">cgdbrc</span></samp>.  It looks in <samp><span class="env">$HOME</span></samp><samp><span class="file">/.cgdb/</span></samp> for that file.  If it
+exists, CGDB executes each line in the file in order.  It is as if the user
+typed in all the commands into the status bar after the tui was initialized.
+
+   <p>The following variables change the behavior of some aspect of CGDB.  Many
+of these commands may be abbreviated in some way, and all boolean commands
+my be negated by appending &lsquo;<samp><span class="samp">no</span></samp>&rsquo; to the front.  For example:
+<kbd>:set ignorecase</kbd> turns on case-insensitive searching; while
+<kbd>:set noignorecase</kbd> turns on case-sensitive searching.
+
+     <dl>
+<dt><kbd>:set as=</kbd><var>style</var><dt><kbd>:set arrowstyle=</kbd><var>style</var><dd>Set the arrow style to <var>style</var>.  Possible values for <var>style</var>
+are &lsquo;<samp><span class="samp">short</span></samp>&rsquo;, &lsquo;<samp><span class="samp">long</span></samp>&rsquo;, and &lsquo;<samp><span class="samp">highlight</span></samp>&rsquo;.  Changes the style of
+the arrow that is used to indicate the currently executing line in the source
+viewer.  The default value is short.  A longer arrow is available, for easier
+readability.  Finally, the &lsquo;<samp><span class="samp">highlight</span></samp>&rsquo; option draws no arrow at all,
+instead drawing the entire line in inverse video.
+
+     <br><dt><kbd>:set asr</kbd><dt><kbd>:set autosourcereload</kbd><dd>If this is on, CGDB will automatically reload a source file if it has
+changed since CGDB has opened it.  If it is off, the file will never be
+reloaded, until you start CGDB again. The default is on. 
+This feature is useful when you are debugging a program, then you modify
+a source file, recompile, and type <kbd>r</kbd> in GDB's CLI window. The file in
+this case will be updated to show the new version.  Note, CGDB only looks at
+the timestamp of the source file to determine if it has changed. So if
+you modify the source file, and didn't recompile yet, CGDB will still
+pick up on the changes.
+
+     <br><dt><kbd>:set cgdbmodekey=</kbd><var>key</var><dd>This option is used to determine what key puts CGDB into <dfn>CGDB Mode</dfn>. 
+By default, the <kbd>ESC</kbd> key is used.  <var>key</var> can be any normal key
+on the keyboard.  It can also be any keycode, as long as the keycode notation
+is used.  This option is especially useful when the user wants to use
+readline in vi mode.  If the user types <code>set cgdbmodekey=&lt;PageUp&gt;</code>
+then the <kbd>Page Up</kbd> key will put CGDB into CGDB mode and the <kbd>ESC</kbd>
+key will flow through to readline.
+
+     <br><dt><kbd>:set ic</kbd><dt><kbd>:set ignorecase</kbd><dd>Sets searching case insensitive.  The default is off.
+
+     <br><dt><kbd>:set stc</kbd><dt><kbd>:set showtgdbcommands</kbd><dd>If this is on, CGDB will show all of the commands that it sends to GDB. 
+If it is off, CGDB will not show the commands that it gives to GDB. 
+The default is off.
+
+     <br><dt><kbd>:set syn=</kbd><var>style</var><dt><kbd>:set syntax=</kbd><var>style</var><dd>Sets the current highlighting mode of the current file to have the syntax
+<var>style</var>.  Possible values for <var>syntax</var> are &lsquo;<samp><span class="samp">c</span></samp>&rsquo;, &lsquo;<samp><span class="samp">ada</span></samp>&rsquo;, and
+&lsquo;<samp><span class="samp">off</span></samp>&rsquo;.  Normally, the user will never have to do this, since CGDB
+automatically detects what syntax a file should be based on its file
+extension.  However, this feature can currently be useful for debugging
+purposes.
+
+     <br><dt><kbd>:set to</kbd><dt><kbd>:set timeout</kbd><dd>This option is used along with the <var>ttimeout</var> option to determine the
+behavior CGDB should have when it receives part of a mapped key sequence or
+a keyboard code sequence.  If this option is on, CGDB will time out on both
+user defined mappings and on key codes from the keyboard.  If this option
+is off, user defined mappings will not be timed out on.  In this case, CGDB
+will determine if it should time out on key codes from the keyboard by
+examining the <var>ttimeout</var> option.  To determine how CGDB will time out
+on mappings and key codes, and what time out lengths CGDB will use, please
+refer to the chart in <a href="#Key-User-Interface">Key User Interface</a>.  The default value for this
+option is on.
+
+     <br><dt><kbd>:set tm=</kbd><var>delay</var><dt><kbd>:set timeoutlen=</kbd><var>delay</var><dd>This option is used along with the <var>ttimeoutlen</var> option.  It
+represents the number of milliseconds that CGDB should wait for a key code
+from the keyboard or for a mapped key sequence to complete.  If <var>delay</var> is
+0, CGDB immediately accepts each character it receives.  This will prevent any
+mappings or key codes to complete.  <var>delay</var> may be any value between
+0 and 10000, inclusive.  The default setting for the <var>delay</var> variable is
+1000 (one second).
+
+     <br><dt><kbd>:set ttimeout</kbd><dd>This option is used along with the <var>timeout</var> option to determine the
+behavior CGDB should have when it receives part of keyboard code sequence. 
+If this option is on, CGDB will time out on key codes from the keyboard.  If
+this option is off, CGDB will determine if it should time out on key codes
+from the keyboard by examining the <var>timeout</var> option.  To determine how
+CGDB will time out on key codes, what what time length it will use, please
+refer to the chart in <a href="#Key-User-Interface">Key User Interface</a>.  The default value for this
+option is on.
+
+     <br><dt><kbd>:set ttm=</kbd><var>delay</var><dt><kbd>:set ttimeoutlen=</kbd><var>delay</var><dd>This option is used along with the <var>ttimeoutlen</var> option.  It
+represents the number of milliseconds that CGDB should wait for a key code
+from the keyboard.  If <var>delay</var> is 0, CGDB immediately accepts each character
+it receives.  This will prevent any key codes to complete.  <var>delay</var> may
+be any value between 0 and 10000, inclusive.  The default setting for the
+<var>delay</var> variable is 100 (one tenth of a second).
+
+     <br><dt><kbd>:set ts=</kbd><var>number</var><dt><kbd>:set tabstop=</kbd><var>number</var><dd>Sets the number of spaces that should be rendered on the screen for &lt;TAB&gt;
+characters.  The default value for <var>number</var> is 8.
+
+     <br><dt><kbd>:set wmh=</kbd><var>number</var><dt><kbd>:set winminheight=</kbd><var>number</var><dd>The minimal height of a window.  Windows will never become smaller than
+this value.  The default value for <var>number</var> is 0.
+
+     <br><dt><kbd>:set winsplit=</kbd><var>style</var><dd>Set the split point between source and GDB window.  This is especially useful
+as an init setting in your <samp><span class="file">cgdbrc</span></samp> file.  See <a href="#Configuring-CGDB">Configuring CGDB</a>.  The
+possible values for <var>style</var> are &lsquo;<samp><span class="samp">top_full</span></samp>&rsquo;, &lsquo;<samp><span class="samp">top_big</span></samp>&rsquo;,
+&lsquo;<samp><span class="samp">even</span></samp>&rsquo;, &lsquo;<samp><span class="samp">bottom_big</span></samp>&rsquo;, and &lsquo;<samp><span class="samp">bottom_full</span></samp>&rsquo;.
+
+     <br><dt><kbd>:set ws</kbd><dt><kbd>:set wrapscan</kbd><dd>Searches wrap around the end of file.  The default is on.
+
+     <br><dt><kbd>:c</kbd><dt><kbd>:continue</kbd><dd>Send a continue command to GDB.
+
+     <dt><kbd>:down</kbd><dd>Send a down command to GDB.
+
+     <br><dt><kbd>:e</kbd><dt><kbd>:edit</kbd><dd>reloads the file in the source window.  this can be useful if the file has
+changed since it was opened by cgdb.
+
+     <br><dt><kbd>:f</kbd><dt><kbd>:finish</kbd><dd>Send a finish command to GDB.
+
+     <br><dt><kbd>:help</kbd><dd>This will display the current manual in text format, in the
+<dfn>source window</dfn>.
+
+     <br><dt><kbd>:hi </kbd><var>group</var><kbd> cterm=</kbd><var>attributes</var><kbd> ctermfg=</kbd><var>color</var><kbd> ctermbg=</kbd><var>color</var><kbd> term=</kbd><var>attributes</var><dt><kbd>:highlight </kbd><var>group</var><kbd> cterm=</kbd><var>attributes</var><kbd> ctermfg=</kbd><var>color</var><kbd> ctermbg=</kbd><var>color</var><kbd> term=</kbd><var>attributes</var><dd>Set the <var>color</var> and <var>attributes</var> for a highlighting group.  The syntax
+mimics vim's &ldquo;highlight&rdquo; command.  Possible values for <var>group</var>,
+<var>attributes</var> and <var>color</var> are available in <a href="#Highlighting-Groups">Highlighting Groups</a>.
+
+     <p>You can give as many or as few of the name=value pairs as you wish, in any
+order.  &lsquo;<samp><span class="samp">ctermfg</span></samp>&rsquo; and &lsquo;<samp><span class="samp">ctermbg</span></samp>&rsquo; set the foreground and background
+colors.  These can be specified by color number or by using the same color
+names that vim uses.  When CGDB is linked with ncurses, the number you use to
+represent the color can be between -1 and COLORS.  When CGDB is linked against
+curses, it must be between 0 and COLORS.
+
+     <p>&lsquo;<samp><span class="samp">cterm</span></samp>&rsquo; sets the video attributes for color terminals.  &lsquo;<samp><span class="samp">term</span></samp>&rsquo; sets
+the video attributes for monochrome terminals.  Some examples are,
+     <pre class="smallexample">          :highlight Logo cterm=bold,underline ctermfg=Red ctermbg=Black
+          :highlight Normal cterm=reverse ctermfg=White ctermbg=Black
+          :hi Normal term=bold
+</pre>
+     <br><dt><kbd>:insert</kbd><dd>Move focus to the GDB window.
+
+     <br><dt><kbd>:n</kbd><dt><kbd>:next</kbd><dd>Send a next command to GDB.
+
+     <br><dt><kbd>:q</kbd><dt><kbd>:quit</kbd><dd>Quit CGDB.
+
+     <br><dt><kbd>:r</kbd><dt><kbd>:run</kbd><dd>Send a run command to GDB.
+
+     <br><dt><kbd>:start</kbd><dd>Send a start command to GDB.
+
+     <br><dt><kbd>:k</kbd><dt><kbd>:kill</kbd><dd>Send a kill command to GDB.
+
+     <br><dt><kbd>:s</kbd><dt><kbd>:step</kbd><dd>Send a step command to GDB.
+
+     <br><dt><kbd>:syntax</kbd><dd>Turn the syntax on or off.
+
+     <dt><kbd>:up</kbd><dd>Send an up command to GDB.
+
+     <br><dt><kbd>:map </kbd><var>lhs</var> <var>rhs</var><dd>Create a new mapping or overwrite an existing mapping in CGDB mode. 
+After the command is run, if <var>lhs</var> is typed, CGDB will get <var>rhs</var>
+instead.  For more details on how to use the map command look in
+<a href="#Using-Maps">Using Maps</a>. 
+<br><dt><kbd>:unm </kbd><var>lhs</var><br><dt><kbd>:unmap </kbd><var>lhs</var><dd>Delete an existing mapping from CGDB mode.  <var>lhs</var> is what was typed
+in the left hand side when the user created the mapping.  For example, if
+the user typed <code>:map a&lt;Space&gt;b foo</code> then the user could delete the
+existing mapping with <code>:unmap a&lt;Space&gt;b</code>. 
+<br><dt><kbd>:im </kbd><var>lhs</var> <var>rhs</var><dt><kbd>:imap </kbd><var>lhs</var> <var>rhs</var><dd>Create a new mapping or overwrite an existing mapping in GDB mode. 
+After the command is run, if <var>lhs</var> is typed, CGDB will get <var>rhs</var>
+instead.  For more details on how to use the map command look in
+<a href="#Using-Maps">Using Maps</a>. 
+<br><dt><kbd>:iu </kbd><var>lhs</var><br><dt><kbd>:iunmap </kbd><var>lhs</var><dd>Delete an existing mapping from GDB mode.  <var>lhs</var> is what was typed
+in the left hand side when the user created the mapping.  For example, if
+the user typed <code>:imap a&lt;Space&gt;b foo</code> then the user could delete the
+existing mapping with <code>:iunmap a&lt;Space&gt;b</code>. 
+</dl>
+
+<div class="node">
+<a name="Highlighting-Groups"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Key-User-Interface">Key User Interface</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Configuring-CGDB">Configuring CGDB</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">5 CGDB highlighting groups</h2>
+
+<p><a name="index-highlighting-groups-24"></a>
+CGDB is capable of using colors if the terminal it is run in supports them. 
+Until version 0.6.1, CGDB did not allow the user to configure these colors in
+any way.  CGDB color use is now fully configurable.
+
+   <p>CGDB's modeled its use of color highlighting after vim.  Any data that will
+be colored in the terminal is represented by a highlighting group. 
+A <dfn>highlighting group</dfn> represents data that should be formatted using
+foreground colors, background colors and attributes.  There are currently
+several types of highlighting groups in CGDB.  There are syntax highlighting
+groups, which represent syntax highlighting of sources files.  There are also
+User Interface groups, which represent things like CGDB's logo, or the status
+bar.
+
+   <p>Each highlighting group has a default set of attributes and colors associated
+with it.  You can modify a highlighting groups properties by using the
+highlight command.  See <a href="#Configuring-CGDB">Configuring CGDB</a>.
+
+   <p>Note that CGDB currently supports using the same background color the terminal
+was using before CGDB was started.  However, this only works when CGDB was
+linked with ncurses.  If you link CGDB with curses, then CGDB will force
+the background to Black.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Available-Highlighting-Groups">Available Highlighting Groups</a>:          The different highlighting groups. 
+<li><a accesskey="2" href="#Available-Attributes">Available Attributes</a>:                   The different attributes. 
+<li><a accesskey="3" href="#Available-Colors">Available Colors</a>:                       The different colors. 
+</ul>
+
+<div class="node">
+<a name="Available-Highlighting-Groups"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Available-Attributes">Available Attributes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Highlighting-Groups">Highlighting Groups</a>
+
+</div>
+
+<h3 class="section">5.1 The different highlighting groups</h3>
+
+<p><a name="index-highlighting-groups-25"></a>
+Below is a list of all the highlighting groups that CDGB will use when syntax
+highlighting source files.
+
+     <dl>
+<dt><code>Statement</code><dd>This represents the keywords a language defines. 
+<br><dt><code>Type</code><dd>This represents the types a language defines. 
+<br><dt><code>Constant</code><dd>This represents either a string or numeric value. 
+<br><dt><code>Comment</code><dd>This represents the comments in a source file. 
+<br><dt><code>PreProc</code><dd>This represents the C/C++ preprocessor commands. 
+<br><dt><code>Normal</code><dd>This represents all normal text. 
+</dl>
+
+   <p>Below is a list of all the highlighting groups that CGDB will use when it is
+displaying it's User Interface.
+
+     <dl>
+<dt><code>StatusLine</code><dd>This represents the <dfn>status bar</dfn> in CGDB.  The file dialog's status
+bar also uses this group. 
+<br><dt><code>IncSearch</code><dd>This represents the group used when the user is searching in either the source
+window, or the <dfn>file dialog window</dfn>. 
+<br><dt><code>Arrow</code><dd>This represents the arrow that CGDB draws to point to the currently viewed
+line. 
+<br><dt><code>LineHighlight</code><dd>This represents the group used when the user has the <code>arrowstyle</code> option
+set to <code>highlight</code>. 
+<br><dt><code>Breakpoint</code><dd>This represents the group that is used when CGDB displays a line that has a
+breakpoint set. 
+<br><dt><code>DisabledBreakpoint</code><dd>This represents the group that is used when CGDB displays a line that has a
+disabled breakpoint set. 
+<br><dt><code>SelectedLineNr</code><dd>This represents the group that is used when CGDB is displaying the currently
+selected line.  This is the line that the cursor is on. 
+<br><dt><code>Logo</code><dd>This is the group CGDB uses to display its logo on startup when no source
+file can be auto detected. 
+</dl>
+
+<div class="node">
+<a name="Available-Attributes"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Available-Colors">Available Colors</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Available-Highlighting-Groups">Available Highlighting Groups</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Highlighting-Groups">Highlighting Groups</a>
+
+</div>
+
+<h3 class="section">5.2 The different attributes</h3>
+
+<p><a name="index-attributes-26"></a>
+CGDB supports many of the attributes that curses provides.  It will apply the
+attributes to the output window, but it is up to the terminal you are using
+to support such features.
+
+   <p>The list of attributes that CGDB currently supports is below.
+
+     <dl>
+<dt><code>normal</code><dt><code>NONE</code><dd>This will leave the text normal.  Uses A_NORMAL curses attribute. 
+<br><dt><code>bold</code><dd>This will make the text appear bold.  Uses A_BOLD curses attribute. 
+<br><dt><code>underline</code><dd>This will underline the text.  Uses A_UNDERLINE curses attribute. 
+<br><dt><code>reverse</code><dt><code>inverse</code><dd>This will reverse the foreground and background colors.  Uses A_REVERSE curses
+attribute. 
+<br><dt><code>standout</code><dd>This is the best highlighting mode of the terminal.  Uses A_STANDOUT curses
+attribute. 
+<br><dt><code>blink</code><dd>This will cause the text to blink.  Uses A_BLINK curses attribute. 
+<br><dt><code>dim</code><dd>This will cause the text to be 1/2 bright.  Uses A_DIM curses attribute. 
+</dl>
+
+<div class="node">
+<a name="Available-Colors"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Available-Attributes">Available Attributes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Highlighting-Groups">Highlighting Groups</a>
+
+</div>
+
+<h3 class="section">5.3 The different colors</h3>
+
+<p><a name="index-colors-27"></a>
+CGDB supports several colors, depending on how many colors your terminal
+supports.  Below is a chart of the colors that CGDB provides.  The heading
+NR-16 is used to represent terminals that support at least 16 colors.  The
+heading NR-8 is used to represent terminals that support at least 8 colors. 
+The integer values for each color represent the values passed to the curses
+function init_pair() to ask curses to create a new color.
+
+   <p><table summary=""><tr align="left"><td valign="top" width="40%"><code>COLOR NAME</code>
+</td><td valign="top" width="20%"><code>NR-16</code>
+</td><td valign="top" width="20%"><code>NR-8</code>
+</td><td valign="top" width="20%"><code>NR-8 bold attribute</code>
+<br></td></tr><tr align="left"><td valign="top" width="40%">Black
+</td><td valign="top" width="20%">0
+</td><td valign="top" width="20%">0
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkBlue
+</td><td valign="top" width="20%">1
+</td><td valign="top" width="20%">4
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkGreen
+</td><td valign="top" width="20%">2
+</td><td valign="top" width="20%">2
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkCyan
+</td><td valign="top" width="20%">3
+</td><td valign="top" width="20%">6
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkRed
+</td><td valign="top" width="20%">4
+</td><td valign="top" width="20%">1
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkMagenta
+</td><td valign="top" width="20%">5
+</td><td valign="top" width="20%">5
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">Brown, DarkYellow
+</td><td valign="top" width="20%">6
+</td><td valign="top" width="20%">3
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">LightGray, LightGrey, Gray, Grey
+</td><td valign="top" width="20%">7
+</td><td valign="top" width="20%">7
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkGray, DarkGrey
+</td><td valign="top" width="20%">8
+</td><td valign="top" width="20%">0
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Blue, LightBlue
+</td><td valign="top" width="20%">9
+</td><td valign="top" width="20%">4
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Green, LightGreen
+</td><td valign="top" width="20%">10
+</td><td valign="top" width="20%">2
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Cyan, LightCyan
+</td><td valign="top" width="20%">11
+</td><td valign="top" width="20%">6
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Red, LightRed
+</td><td valign="top" width="20%">12
+</td><td valign="top" width="20%">1
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Magenta, LightMagenta
+</td><td valign="top" width="20%">13
+</td><td valign="top" width="20%">5
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Yellow, LightYellow
+</td><td valign="top" width="20%">14
+</td><td valign="top" width="20%">3
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">White
+</td><td valign="top" width="20%">15
+</td><td valign="top" width="20%">7
+</td><td valign="top" width="20%">Yes
+   <br></td></tr></table>
+
+<div class="node">
+<a name="Key-User-Interface"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Highlighting-Groups">Highlighting Groups</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">6 CGDB key user interface</h2>
+
+<p><a name="index-CGDB-key-user-interface-28"></a>
+The Key User Interface is how CGDB receives input from the user.  It is
+usually referred to as the <dfn>KUI</dfn>.  CGDB simply asks the KUI for the next
+key the user typed and the KUI will provide it.
+
+   <p>The KUI has 2 major responsibilities besides reading normal user input
+and providing it to CGDB.  It needs to detect when the user has typed a
+user defined map or when the user has hit a special key on the keyboard.
+
+   <p>A user defined map, or simply <dfn>map</dfn>, is used to change the meaning
+of typed keys.  Some users may refer to this type of functionality as a
+<dfn>macro</dfn>.  An example would be <code>map a b</code>.  If the user then typed
+the &lt;a&gt; character, the KUI would detect that it was mapped to &lt;b&gt;
+and return &lt;b&gt; to CGDB.
+
+   <p>When the user types a special key on the keyboard, a <dfn>key code</dfn> is
+sent to CGDB.  Typically, keys like  <kbd>HOME</kbd>, <kbd>DEL</kbd>, &lt;F1&gt;, etc,
+when pressed will send several characters to the application instead of just
+one character like a normal key does.  These characters combined are called a
+<dfn>key sequence</dfn>.  The KUI is responsible for assembling the key sequences
+back together and reporting to CGDB that a particular key was typed by the
+user.  The <kbd>ESC</kbd> key is special because typically most key codes start with
+that key.  This usually gives all key codes a common first key in its key
+sequence.  The KUI uses the terminfo database to determine what key sequences
+are sent by which keycodes.  There are a few commonly used key sequences
+that are hard coded into CGDB.
+
+   <p>A major challenge the KUI has to overcome is determining when a map or a
+key sequence is received.  The KUI sometimes will need to read more than
+one character to determine this.  For example, if the user has 2 maps,
+<code>map abc def</code> and <code>map abd def</code>, the KUI would have to buffer at
+least the characters &lt;a&gt; and &lt;b&gt; before it could determine if the
+user was going to type a map.  After the next key press, if the user types
+&lt;c&gt; or &lt;d&gt; then a map was received and the KUI will return
+<kbd>d e f</kbd> to CGDB.  Otherwise, no map was received and the KUI must return
+<kbd>a b</kbd> to CGDB.
+
+   <p>The options <var>timeout</var>, <var>ttimeout</var>, <var>timeoutlen</var> and
+<var>ttimeoutlen</var> can be used to tell the KUI if it should timeout on
+partial mappings or key sequences, and if so, how long it should wait before
+timing out.
+
+<ul class="menu">
+<li><a accesskey="1" href="#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a>:         The KUI's time out options
+<li><a accesskey="2" href="#Using-Maps">Using Maps</a>:                                   Using maps
+<li><a accesskey="3" href="#Understanding-Keycodes">Understanding Keycodes</a>:                       Understanding keycodes
+</ul>
+
+<div class="node">
+<a name="Configuring-the-KUI-Time-Out-Options"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Using-Maps">Using Maps</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Key-User-Interface">Key User Interface</a>
+
+</div>
+
+<h3 class="section">6.1 The KUI's time out options</h3>
+
+<p><a name="index-timeout-29"></a><a name="index-ttimeout-30"></a><a name="index-timeoutlen-31"></a><a name="index-ttimeoutlen-32"></a>
+The KUI may be configured to time out on either maps or key sequences.
+
+   <p>When the KUI is matching a partial map or key sequence it is capable
+of timing out.  This means it will simply accepts the keys it has received so
+far if a certain amount of time elapses between key presses.  This is
+obvious when the user is typing a map because the user must press each key
+individually.  For partial key sequences, this is less obvious.  That is
+because the user only presses a single key, but multiple characters are sent
+to CGDB.  The table below describes how the user can configure the KUI
+to time out on key codes or maps.  The <var>timeout</var> and <var>ttimeout</var>
+options control this functionality.
+
+   <p><table summary=""><tr align="left"><th valign="top" width="15%">timeout </th><th valign="top" width="15%">ttimeout </th><th valign="top" width="45%">action
+<br></th></tr><tr align="left"><td valign="top" width="15%">off
+</td><td valign="top" width="15%">off
+</td><td valign="top" width="45%">do not time out
+<br></td></tr><tr align="left"><td valign="top" width="15%">on
+</td><td valign="top" width="15%">on or off
+</td><td valign="top" width="45%">time out on maps and key codes
+<br></td></tr><tr align="left"><td valign="top" width="15%">off
+</td><td valign="top" width="15%">on
+</td><td valign="top" width="45%">time out on key codes
+   <br></td></tr></table>
+
+   <p>It is also possible to tell the KUI how long to wait before timing out on
+a partial match.  If <var>timeout</var> is on, then the KUI will wait a certain
+amount of time for the next character, when matching a map, before it
+decides a match is no longer possible.  If <var>timeout</var> or
+<var>ttimeout</var> is on, then the KUI will wait a certain amount of time for
+the next character, when matching a key sequence, before it decides a
+match is no longer possible.  The <var>timeoutlen</var> and <var>ttimeoutlen</var>
+options can be configured by the user to tell the KUI how long to wait
+before timing out.  The table below describes when the KUI uses which
+option.
+
+   <p><table summary=""><tr align="left"><th valign="top" width="15%">timeoutlen </th><th valign="top" width="20%">mapping delay </th><th valign="top" width="20%">key code delay
+<br></th></tr><tr align="left"><td valign="top" width="15%">&lt; 0
+</td><td valign="top" width="20%"><var>timeoutlen</var>
+</td><td valign="top" width="20%"><var>timeoutlen</var>
+<br></td></tr><tr align="left"><td valign="top" width="15%">&gt;= 0
+</td><td valign="top" width="20%"><var>timeoutlen</var>
+</td><td valign="top" width="20%"><var>ttimeoutlen</var>
+   <br></td></tr></table>
+
+   <p>A value of 0 means that the KUI will time out right away.  It will not be
+possible to match a map or key code in this circumstance.
+
+   <p>A common problem could be that when the user types a special key like
+the left or right arrows, CGDB will go into the source mode and not
+perform the action requested by the user.  This typically means that the
+key code delay is to small.  If you try setting the option
+<code>set ttimeoutlen=1000</code> CGDB should start acting like the user expects. 
+If not, please report this to the CGDB mailing list.
+
+<div class="node">
+<a name="Using-Maps"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Understanding-Keycodes">Understanding Keycodes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Key-User-Interface">Key User Interface</a>
+
+</div>
+
+<h3 class="section">6.2 Using maps</h3>
+
+<p>CGDB fully supports the use of maps.  It allows the user to change the
+meaning of typed keys. For example, you could have the following map
+<code>:map &lt;F2&gt; ip&lt;Space&gt;argc&lt;CR&gt;</code>.
+
+   <p>When the user is in CGDB mode and they hit &lt;F2&gt;, the value of the map
+will be used instead.  The <kbd>i</kbd> key will first be received by CGDB, and
+it will put the user into insert mode.  Next, CGDB will get <kbd>p argc</kbd>
+followed by the &lt;Enter&gt; key.
+
+   <p>CGDB currently supports two mapping lists.  Any mapping that was added
+with the <var>map</var> command will be used by CGDB when it is in CGDB mode. 
+You can delete a mapping that you have created with the <var>map</var> command
+with the <var>unmap</var> command.  If you want to have mappings in GDB mode, you
+can use the <var>imap</var> command.  Similarly, <var>iunmap</var> will delete a
+mapping in the <var>imap</var> set.  Some examples of this would be
+<pre class="example">     map a&lt;Space&gt;b foo
+     unmap a&lt;Space&gt;b
+     
+     imap a&lt;CR&gt;b foo
+     iunmap a&lt;CR&gt;b
+</pre>
+   <div class="node">
+<a name="Understanding-Keycodes"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Using-Maps">Using Maps</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Key-User-Interface">Key User Interface</a>
+
+</div>
+
+<h3 class="section">6.3 Understanding keycodes</h3>
+
+<p>The above example could use a little more explaining for people unfamiliar
+with vim maps.  The map takes a key and a value.  They are separated by
+a space.  Neither the key or value can have a space in them, or it is
+considered to be the separator between the key and value.  If the user
+desires to have a space in either the key or value part of a map, they can
+use the keycode notation &lt;Space&gt;.  Below is a table of the
+keycodes in <dfn>keycode notation</dfn> form.  The keycode notation can be
+used in any mapping command.
+
+   <p><table summary=""><tr align="left"><th valign="top" width="15%">notation </th><th valign="top" width="40%">meaning
+<br></th></tr><tr align="left"><td valign="top" width="15%">&lt;Esc&gt;
+</td><td valign="top" width="40%">escape key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Up&gt;
+</td><td valign="top" width="40%">cursor up key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Down&gt;
+</td><td valign="top" width="40%">cursor down key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Left&gt;
+</td><td valign="top" width="40%">cursor left key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Right&gt;
+</td><td valign="top" width="40%">cursor right key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Home&gt;
+</td><td valign="top" width="40%">home key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;End&gt;
+</td><td valign="top" width="40%">end key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;PageUp&gt;
+</td><td valign="top" width="40%">page up key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;PageDown&gt;
+</td><td valign="top" width="40%">page down key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Del&gt;
+</td><td valign="top" width="40%">delete key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Insert&gt;
+</td><td valign="top" width="40%">insert key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Nul&gt;
+</td><td valign="top" width="40%">zero
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Bs&gt;
+</td><td valign="top" width="40%">backspace key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Tab&gt;
+</td><td valign="top" width="40%">tab key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;NL&gt;
+</td><td valign="top" width="40%">linefeed
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;FF&gt;
+</td><td valign="top" width="40%">formfeed
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;CR&gt;
+</td><td valign="top" width="40%">carriage return
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Space&gt;
+</td><td valign="top" width="40%">space
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Lt&gt;
+</td><td valign="top" width="40%">less-than
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Bslash&gt;
+</td><td valign="top" width="40%">backslash
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Bar&gt;
+</td><td valign="top" width="40%">vertical bar
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;F1&gt; - &lt;F12&gt;
+</td><td valign="top" width="40%">function keys 1 to 12
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;C-...&gt;
+</td><td valign="top" width="40%">control keys
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;S-...&gt;
+</td><td valign="top" width="40%">shift keys
+   <br></td></tr></table>
+
+<div class="node">
+<a name="Sending-I%2fO-to-Inferior"></a>
+<a name="Sending-I_002fO-to-Inferior"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Terminal-Control-Flow">Terminal Control Flow</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Key-User-Interface">Key User Interface</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">7 Sending I/O to the program being debugged</h2>
+
+<p><a name="index-sending-I_002fO-to-inferior-33"></a>
+If the program being debugged takes input on the terminal it is recommended
+that the user start the program on one terminal, and attach to it with CGDB
+from another terminal.  This is the easiest way to pass input to the
+debugged program.
+
+   <p>However, if the user wishes to pass input to the program being debugged from
+within CGDB, there is a mechanism available for doing so.  As of this writing,
+the technique described below does not work on windows, using a natively
+compiled GDB.  It may work when using the GDB that comes with Cygwin.
+
+   <p>This technique is similar to getting in and out of <dfn>GDB mode</dfn>.  The tty
+window is not visible by default.  This is because it is only needed if the
+user wishes to send data to the program being debugged.  To display the tty
+window, hit <kbd>T</kbd> while in command mode.  After hitting <kbd>T</kbd> you will
+notice that there is another window in the middle of the <dfn>source window</dfn>
+and the <dfn>gdb window</dfn>.  This is called the <dfn>tty window</dfn>. You will also
+see a new status bar called the tty status bar.  There will be a &lsquo;<samp><span class="samp">*</span></samp>&rsquo; on
+the tty status bar after the <kbd>T</kbd> was hit.  This is because when the
+window is opened with the <kbd>T</kbd> command, CGDB automatically puts the user
+into <dfn>TTY mode</dfn>.  To get out of this window hit the cgdb mode key. 
+This will put you back into command mode.  To make the tty window appear and
+disappear hit the <kbd>T</kbd> key while in command mode.  It is a toggle.
+
+   <p>Once the tty window is already open, the user can then hit <kbd>I</kbd> in
+command mode to get into <dfn>TTY mode</dfn>.  The user can then hit the
+cgdb mode key in the <dfn>TTY mode</dfn> to get back into command mode.
+
+   <p>When the tty window is open, all data that comes from the program, goes
+there.  Any data typed into the tty window will ONLY go to the program
+being debugged.  It will not go to GDB. When the tty window is closed,
+all output from the debugged program will go to the <dfn>GDB window</dfn> AND to
+the <dfn>tty window</dfn> (for viewing later when the tty window is opened).
+
+   <p>If the user wishes to get a new tty for the program being debugged then
+they can type <kbd>Ctrl-T</kbd>.  This will delete all the buffered data
+waiting to be read into the debugged program. This might be useful when
+you rerun or start a new program.
+
+<div class="node">
+<a name="Terminal-Control-Flow"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Building-CGDB">Building CGDB</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">8 Allowing terminal control flow in CGDB</h2>
+
+<p><a name="index-terminal-control-flow-34"></a>
+A user can typically set there control flow behavior by using the stty
+command like so <code>stty -ixon -ixoff</code>.  This will disable control flow on
+the terminal where CGDB is started.  If you want to turn control flow back
+on you can type <code>stty ixon ixoff</code>.  If flow control is on, when the user
+types <kbd>Ctrl-s</kbd>, the terminal stops.  When the user types <kbd>Ctrl-q</kbd>, the
+terminal restarts.  When using readline, the <kbd>Ctrl-s</kbd> character usually does
+a forward search.  So, if you want to get this, or other functionality out of
+readline, simply turn off control flow and start CGDB.
+
+<div class="node">
+<a name="Building-CGDB"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Copying-This-Manual">Copying This Manual</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Terminal-Control-Flow">Terminal Control Flow</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="chapter">9 Building CGDB from source</h2>
+
+<p><a name="index-building-CGDB-35"></a>
+Building CGDB from source requires several packages. First, CGDB is hosted
+at http://sf.net/projects/cgdb. You can determine how to get CGDB from source
+by looking here: http://sourceforge.net/svn/?group_id=72581.
+
+   <p>Once you have the source to CGDB, now you can begin to build it.  You will of
+course need many packages to build CGDB. Below is a list of all of them
+that are required to build CGDB.
+
+     <dl>
+<dt><code>GNU Make</code><dd>I have successfully used version 3.79.1, however, older versions probably
+will work.
+
+     <br><dt><code>GNU GCC</code><dd>The GNU C compiler. I've compiled CGDB with versions as old as 2.9.5, and as
+new as 4.0.2.
+
+     <br><dt><code>GNU Readline</code><dd>The GNU readline library version 5.1. CGDB will not work with versions before
+5.1.  Readline was modified specifically to work with CGDB.
+
+     <br><dt><code>GNU Ncurses</code><dd>I have successfully used libncurses.so.5 successfully.  However, older versions
+probably will work. 
+</dl>
+
+   <p>Below is a list of optional packages you will need, if modifying certain files
+in CGDB.
+
+     <dl>
+<dt><code>GNU Flex</code><dd>If you modify any files with an extension of <code>.l</code>, you will have to have
+flex installed.  I have used flex 2.5.4 to build CGDB.
+
+     <br><dt><code>GNU Texinfo</code><dd>If you modify <samp><span class="file">doc/cgdb.texinfo</span></samp>, then you will be required to have this
+package installed.  I have used version 4.7 to build the documentation for
+CGDB.
+
+     <br><dt><code>help2man</code><dd>If you are doing a release, then you will be required to have this package
+installed.  In the <samp><span class="file">doc/</span></samp> build directory, you can execute the command
+<code>make cgdb.1</code>, and the CGDB man page will be generated. 
+</dl>
+
+   <p>CGDB uses autoconf/automake to build its configure scripts and makefiles.  So,
+if you change any of the autoconf/automake files, you will need this software
+installed.
+
+     <dl>
+<dt><code>GNU Automake</code><dd>This has the program aclocal, and must be version Version 1.9.5.
+
+     <br><dt><code>GNU Autoconf</code><dd>This has the program autoconf, and must be version 2.59.
+
+     <br><dt><code>GNU m4</code><dd>This has the program m4, and must be version 1.4.3. 
+</dl>
+
+<div class="node">
+<a name="Copying-This-Manual"></a>
+<p><hr>
+Next:&nbsp;<a rel="next" accesskey="n" href="#Index">Index</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Building-CGDB">Building CGDB</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="appendix">Appendix A Copying This Manual</h2>
+
+<ul class="menu">
+<li><a accesskey="1" href="#GNU-Free-Documentation-License">GNU Free Documentation License</a>:   License for copying this manual. 
+</ul>
+
+<div class="node">
+<a name="GNU-Free-Documentation-License"></a>
+<p><hr>
+Up:&nbsp;<a rel="up" accesskey="u" href="#Copying-This-Manual">Copying This Manual</a>
+
+</div>
+
+<h3 class="appendixsec">A.1 GNU Free Documentation License</h3>
+
+<p><a name="index-FDL_002c-GNU-Free-Documentation-License-36"></a><div align="center">Version 1.2, November 2002</div>
+
+<pre class="display">     Copyright &copy; 2000,2001,2002 Free Software Foundation, Inc.
+     51 Franklin St, Fifth Floor, Boston, MA  02110-1301, USA
+     
+     Everyone is permitted to copy and distribute verbatim copies
+     of this license document, but changing it is not allowed.
+</pre>
+     <ol type=1 start=0>
+<li>PREAMBLE
+
+     <p>The purpose of this License is to make a manual, textbook, or other
+functional and useful document <dfn>free</dfn> in the sense of freedom: to
+assure everyone the effective freedom to copy and redistribute it,
+with or without modifying it, either commercially or noncommercially. 
+Secondarily, this License preserves for the author and publisher a way
+to get credit for their work, while not being considered responsible
+for modifications made by others.
+
+     <p>This License is a kind of &ldquo;copyleft&rdquo;, which means that derivative
+works of the document must themselves be free in the same sense.  It
+complements the GNU General Public License, which is a copyleft
+license designed for free software.
+
+     <p>We have designed this License in order to use it for manuals for free
+software, because free software needs free documentation: a free
+program should come with manuals providing the same freedoms that the
+software does.  But this License is not limited to software manuals;
+it can be used for any textual work, regardless of subject matter or
+whether it is published as a printed book.  We recommend this License
+principally for works whose purpose is instruction or reference.
+
+     <li>APPLICABILITY AND DEFINITIONS
+
+     <p>This License applies to any manual or other work, in any medium, that
+contains a notice placed by the copyright holder saying it can be
+distributed under the terms of this License.  Such a notice grants a
+world-wide, royalty-free license, unlimited in duration, to use that
+work under the conditions stated herein.  The &ldquo;Document&rdquo;, below,
+refers to any such manual or work.  Any member of the public is a
+licensee, and is addressed as &ldquo;you&rdquo;.  You accept the license if you
+copy, modify or distribute the work in a way requiring permission
+under copyright law.
+
+     <p>A &ldquo;Modified Version&rdquo; of the Document means any work containing the
+Document or a portion of it, either copied verbatim, or with
+modifications and/or translated into another language.
+
+     <p>A &ldquo;Secondary Section&rdquo; is a named appendix or a front-matter section
+of the Document that deals exclusively with the relationship of the
+publishers or authors of the Document to the Document's overall
+subject (or to related matters) and contains nothing that could fall
+directly within that overall subject.  (Thus, if the Document is in
+part a textbook of mathematics, a Secondary Section may not explain
+any mathematics.)  The relationship could be a matter of historical
+connection with the subject or with related matters, or of legal,
+commercial, philosophical, ethical or political position regarding
+them.
+
+     <p>The &ldquo;Invariant Sections&rdquo; are certain Secondary Sections whose titles
+are designated, as being those of Invariant Sections, in the notice
+that says that the Document is released under this License.  If a
+section does not fit the above definition of Secondary then it is not
+allowed to be designated as Invariant.  The Document may contain zero
+Invariant Sections.  If the Document does not identify any Invariant
+Sections then there are none.
+
+     <p>The &ldquo;Cover Texts&rdquo; are certain short passages of text that are listed,
+as Front-Cover Texts or Back-Cover Texts, in the notice that says that
+the Document is released under this License.  A Front-Cover Text may
+be at most 5 words, and a Back-Cover Text may be at most 25 words.
+
+     <p>A &ldquo;Transparent&rdquo; copy of the Document means a machine-readable copy,
+represented in a format whose specification is available to the
+general public, that is suitable for revising the document
+straightforwardly with generic text editors or (for images composed of
+pixels) generic paint programs or (for drawings) some widely available
+drawing editor, and that is suitable for input to text formatters or
+for automatic translation to a variety of formats suitable for input
+to text formatters.  A copy made in an otherwise Transparent file
+format whose markup, or absence of markup, has been arranged to thwart
+or discourage subsequent modification by readers is not Transparent. 
+An image format is not Transparent if used for any substantial amount
+of text.  A copy that is not &ldquo;Transparent&rdquo; is called &ldquo;Opaque&rdquo;.
+
+     <p>Examples of suitable formats for Transparent copies include plain
+<span class="sc">ascii</span> without markup, Texinfo input format, LaTeX input
+format, <acronym>SGML</acronym> or <acronym>XML</acronym> using a publicly available
+<acronym>DTD</acronym>, and standard-conforming simple <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> designed for human modification.  Examples
+of transparent image formats include <acronym>PNG</acronym>, <acronym>XCF</acronym> and
+<acronym>JPG</acronym>.  Opaque formats include proprietary formats that can be
+read and edited only by proprietary word processors, <acronym>SGML</acronym> or
+<acronym>XML</acronym> for which the <acronym>DTD</acronym> and/or processing tools are
+not generally available, and the machine-generated <acronym>HTML</acronym>,
+PostScript or <acronym>PDF</acronym> produced by some word processors for
+output purposes only.
+
+     <p>The &ldquo;Title Page&rdquo; means, for a printed book, the title page itself,
+plus such following pages as are needed to hold, legibly, the material
+this License requires to appear in the title page.  For works in
+formats which do not have any title page as such, &ldquo;Title Page&rdquo; means
+the text near the most prominent appearance of the work's title,
+preceding the beginning of the body of the text.
+
+     <p>A section &ldquo;Entitled XYZ&rdquo; means a named subunit of the Document whose
+title either is precisely XYZ or contains XYZ in parentheses following
+text that translates XYZ in another language.  (Here XYZ stands for a
+specific section name mentioned below, such as &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, &ldquo;Endorsements&rdquo;, or &ldquo;History&rdquo;.)  To &ldquo;Preserve the Title&rdquo;
+of such a section when you modify the Document means that it remains a
+section &ldquo;Entitled XYZ&rdquo; according to this definition.
+
+     <p>The Document may include Warranty Disclaimers next to the notice which
+states that this License applies to the Document.  These Warranty
+Disclaimers are considered to be included by reference in this
+License, but only as regards disclaiming warranties: any other
+implication that these Warranty Disclaimers may have is void and has
+no effect on the meaning of this License.
+
+     <li>VERBATIM COPYING
+
+     <p>You may copy and distribute the Document in any medium, either
+commercially or noncommercially, provided that this License, the
+copyright notices, and the license notice saying this License applies
+to the Document are reproduced in all copies, and that you add no other
+conditions whatsoever to those of this License.  You may not use
+technical measures to obstruct or control the reading or further
+copying of the copies you make or distribute.  However, you may accept
+compensation in exchange for copies.  If you distribute a large enough
+number of copies you must also follow the conditions in section 3.
+
+     <p>You may also lend copies, under the same conditions stated above, and
+you may publicly display copies.
+
+     <li>COPYING IN QUANTITY
+
+     <p>If you publish printed copies (or copies in media that commonly have
+printed covers) of the Document, numbering more than 100, and the
+Document's license notice requires Cover Texts, you must enclose the
+copies in covers that carry, clearly and legibly, all these Cover
+Texts: Front-Cover Texts on the front cover, and Back-Cover Texts on
+the back cover.  Both covers must also clearly and legibly identify
+you as the publisher of these copies.  The front cover must present
+the full title with all words of the title equally prominent and
+visible.  You may add other material on the covers in addition. 
+Copying with changes limited to the covers, as long as they preserve
+the title of the Document and satisfy these conditions, can be treated
+as verbatim copying in other respects.
+
+     <p>If the required texts for either cover are too voluminous to fit
+legibly, you should put the first ones listed (as many as fit
+reasonably) on the actual cover, and continue the rest onto adjacent
+pages.
+
+     <p>If you publish or distribute Opaque copies of the Document numbering
+more than 100, you must either include a machine-readable Transparent
+copy along with each Opaque copy, or state in or with each Opaque copy
+a computer-network location from which the general network-using
+public has access to download using public-standard network protocols
+a complete Transparent copy of the Document, free of added material. 
+If you use the latter option, you must take reasonably prudent steps,
+when you begin distribution of Opaque copies in quantity, to ensure
+that this Transparent copy will remain thus accessible at the stated
+location until at least one year after the last time you distribute an
+Opaque copy (directly or through your agents or retailers) of that
+edition to the public.
+
+     <p>It is requested, but not required, that you contact the authors of the
+Document well before redistributing any large number of copies, to give
+them a chance to provide you with an updated version of the Document.
+
+     <li>MODIFICATIONS
+
+     <p>You may copy and distribute a Modified Version of the Document under
+the conditions of sections 2 and 3 above, provided that you release
+the Modified Version under precisely this License, with the Modified
+Version filling the role of the Document, thus licensing distribution
+and modification of the Modified Version to whoever possesses a copy
+of it.  In addition, you must do these things in the Modified Version:
+
+          <ol type=A start=1>
+<li>Use in the Title Page (and on the covers, if any) a title distinct
+from that of the Document, and from those of previous versions
+(which should, if there were any, be listed in the History section
+of the Document).  You may use the same title as a previous version
+if the original publisher of that version gives permission.
+
+          <li>List on the Title Page, as authors, one or more persons or entities
+responsible for authorship of the modifications in the Modified
+Version, together with at least five of the principal authors of the
+Document (all of its principal authors, if it has fewer than five),
+unless they release you from this requirement.
+
+          <li>State on the Title page the name of the publisher of the
+Modified Version, as the publisher.
+
+          <li>Preserve all the copyright notices of the Document.
+
+          <li>Add an appropriate copyright notice for your modifications
+adjacent to the other copyright notices.
+
+          <li>Include, immediately after the copyright notices, a license notice
+giving the public permission to use the Modified Version under the
+terms of this License, in the form shown in the Addendum below.
+
+          <li>Preserve in that license notice the full lists of Invariant Sections
+and required Cover Texts given in the Document's license notice.
+
+          <li>Include an unaltered copy of this License.
+
+          <li>Preserve the section Entitled &ldquo;History&rdquo;, Preserve its Title, and add
+to it an item stating at least the title, year, new authors, and
+publisher of the Modified Version as given on the Title Page.  If
+there is no section Entitled &ldquo;History&rdquo; in the Document, create one
+stating the title, year, authors, and publisher of the Document as
+given on its Title Page, then add an item describing the Modified
+Version as stated in the previous sentence.
+
+          <li>Preserve the network location, if any, given in the Document for
+public access to a Transparent copy of the Document, and likewise
+the network locations given in the Document for previous versions
+it was based on.  These may be placed in the &ldquo;History&rdquo; section. 
+You may omit a network location for a work that was published at
+least four years before the Document itself, or if the original
+publisher of the version it refers to gives permission.
+
+          <li>For any section Entitled &ldquo;Acknowledgements&rdquo; or &ldquo;Dedications&rdquo;, Preserve
+the Title of the section, and preserve in the section all the
+substance and tone of each of the contributor acknowledgements and/or
+dedications given therein.
+
+          <li>Preserve all the Invariant Sections of the Document,
+unaltered in their text and in their titles.  Section numbers
+or the equivalent are not considered part of the section titles.
+
+          <li>Delete any section Entitled &ldquo;Endorsements&rdquo;.  Such a section
+may not be included in the Modified Version.
+
+          <li>Do not retitle any existing section to be Entitled &ldquo;Endorsements&rdquo; or
+to conflict in title with any Invariant Section.
+
+          <li>Preserve any Warranty Disclaimers.
+          </ol>
+
+     <p>If the Modified Version includes new front-matter sections or
+appendices that qualify as Secondary Sections and contain no material
+copied from the Document, you may at your option designate some or all
+of these sections as invariant.  To do this, add their titles to the
+list of Invariant Sections in the Modified Version's license notice. 
+These titles must be distinct from any other section titles.
+
+     <p>You may add a section Entitled &ldquo;Endorsements&rdquo;, provided it contains
+nothing but endorsements of your Modified Version by various
+parties&mdash;for example, statements of peer review or that the text has
+been approved by an organization as the authoritative definition of a
+standard.
+
+     <p>You may add a passage of up to five words as a Front-Cover Text, and a
+passage of up to 25 words as a Back-Cover Text, to the end of the list
+of Cover Texts in the Modified Version.  Only one passage of
+Front-Cover Text and one of Back-Cover Text may be added by (or
+through arrangements made by) any one entity.  If the Document already
+includes a cover text for the same cover, previously added by you or
+by arrangement made by the same entity you are acting on behalf of,
+you may not add another; but you may replace the old one, on explicit
+permission from the previous publisher that added the old one.
+
+     <p>The author(s) and publisher(s) of the Document do not by this License
+give permission to use their names for publicity for or to assert or
+imply endorsement of any Modified Version.
+
+     <li>COMBINING DOCUMENTS
+
+     <p>You may combine the Document with other documents released under this
+License, under the terms defined in section 4 above for modified
+versions, provided that you include in the combination all of the
+Invariant Sections of all of the original documents, unmodified, and
+list them all as Invariant Sections of your combined work in its
+license notice, and that you preserve all their Warranty Disclaimers.
+
+     <p>The combined work need only contain one copy of this License, and
+multiple identical Invariant Sections may be replaced with a single
+copy.  If there are multiple Invariant Sections with the same name but
+different contents, make the title of each such section unique by
+adding at the end of it, in parentheses, the name of the original
+author or publisher of that section if known, or else a unique number. 
+Make the same adjustment to the section titles in the list of
+Invariant Sections in the license notice of the combined work.
+
+     <p>In the combination, you must combine any sections Entitled &ldquo;History&rdquo;
+in the various original documents, forming one section Entitled
+&ldquo;History&rdquo;; likewise combine any sections Entitled &ldquo;Acknowledgements&rdquo;,
+and any sections Entitled &ldquo;Dedications&rdquo;.  You must delete all
+sections Entitled &ldquo;Endorsements.&rdquo;
+
+     <li>COLLECTIONS OF DOCUMENTS
+
+     <p>You may make a collection consisting of the Document and other documents
+released under this License, and replace the individual copies of this
+License in the various documents with a single copy that is included in
+the collection, provided that you follow the rules of this License for
+verbatim copying of each of the documents in all other respects.
+
+     <p>You may extract a single document from such a collection, and distribute
+it individually under this License, provided you insert a copy of this
+License into the extracted document, and follow this License in all
+other respects regarding verbatim copying of that document.
+
+     <li>AGGREGATION WITH INDEPENDENT WORKS
+
+     <p>A compilation of the Document or its derivatives with other separate
+and independent documents or works, in or on a volume of a storage or
+distribution medium, is called an &ldquo;aggregate&rdquo; if the copyright
+resulting from the compilation is not used to limit the legal rights
+of the compilation's users beyond what the individual works permit. 
+When the Document is included in an aggregate, this License does not
+apply to the other works in the aggregate which are not themselves
+derivative works of the Document.
+
+     <p>If the Cover Text requirement of section 3 is applicable to these
+copies of the Document, then if the Document is less than one half of
+the entire aggregate, the Document's Cover Texts may be placed on
+covers that bracket the Document within the aggregate, or the
+electronic equivalent of covers if the Document is in electronic form. 
+Otherwise they must appear on printed covers that bracket the whole
+aggregate.
+
+     <li>TRANSLATION
+
+     <p>Translation is considered a kind of modification, so you may
+distribute translations of the Document under the terms of section 4. 
+Replacing Invariant Sections with translations requires special
+permission from their copyright holders, but you may include
+translations of some or all Invariant Sections in addition to the
+original versions of these Invariant Sections.  You may include a
+translation of this License, and all the license notices in the
+Document, and any Warranty Disclaimers, provided that you also include
+the original English version of this License and the original versions
+of those notices and disclaimers.  In case of a disagreement between
+the translation and the original version of this License or a notice
+or disclaimer, the original version will prevail.
+
+     <p>If a section in the Document is Entitled &ldquo;Acknowledgements&rdquo;,
+&ldquo;Dedications&rdquo;, or &ldquo;History&rdquo;, the requirement (section 4) to Preserve
+its Title (section 1) will typically require changing the actual
+title.
+
+     <li>TERMINATION
+
+     <p>You may not copy, modify, sublicense, or distribute the Document except
+as expressly provided for under this License.  Any other attempt to
+copy, modify, sublicense or distribute the Document is void, and will
+automatically terminate your rights under this License.  However,
+parties who have received copies, or rights, from you under this
+License will not have their licenses terminated so long as such
+parties remain in full compliance.
+
+     <li>FUTURE REVISIONS OF THIS LICENSE
+
+     <p>The Free Software Foundation may publish new, revised versions
+of the GNU Free Documentation License from time to time.  Such new
+versions will be similar in spirit to the present version, but may
+differ in detail to address new problems or concerns.  See
+<a href="http://www.gnu.org/copyleft/">http://www.gnu.org/copyleft/</a>.
+
+     <p>Each version of the License is given a distinguishing version number. 
+If the Document specifies that a particular numbered version of this
+License &ldquo;or any later version&rdquo; applies to it, you have the option of
+following the terms and conditions either of that specified version or
+of any later version that has been published (not as a draft) by the
+Free Software Foundation.  If the Document does not specify a version
+number of this License, you may choose any version ever published (not
+as a draft) by the Free Software Foundation.
+        </ol>
+
+<h4 class="appendixsubsec">A.1.1 ADDENDUM: How to use this License for your documents</h4>
+
+<p>To use this License in a document you have written, include a copy of
+the License in the document and put the following copyright and
+license notices just after the title page:
+
+<pre class="smallexample">       Copyright (C)  <var>year</var>  <var>your name</var>.
+       Permission is granted to copy, distribute and/or modify this document
+       under the terms of the GNU Free Documentation License, Version 1.2
+       or any later version published by the Free Software Foundation;
+       with no Invariant Sections, no Front-Cover Texts, and no Back-Cover
+       Texts.  A copy of the license is included in the section entitled ``GNU
+       Free Documentation License''.
+</pre>
+   <p>If you have Invariant Sections, Front-Cover Texts and Back-Cover Texts,
+replace the &ldquo;with...Texts.&rdquo; line with this:
+
+<pre class="smallexample">         with the Invariant Sections being <var>list their titles</var>, with
+         the Front-Cover Texts being <var>list</var>, and with the Back-Cover Texts
+         being <var>list</var>.
+</pre>
+   <p>If you have Invariant Sections without Cover Texts, or some other
+combination of the three, merge those two alternatives to suit the
+situation.
+
+   <p>If your document contains nontrivial examples of program code, we
+recommend releasing these examples in parallel under your choice of
+free software license, such as the GNU General Public License,
+to permit their use in free software.
+
+<!-- Local Variables: -->
+<!-- ispell-local-pdict: "ispell-dict" -->
+<!-- End: -->
+<div class="node">
+<a name="Index"></a>
+<p><hr>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="#Copying-This-Manual">Copying This Manual</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="#Top">Top</a>
+
+</div>
+
+<h2 class="unnumbered">Index</h2>
+
+<ul class="index-cp" compact>
+<li><a href="#index-attributes-26">attributes</a>: <a href="#Available-Attributes">Available Attributes</a></li>
+<li><a href="#index-building-CGDB-35">building CGDB</a>: <a href="#Building-CGDB">Building CGDB</a></li>
+<li><a href="#index-CGDB-key-user-interface-28">CGDB key user interface</a>: <a href="#Key-User-Interface">Key User Interface</a></li>
+<li><a href="#index-CGDB-mode-4">CGDB mode</a>: <a href="#Understanding-CGDB">Understanding CGDB</a></li>
+<li><a href="#index-colors-27">colors</a>: <a href="#Available-Colors">Available Colors</a></li>
+<li><a href="#index-commands_002c-in-CGDB-mode-19">commands, in CGDB mode</a>: <a href="#CGDB-Mode">CGDB Mode</a></li>
+<li><a href="#index-commands_002c-in-File-Dialog-mode-21">commands, in File Dialog mode</a>: <a href="#File-Dialog-Mode">File Dialog Mode</a></li>
+<li><a href="#index-commands_002c-in-GDB-mode-20">commands, in GDB mode</a>: <a href="#GDB-Mode">GDB Mode</a></li>
+<li><a href="#index-commands_002c-in-TTY-mode-22">commands, in TTY mode</a>: <a href="#TTY-Mode">TTY Mode</a></li>
+<li><a href="#index-configuring-CGDB-23">configuring CGDB</a>: <a href="#Configuring-CGDB">Configuring CGDB</a></li>
+<li><a href="#index-controlling-CGDB-18">controlling CGDB</a>: <a href="#Controlling-CGDB">Controlling CGDB</a></li>
+<li><a href="#index-FDL_002c-GNU-Free-Documentation-License-36">FDL, GNU Free Documentation License</a>: <a href="#GNU-Free-Documentation-License">GNU Free Documentation License</a></li>
+<li><a href="#index-file-dialog-window-11">file dialog window</a>: <a href="#File-Dialog-Window">File Dialog Window</a></li>
+<li><a href="#index-GDB-mode-5">GDB mode</a>: <a href="#Understanding-CGDB">Understanding CGDB</a></li>
+<li><a href="#index-GDB-window-9">GDB window</a>: <a href="#GDB-Window">GDB Window</a></li>
+<li><a href="#index-highlighting-groups-25">highlighting groups</a>: <a href="#Available-Highlighting-Groups">Available Highlighting Groups</a></li>
+<li><a href="#index-highlighting-groups-24">highlighting groups</a>: <a href="#Highlighting-Groups">Highlighting Groups</a></li>
+<li><a href="#index-invocation-CGDB-1">invocation CGDB</a>: <a href="#Invocation">Invocation</a></li>
+<li><a href="#index-regular-expression-search-8">regular expression search</a>: <a href="#Source-Window">Source Window</a></li>
+<li><a href="#index-sending-I_002fO-to-inferior-33">sending I/O to inferior</a>: <a href="#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a></li>
+<li><a href="#index-source-window-7">source window</a>: <a href="#Source-Window">Source Window</a></li>
+<li><a href="#index-status-bar-15">status bar</a>: <a href="#Status-Bar">Status Bar</a></li>
+<li><a href="#index-status-bar-3">status bar</a>: <a href="#Understanding-CGDB">Understanding CGDB</a></li>
+<li><a href="#index-switch-between-windows-17">switch between windows</a>: <a href="#Switching-Windows">Switching Windows</a></li>
+<li><a href="#index-terminal-control-flow-34">terminal control flow</a>: <a href="#Terminal-Control-Flow">Terminal Control Flow</a></li>
+<li><a href="#index-timeout-29">timeout</a>: <a href="#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a></li>
+<li><a href="#index-timeoutlen-31">timeoutlen</a>: <a href="#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a></li>
+<li><a href="#index-ttimeout-30">ttimeout</a>: <a href="#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a></li>
+<li><a href="#index-ttimeoutlen-32">ttimeoutlen</a>: <a href="#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a></li>
+<li><a href="#index-TTY-mode-6">TTY mode</a>: <a href="#Understanding-CGDB">Understanding CGDB</a></li>
+<li><a href="#index-TTY-window-14">TTY window</a>: <a href="#TTY-Window">TTY Window</a></li>
+<li><a href="#index-tty-window-13">tty window</a>: <a href="#TTY-Window">TTY Window</a></li>
+<li><a href="#index-understanding-CGDB-2">understanding CGDB</a>: <a href="#Understanding-CGDB">Understanding CGDB</a></li>
+   </ul></body></html>
+

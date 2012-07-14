@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+<title>Summary - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="index.html#Top" title="Top">
+<link rel="next" href="Invocation.html#Invocation" title="Invocation">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Summary"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Invocation.html#Invocation">Invocation</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="index.html#Top">Top</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="unnumbered">Summary of CGDB</h2>
+
+<p>CGDB is a curses-based interface to the GNU Debugger (GDB).  The goal of CGDB
+is to be lightweight and responsive; not encumbered with unnecessary features.
+
+   <p>The interface is designed to deliver the familiar GDB text interface, with a
+split screen showing the source as it executes.  The UI is modeled on the
+classic Unix text editor, vi.  Those familiar with vi should feel right at
+home using CGDB.
+
+   <p>The library responsible for communicating with GDB is called Trivial GDB
+(tgdb, or more accurately, libtgdb).  This abstraction allows the UI code to
+be independent of the debugger, as well as greatly simplifying its
+implementation.
+
+   <p>Those wanting to develop other interfaces to GDB are welcome to use libtgdb
+as the basis for their program.  Many of the headaches of parsing GDB's output
+and annotations can be avoided by using it.
+
+   <p>Some features offered by CGDB are:
+
+     <ul>
+<li>Syntax-highlighted source window
+
+     <li>Visual breakpoint setting
+
+     <li>Keyboard shortcuts for common functions
+
+     <li>Searching source window (using regexp)
+</ul>
+
+   </body></html>
+

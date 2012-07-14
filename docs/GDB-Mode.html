@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+<title>GDB Mode - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Controlling-CGDB.html#Controlling-CGDB" title="Controlling CGDB">
+<link rel="prev" href="CGDB-Mode.html#CGDB-Mode" title="CGDB Mode">
+<link rel="next" href="File-Dialog-Mode.html#File-Dialog-Mode" title="File Dialog Mode">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="GDB-Mode"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="File-Dialog-Mode.html#File-Dialog-Mode">File Dialog Mode</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="CGDB-Mode.html#CGDB-Mode">CGDB Mode</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Controlling-CGDB.html#Controlling-CGDB">Controlling CGDB</a>
+<hr>
+</div>
+
+<h3 class="section">3.2 Commands available during GDB mode</h3>
+
+<p><a name="index-commands_002c-in-GDB-mode-20"></a>
+When in <dfn>GDB mode</dfn>, the user is mostly interested in working with the GDB
+console.  That is, sending commands to GDB and receiving data back from GDB. 
+Almost all data passed into this window is directly sent to readline and then
+to GDB.
+
+   <p>It is important to understand that CGDB parses the keys entered in
+the GDB window and has the first chance at dealing with them.  If it is
+interested in the keys, it will handle them. Below is a list of keys that
+CGDB is interested in, and does not pass along any further.
+
+     <dl>
+<dt><kbd>cgdbmodekey</kbd><dd>Switch back to source window.  This is defaulted to the &lt;ESC&gt; key.
+
+     <br><dt><kbd>page up</kbd><dd>Move up a page.
+
+     <br><dt><kbd>page down</kbd><dd>Move down a page.
+
+     <br><dt><kbd>F11</kbd><dd>Go to the beginning of the GDB buffer.
+
+     <br><dt><kbd>F12</kbd><dd>Go to the end of the GDB buffer. 
+</dl>
+
+   <p>Any other keys, besides the ones above, CGDB is currently not interested in. 
+CGDB will pass along these keys to the readline library. When readline has
+determined that a command has been received, it alerts CGDB, and a command is
+then sent to GDB. This is the same method used when invoking GDB directly.
+
+   </body></html>
+

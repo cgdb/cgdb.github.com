@@ -1,0 +1,107 @@
+<html lang="en">
+<head>
+<title>Building CGDB - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Terminal-Control-Flow.html#Terminal-Control-Flow" title="Terminal Control Flow">
+<link rel="next" href="Copying-This-Manual.html#Copying-This-Manual" title="Copying This Manual">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Building-CGDB"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Copying-This-Manual.html#Copying-This-Manual">Copying This Manual</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Terminal-Control-Flow.html#Terminal-Control-Flow">Terminal Control Flow</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">9 Building CGDB from source</h2>
+
+<p><a name="index-building-CGDB-35"></a>
+Building CGDB from source requires several packages. First, CGDB is hosted
+at http://sf.net/projects/cgdb. You can determine how to get CGDB from source
+by looking here: http://sourceforge.net/svn/?group_id=72581.
+
+   <p>Once you have the source to CGDB, now you can begin to build it.  You will of
+course need many packages to build CGDB. Below is a list of all of them
+that are required to build CGDB.
+
+     <dl>
+<dt><code>GNU Make</code><dd>I have successfully used version 3.79.1, however, older versions probably
+will work.
+
+     <br><dt><code>GNU GCC</code><dd>The GNU C compiler. I've compiled CGDB with versions as old as 2.9.5, and as
+new as 4.0.2.
+
+     <br><dt><code>GNU Readline</code><dd>The GNU readline library version 5.1. CGDB will not work with versions before
+5.1.  Readline was modified specifically to work with CGDB.
+
+     <br><dt><code>GNU Ncurses</code><dd>I have successfully used libncurses.so.5 successfully.  However, older versions
+probably will work. 
+</dl>
+
+   <p>Below is a list of optional packages you will need, if modifying certain files
+in CGDB.
+
+     <dl>
+<dt><code>GNU Flex</code><dd>If you modify any files with an extension of <code>.l</code>, you will have to have
+flex installed.  I have used flex 2.5.4 to build CGDB.
+
+     <br><dt><code>GNU Texinfo</code><dd>If you modify <samp><span class="file">doc/cgdb.texinfo</span></samp>, then you will be required to have this
+package installed.  I have used version 4.7 to build the documentation for
+CGDB.
+
+     <br><dt><code>help2man</code><dd>If you are doing a release, then you will be required to have this package
+installed.  In the <samp><span class="file">doc/</span></samp> build directory, you can execute the command
+<code>make cgdb.1</code>, and the CGDB man page will be generated. 
+</dl>
+
+   <p>CGDB uses autoconf/automake to build its configure scripts and makefiles.  So,
+if you change any of the autoconf/automake files, you will need this software
+installed.
+
+     <dl>
+<dt><code>GNU Automake</code><dd>This has the program aclocal, and must be version Version 1.9.5.
+
+     <br><dt><code>GNU Autoconf</code><dd>This has the program autoconf, and must be version 2.59.
+
+     <br><dt><code>GNU m4</code><dd>This has the program m4, and must be version 1.4.3. 
+</dl>
+
+   </body></html>
+

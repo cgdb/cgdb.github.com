@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+<title>Available Highlighting Groups - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Highlighting-Groups.html#Highlighting-Groups" title="Highlighting Groups">
+<link rel="next" href="Available-Attributes.html#Available-Attributes" title="Available Attributes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Available-Highlighting-Groups"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Available-Attributes.html#Available-Attributes">Available Attributes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Highlighting-Groups.html#Highlighting-Groups">Highlighting Groups</a>
+<hr>
+</div>
+
+<h3 class="section">5.1 The different highlighting groups</h3>
+
+<p><a name="index-highlighting-groups-25"></a>
+Below is a list of all the highlighting groups that CDGB will use when syntax
+highlighting source files.
+
+     <dl>
+<dt><code>Statement</code><dd>This represents the keywords a language defines. 
+<br><dt><code>Type</code><dd>This represents the types a language defines. 
+<br><dt><code>Constant</code><dd>This represents either a string or numeric value. 
+<br><dt><code>Comment</code><dd>This represents the comments in a source file. 
+<br><dt><code>PreProc</code><dd>This represents the C/C++ preprocessor commands. 
+<br><dt><code>Normal</code><dd>This represents all normal text. 
+</dl>
+
+   <p>Below is a list of all the highlighting groups that CGDB will use when it is
+displaying it's User Interface.
+
+     <dl>
+<dt><code>StatusLine</code><dd>This represents the <dfn>status bar</dfn> in CGDB.  The file dialog's status
+bar also uses this group. 
+<br><dt><code>IncSearch</code><dd>This represents the group used when the user is searching in either the source
+window, or the <dfn>file dialog window</dfn>. 
+<br><dt><code>Arrow</code><dd>This represents the arrow that CGDB draws to point to the currently viewed
+line. 
+<br><dt><code>LineHighlight</code><dd>This represents the group used when the user has the <code>arrowstyle</code> option
+set to <code>highlight</code>. 
+<br><dt><code>Breakpoint</code><dd>This represents the group that is used when CGDB displays a line that has a
+breakpoint set. 
+<br><dt><code>DisabledBreakpoint</code><dd>This represents the group that is used when CGDB displays a line that has a
+disabled breakpoint set. 
+<br><dt><code>SelectedLineNr</code><dd>This represents the group that is used when CGDB is displaying the currently
+selected line.  This is the line that the cursor is on. 
+<br><dt><code>Logo</code><dd>This is the group CGDB uses to display its logo on startup when no source
+file can be auto detected. 
+</dl>
+
+   </body></html>
+

@@ -1,0 +1,96 @@
+<html lang="en">
+<head>
+<title>Sending I/O to Inferior - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Key-User-Interface.html#Key-User-Interface" title="Key User Interface">
+<link rel="next" href="Terminal-Control-Flow.html#Terminal-Control-Flow" title="Terminal Control Flow">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Sending-I%2fO-to-Inferior"></a>
+<a name="Sending-I_002fO-to-Inferior"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Terminal-Control-Flow.html#Terminal-Control-Flow">Terminal Control Flow</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">7 Sending I/O to the program being debugged</h2>
+
+<p><a name="index-sending-I_002fO-to-inferior-33"></a>
+If the program being debugged takes input on the terminal it is recommended
+that the user start the program on one terminal, and attach to it with CGDB
+from another terminal.  This is the easiest way to pass input to the
+debugged program.
+
+   <p>However, if the user wishes to pass input to the program being debugged from
+within CGDB, there is a mechanism available for doing so.  As of this writing,
+the technique described below does not work on windows, using a natively
+compiled GDB.  It may work when using the GDB that comes with Cygwin.
+
+   <p>This technique is similar to getting in and out of <dfn>GDB mode</dfn>.  The tty
+window is not visible by default.  This is because it is only needed if the
+user wishes to send data to the program being debugged.  To display the tty
+window, hit <kbd>T</kbd> while in command mode.  After hitting <kbd>T</kbd> you will
+notice that there is another window in the middle of the <dfn>source window</dfn>
+and the <dfn>gdb window</dfn>.  This is called the <dfn>tty window</dfn>. You will also
+see a new status bar called the tty status bar.  There will be a &lsquo;<samp><span class="samp">*</span></samp>&rsquo; on
+the tty status bar after the <kbd>T</kbd> was hit.  This is because when the
+window is opened with the <kbd>T</kbd> command, CGDB automatically puts the user
+into <dfn>TTY mode</dfn>.  To get out of this window hit the cgdb mode key. 
+This will put you back into command mode.  To make the tty window appear and
+disappear hit the <kbd>T</kbd> key while in command mode.  It is a toggle.
+
+   <p>Once the tty window is already open, the user can then hit <kbd>I</kbd> in
+command mode to get into <dfn>TTY mode</dfn>.  The user can then hit the
+cgdb mode key in the <dfn>TTY mode</dfn> to get back into command mode.
+
+   <p>When the tty window is open, all data that comes from the program, goes
+there.  Any data typed into the tty window will ONLY go to the program
+being debugged.  It will not go to GDB. When the tty window is closed,
+all output from the debugged program will go to the <dfn>GDB window</dfn> AND to
+the <dfn>tty window</dfn> (for viewing later when the tty window is opened).
+
+   <p>If the user wishes to get a new tty for the program being debugged then
+they can type <kbd>Ctrl-T</kbd>.  This will delete all the buffered data
+waiting to be read into the debugged program. This might be useful when
+you rerun or start a new program.
+
+   </body></html>
+

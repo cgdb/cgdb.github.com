@@ -1,0 +1,133 @@
+<html lang="en">
+<head>
+<title>Available Colors - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Highlighting-Groups.html#Highlighting-Groups" title="Highlighting Groups">
+<link rel="prev" href="Available-Attributes.html#Available-Attributes" title="Available Attributes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Available-Colors"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Available-Attributes.html#Available-Attributes">Available Attributes</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Highlighting-Groups.html#Highlighting-Groups">Highlighting Groups</a>
+<hr>
+</div>
+
+<h3 class="section">5.3 The different colors</h3>
+
+<p><a name="index-colors-27"></a>
+CGDB supports several colors, depending on how many colors your terminal
+supports.  Below is a chart of the colors that CGDB provides.  The heading
+NR-16 is used to represent terminals that support at least 16 colors.  The
+heading NR-8 is used to represent terminals that support at least 8 colors. 
+The integer values for each color represent the values passed to the curses
+function init_pair() to ask curses to create a new color.
+
+   <p><table summary=""><tr align="left"><td valign="top" width="40%"><code>COLOR NAME</code>
+</td><td valign="top" width="20%"><code>NR-16</code>
+</td><td valign="top" width="20%"><code>NR-8</code>
+</td><td valign="top" width="20%"><code>NR-8 bold attribute</code>
+<br></td></tr><tr align="left"><td valign="top" width="40%">Black
+</td><td valign="top" width="20%">0
+</td><td valign="top" width="20%">0
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkBlue
+</td><td valign="top" width="20%">1
+</td><td valign="top" width="20%">4
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkGreen
+</td><td valign="top" width="20%">2
+</td><td valign="top" width="20%">2
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkCyan
+</td><td valign="top" width="20%">3
+</td><td valign="top" width="20%">6
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkRed
+</td><td valign="top" width="20%">4
+</td><td valign="top" width="20%">1
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkMagenta
+</td><td valign="top" width="20%">5
+</td><td valign="top" width="20%">5
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">Brown, DarkYellow
+</td><td valign="top" width="20%">6
+</td><td valign="top" width="20%">3
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">LightGray, LightGrey, Gray, Grey
+</td><td valign="top" width="20%">7
+</td><td valign="top" width="20%">7
+</td><td valign="top" width="20%">No
+<br></td></tr><tr align="left"><td valign="top" width="40%">DarkGray, DarkGrey
+</td><td valign="top" width="20%">8
+</td><td valign="top" width="20%">0
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Blue, LightBlue
+</td><td valign="top" width="20%">9
+</td><td valign="top" width="20%">4
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Green, LightGreen
+</td><td valign="top" width="20%">10
+</td><td valign="top" width="20%">2
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Cyan, LightCyan
+</td><td valign="top" width="20%">11
+</td><td valign="top" width="20%">6
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Red, LightRed
+</td><td valign="top" width="20%">12
+</td><td valign="top" width="20%">1
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Magenta, LightMagenta
+</td><td valign="top" width="20%">13
+</td><td valign="top" width="20%">5
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">Yellow, LightYellow
+</td><td valign="top" width="20%">14
+</td><td valign="top" width="20%">3
+</td><td valign="top" width="20%">Yes
+<br></td></tr><tr align="left"><td valign="top" width="40%">White
+</td><td valign="top" width="20%">15
+</td><td valign="top" width="20%">7
+</td><td valign="top" width="20%">Yes
+   <br></td></tr></table>
+
+   </body></html>
+

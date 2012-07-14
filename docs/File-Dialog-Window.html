@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+<title>File Dialog Window - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Understanding-CGDB.html#Understanding-CGDB" title="Understanding CGDB">
+<link rel="prev" href="GDB-Window.html#GDB-Window" title="GDB Window">
+<link rel="next" href="TTY-Window.html#TTY-Window" title="TTY Window">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="File-Dialog-Window"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="TTY-Window.html#TTY-Window">TTY Window</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="GDB-Window.html#GDB-Window">GDB Window</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Understanding-CGDB.html#Understanding-CGDB">Understanding CGDB</a>
+<hr>
+</div>
+
+<h3 class="section">2.3 Understanding the file dialog window.</h3>
+
+<p><a name="index-file-dialog-window-11"></a>
+<a name="index-file-dialog-window-12"></a>The <dfn>file dialog window</dfn> is available to help the user view and select
+which file they would like to view.  It provides the user with a list of all
+the files that make up the program being debugged.  If there are no files
+available, because there is no program being debugged or because there is
+no debug symbols, then the file dialog will not open and a message will be
+displayed at the status bar.
+
+   <p>You can get to the file dialog by hitting <code>o</code> when you are at the source
+window.  Once you enter the file dialog, it is possible to leave it by hitting
+<code>q</code>.  You can navigate the file dialog using the standard direction keys
+and you can even use regular expression to find your file.  This can save a
+lot of time as the number of files grow.
+
+   <p>The full list of commands that are available in the source window is in
+<a href="File-Dialog-Mode.html#File-Dialog-Mode">File Dialog Mode</a>.
+
+   </body></html>
+

@@ -1,0 +1,104 @@
+<html lang="en">
+<head>
+<title>Key User Interface - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Highlighting-Groups.html#Highlighting-Groups" title="Highlighting Groups">
+<link rel="next" href="Sending-I_002fO-to-Inferior.html#Sending-I_002fO-to-Inferior" title="Sending I/O to Inferior">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Key-User-Interface"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Sending-I_002fO-to-Inferior.html#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Highlighting-Groups.html#Highlighting-Groups">Highlighting Groups</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">6 CGDB key user interface</h2>
+
+<p><a name="index-CGDB-key-user-interface-28"></a>
+The Key User Interface is how CGDB receives input from the user.  It is
+usually referred to as the <dfn>KUI</dfn>.  CGDB simply asks the KUI for the next
+key the user typed and the KUI will provide it.
+
+   <p>The KUI has 2 major responsibilities besides reading normal user input
+and providing it to CGDB.  It needs to detect when the user has typed a
+user defined map or when the user has hit a special key on the keyboard.
+
+   <p>A user defined map, or simply <dfn>map</dfn>, is used to change the meaning
+of typed keys.  Some users may refer to this type of functionality as a
+<dfn>macro</dfn>.  An example would be <code>map a b</code>.  If the user then typed
+the &lt;a&gt; character, the KUI would detect that it was mapped to &lt;b&gt;
+and return &lt;b&gt; to CGDB.
+
+   <p>When the user types a special key on the keyboard, a <dfn>key code</dfn> is
+sent to CGDB.  Typically, keys like  <kbd>HOME</kbd>, <kbd>DEL</kbd>, &lt;F1&gt;, etc,
+when pressed will send several characters to the application instead of just
+one character like a normal key does.  These characters combined are called a
+<dfn>key sequence</dfn>.  The KUI is responsible for assembling the key sequences
+back together and reporting to CGDB that a particular key was typed by the
+user.  The <kbd>ESC</kbd> key is special because typically most key codes start with
+that key.  This usually gives all key codes a common first key in its key
+sequence.  The KUI uses the terminfo database to determine what key sequences
+are sent by which keycodes.  There are a few commonly used key sequences
+that are hard coded into CGDB.
+
+   <p>A major challenge the KUI has to overcome is determining when a map or a
+key sequence is received.  The KUI sometimes will need to read more than
+one character to determine this.  For example, if the user has 2 maps,
+<code>map abc def</code> and <code>map abd def</code>, the KUI would have to buffer at
+least the characters &lt;a&gt; and &lt;b&gt; before it could determine if the
+user was going to type a map.  After the next key press, if the user types
+&lt;c&gt; or &lt;d&gt; then a map was received and the KUI will return
+<kbd>d e f</kbd> to CGDB.  Otherwise, no map was received and the KUI must return
+<kbd>a b</kbd> to CGDB.
+
+   <p>The options <var>timeout</var>, <var>ttimeout</var>, <var>timeoutlen</var> and
+<var>ttimeoutlen</var> can be used to tell the KUI if it should timeout on
+partial mappings or key sequences, and if so, how long it should wait before
+timing out.
+
+<ul class="menu">
+<li><a accesskey="1" href="Configuring-the-KUI-Time-Out-Options.html#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a>:         The KUI's time out options
+<li><a accesskey="2" href="Using-Maps.html#Using-Maps">Using Maps</a>:                                   Using maps
+<li><a accesskey="3" href="Understanding-Keycodes.html#Understanding-Keycodes">Understanding Keycodes</a>:                       Understanding keycodes
+</ul>
+
+   </body></html>
+

@@ -1,0 +1,85 @@
+<html lang="en">
+<head>
+<title>Highlighting Groups - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="prev" href="Configuring-CGDB.html#Configuring-CGDB" title="Configuring CGDB">
+<link rel="next" href="Key-User-Interface.html#Key-User-Interface" title="Key User Interface">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Highlighting-Groups"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Configuring-CGDB.html#Configuring-CGDB">Configuring CGDB</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
+<hr>
+</div>
+
+<h2 class="chapter">5 CGDB highlighting groups</h2>
+
+<p><a name="index-highlighting-groups-24"></a>
+CGDB is capable of using colors if the terminal it is run in supports them. 
+Until version 0.6.1, CGDB did not allow the user to configure these colors in
+any way.  CGDB color use is now fully configurable.
+
+   <p>CGDB's modeled its use of color highlighting after vim.  Any data that will
+be colored in the terminal is represented by a highlighting group. 
+A <dfn>highlighting group</dfn> represents data that should be formatted using
+foreground colors, background colors and attributes.  There are currently
+several types of highlighting groups in CGDB.  There are syntax highlighting
+groups, which represent syntax highlighting of sources files.  There are also
+User Interface groups, which represent things like CGDB's logo, or the status
+bar.
+
+   <p>Each highlighting group has a default set of attributes and colors associated
+with it.  You can modify a highlighting groups properties by using the
+highlight command.  See <a href="Configuring-CGDB.html#Configuring-CGDB">Configuring CGDB</a>.
+
+   <p>Note that CGDB currently supports using the same background color the terminal
+was using before CGDB was started.  However, this only works when CGDB was
+linked with ncurses.  If you link CGDB with curses, then CGDB will force
+the background to Black.
+
+<ul class="menu">
+<li><a accesskey="1" href="Available-Highlighting-Groups.html#Available-Highlighting-Groups">Available Highlighting Groups</a>:          The different highlighting groups. 
+<li><a accesskey="2" href="Available-Attributes.html#Available-Attributes">Available Attributes</a>:                   The different attributes. 
+<li><a accesskey="3" href="Available-Colors.html#Available-Colors">Available Colors</a>:                       The different colors. 
+</ul>
+
+   </body></html>
+

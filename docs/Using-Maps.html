@@ -1,0 +1,78 @@
+<html lang="en">
+<head>
+<title>Using Maps - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Key-User-Interface.html#Key-User-Interface" title="Key User Interface">
+<link rel="prev" href="Configuring-the-KUI-Time-Out-Options.html#Configuring-the-KUI-Time-Out-Options" title="Configuring the KUI Time Out Options">
+<link rel="next" href="Understanding-Keycodes.html#Understanding-Keycodes" title="Understanding Keycodes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Using-Maps"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Understanding-Keycodes.html#Understanding-Keycodes">Understanding Keycodes</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Configuring-the-KUI-Time-Out-Options.html#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>
+<hr>
+</div>
+
+<h3 class="section">6.2 Using maps</h3>
+
+<p>CGDB fully supports the use of maps.  It allows the user to change the
+meaning of typed keys. For example, you could have the following map
+<code>:map &lt;F2&gt; ip&lt;Space&gt;argc&lt;CR&gt;</code>.
+
+   <p>When the user is in CGDB mode and they hit &lt;F2&gt;, the value of the map
+will be used instead.  The <kbd>i</kbd> key will first be received by CGDB, and
+it will put the user into insert mode.  Next, CGDB will get <kbd>p argc</kbd>
+followed by the &lt;Enter&gt; key.
+
+   <p>CGDB currently supports two mapping lists.  Any mapping that was added
+with the <var>map</var> command will be used by CGDB when it is in CGDB mode. 
+You can delete a mapping that you have created with the <var>map</var> command
+with the <var>unmap</var> command.  If you want to have mappings in GDB mode, you
+can use the <var>imap</var> command.  Similarly, <var>iunmap</var> will delete a
+mapping in the <var>imap</var> set.  Some examples of this would be
+<pre class="example">     map a&lt;Space&gt;b foo
+     unmap a&lt;Space&gt;b
+     
+     imap a&lt;CR&gt;b foo
+     iunmap a&lt;CR&gt;b
+</pre>
+   </body></html>
+

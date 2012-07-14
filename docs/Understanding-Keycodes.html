@@ -1,0 +1,115 @@
+<html lang="en">
+<head>
+<title>Understanding Keycodes - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Key-User-Interface.html#Key-User-Interface" title="Key User Interface">
+<link rel="prev" href="Using-Maps.html#Using-Maps" title="Using Maps">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Understanding-Keycodes"></a>
+<p>
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Using-Maps.html#Using-Maps">Using Maps</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>
+<hr>
+</div>
+
+<h3 class="section">6.3 Understanding keycodes</h3>
+
+<p>The above example could use a little more explaining for people unfamiliar
+with vim maps.  The map takes a key and a value.  They are separated by
+a space.  Neither the key or value can have a space in them, or it is
+considered to be the separator between the key and value.  If the user
+desires to have a space in either the key or value part of a map, they can
+use the keycode notation &lt;Space&gt;.  Below is a table of the
+keycodes in <dfn>keycode notation</dfn> form.  The keycode notation can be
+used in any mapping command.
+
+   <p><table summary=""><tr align="left"><th valign="top" width="15%">notation </th><th valign="top" width="40%">meaning
+<br></th></tr><tr align="left"><td valign="top" width="15%">&lt;Esc&gt;
+</td><td valign="top" width="40%">escape key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Up&gt;
+</td><td valign="top" width="40%">cursor up key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Down&gt;
+</td><td valign="top" width="40%">cursor down key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Left&gt;
+</td><td valign="top" width="40%">cursor left key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Right&gt;
+</td><td valign="top" width="40%">cursor right key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Home&gt;
+</td><td valign="top" width="40%">home key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;End&gt;
+</td><td valign="top" width="40%">end key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;PageUp&gt;
+</td><td valign="top" width="40%">page up key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;PageDown&gt;
+</td><td valign="top" width="40%">page down key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Del&gt;
+</td><td valign="top" width="40%">delete key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Insert&gt;
+</td><td valign="top" width="40%">insert key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Nul&gt;
+</td><td valign="top" width="40%">zero
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Bs&gt;
+</td><td valign="top" width="40%">backspace key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Tab&gt;
+</td><td valign="top" width="40%">tab key
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;NL&gt;
+</td><td valign="top" width="40%">linefeed
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;FF&gt;
+</td><td valign="top" width="40%">formfeed
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;CR&gt;
+</td><td valign="top" width="40%">carriage return
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Space&gt;
+</td><td valign="top" width="40%">space
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Lt&gt;
+</td><td valign="top" width="40%">less-than
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Bslash&gt;
+</td><td valign="top" width="40%">backslash
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;Bar&gt;
+</td><td valign="top" width="40%">vertical bar
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;F1&gt; - &lt;F12&gt;
+</td><td valign="top" width="40%">function keys 1 to 12
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;C-...&gt;
+</td><td valign="top" width="40%">control keys
+<br></td></tr><tr align="left"><td valign="top" width="15%">&lt;S-...&gt;
+</td><td valign="top" width="40%">shift keys
+   <br></td></tr></table>
+
+   </body></html>
+

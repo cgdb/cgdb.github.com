@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+<title>Available Attributes - CGDB Manual 0.6.6</title>
+<meta http-equiv="Content-Type" content="text/html">
+<meta name="description" content="CGDB Manual 0.6.6">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="index.html#Top">
+<link rel="up" href="Highlighting-Groups.html#Highlighting-Groups" title="Highlighting Groups">
+<link rel="prev" href="Available-Highlighting-Groups.html#Available-Highlighting-Groups" title="Available Highlighting Groups">
+<link rel="next" href="Available-Colors.html#Available-Colors" title="Available Colors">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+This manual is for GNU CGDB
+(version 0.6.6, 13 July 2012),
+the GNU ncurses based front end to GDB.
+
+Copyright (C) 2011 CGDB Team
+
+     Permission is granted to copy, distribute and/or modify this
+     document under the terms of the GNU Free Documentation License,
+     Version 1.1 or any later version published by the Free Software
+     Foundation; with no Invariant Sections, with the Front-Cover Texts
+     being ``A GNU Manual,'' and with the Back-Cover Texts as in (a)
+     below.  A copy of the license is included in the section entitled
+     ``GNU Free Documentation License.''
+
+     (a) The FSF's Back-Cover Text is: ``You have freedom to copy and
+     modify this GNU Manual, like GNU software.  Copies published by
+     the Free Software Foundation raise funds for GNU development.''
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+<style type="text/css"><!--
+  pre.display { font-family:inherit }
+  pre.format  { font-family:inherit }
+  pre.smalldisplay { font-family:inherit; font-size:smaller }
+  pre.smallformat  { font-family:inherit; font-size:smaller }
+  pre.smallexample { font-size:smaller }
+  pre.smalllisp    { font-size:smaller }
+  span.sc    { font-variant:small-caps }
+  span.roman { font-family:serif; font-weight:normal; } 
+  span.sansserif { font-family:sans-serif; font-weight:normal; } 
+--></style>
+</head>
+<body>
+<div class="node">
+<a name="Available-Attributes"></a>
+<p>
+Next:&nbsp;<a rel="next" accesskey="n" href="Available-Colors.html#Available-Colors">Available Colors</a>,
+Previous:&nbsp;<a rel="previous" accesskey="p" href="Available-Highlighting-Groups.html#Available-Highlighting-Groups">Available Highlighting Groups</a>,
+Up:&nbsp;<a rel="up" accesskey="u" href="Highlighting-Groups.html#Highlighting-Groups">Highlighting Groups</a>
+<hr>
+</div>
+
+<h3 class="section">5.2 The different attributes</h3>
+
+<p><a name="index-attributes-26"></a>
+CGDB supports many of the attributes that curses provides.  It will apply the
+attributes to the output window, but it is up to the terminal you are using
+to support such features.
+
+   <p>The list of attributes that CGDB currently supports is below.
+
+     <dl>
+<dt><code>normal</code><dt><code>NONE</code><dd>This will leave the text normal.  Uses A_NORMAL curses attribute. 
+<br><dt><code>bold</code><dd>This will make the text appear bold.  Uses A_BOLD curses attribute. 
+<br><dt><code>underline</code><dd>This will underline the text.  Uses A_UNDERLINE curses attribute. 
+<br><dt><code>reverse</code><dt><code>inverse</code><dd>This will reverse the foreground and background colors.  Uses A_REVERSE curses
+attribute. 
+<br><dt><code>standout</code><dd>This is the best highlighting mode of the terminal.  Uses A_STANDOUT curses
+attribute. 
+<br><dt><code>blink</code><dd>This will cause the text to blink.  Uses A_BLINK curses attribute. 
+<br><dt><code>dim</code><dd>This will cause the text to be 1/2 bright.  Uses A_DIM curses attribute. 
+</dl>
+
+   </body></html>
+
