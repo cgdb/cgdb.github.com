@@ -1,132 +1,233 @@
-<html lang="en">
-<head>
-<title>CGDB Mode - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Controlling-CGDB.html#Controlling-CGDB" title="Controlling CGDB">
-<link rel="next" href="GDB-Mode.html#GDB-Mode" title="GDB Mode">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: CGDB Mode</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: CGDB Mode">
+<meta name="keywords" content="CGDB Manual 0.6.8: CGDB Mode">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Controlling-CGDB.html#Controlling-CGDB" rel="up" title="Controlling CGDB">
+<link href="GDB-Mode.html#GDB-Mode" rel="next" title="GDB Mode">
+<link href="Controlling-CGDB.html#Controlling-CGDB" rel="prev" title="Controlling CGDB">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="CGDB-Mode"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="GDB-Mode.html#GDB-Mode">GDB Mode</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Controlling-CGDB.html#Controlling-CGDB">Controlling CGDB</a>
-<hr>
+Next: <a href="GDB-Mode.html#GDB-Mode" accesskey="n" rel="next">GDB Mode</a>, Up: <a href="Controlling-CGDB.html#Controlling-CGDB" accesskey="u" rel="up">Controlling CGDB</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="Commands-available-during-CGDB-mode"></a>
 <h3 class="section">3.1 Commands available during CGDB mode</h3>
+<a name="index-commands_002c-in-CGDB-mode"></a>
 
-<p><a name="index-commands_002c-in-CGDB-mode-19"></a>
-When you are in the source window, you are implicitly in <dfn>CGDB mode</dfn>. 
-All of the below commands are available during this mode.  This mode is
-primarily available for the user to view the current source file, search it,
+<p>When you are in the source window, you are implicitly in <em>CGDB mode</em>.  
+All of the below commands are available during this mode.  This mode is 
+primarily available for the user to view the current source file, search it, 
 or switch to a different mode.
-
-     <dl>
-<dt><kbd>cgdbmodekey</kbd><dd>Puts the user into command mode. However, you are already in this mode. 
-This is defaulted to the &lt;ESC&gt; key.
-
-     <br><dt><kbd>i</kbd><dd>Puts the user into <dfn>GDB mode</dfn>.
-
-     <br><dt><kbd>I</kbd><dd>Puts the user into <dfn>TTY mode</dfn>.
-
-     <br><dt><kbd>T</kbd><dd>Opens a window to give input to the debugged program.
-
-     <br><dt><kbd>Ctrl-T</kbd><dd>Opens a new tty for the debugged program.
-
-     <br><dt><kbd>k</kbd><dt><kbd>up arrow</kbd><dd>Move up a line.
-
-     <br><dt><kbd>j</kbd><dt><kbd>down arrow</kbd><dd>Move down a line.
-
-     <br><dt><kbd>h</kbd><dt><kbd>left arrow</kbd><dd>Move left a line.
-
-     <br><dt><kbd>l</kbd><dt><kbd>right arrow</kbd><dd>Move right a line.
-
-     <br><dt><kbd>Ctrl-b</kbd><dt><kbd>page up</kbd><dd>Move up a page.
-
-     <br><dt><kbd>Ctrl-u</kbd><dd>Move up 1/2 a page.
-
-     <br><dt><kbd>Ctrl-f</kbd><dt><kbd>page down</kbd><dd>Move down a page.
-
-     <br><dt><kbd>Ctrl-d</kbd><dd>Move down 1/2 a page.
-
-     <br><dt><kbd>gg</kbd><dd>Move to the top of file.
-
-     <br><dt><kbd>G</kbd><dd>Move to the bottom of file.
-
-     <br><dt><kbd>/</kbd><dd>search from current cursor position.
-
-     <br><dt><kbd>?</kbd><dd>reverse search from current cursor position.
-
-     <br><dt><kbd>n</kbd><dd>next forward search.
-
-     <br><dt><kbd>N</kbd><dd>next reverse search.
-
-     <br><dt><kbd>o</kbd><dd>open the file dialog.
-
-     <br><dt><kbd>spacebar</kbd><dd>Sets a breakpoint at the current line number.
-
-     <br><dt><kbd>t</kbd><dd>Sets a temporary breakpoint at the current line number.
-
-     <br><dt><kbd>-</kbd><dd>Shrink source window 1 line.
-
-     <br><dt><kbd>=</kbd><dd>Grow source window 1 line.
-
-     <br><dt><kbd>_</kbd><dd>Shrink source window 25% (or, shrink tty window 1 line, if visible).
-
-     <br><dt><kbd>+</kbd><dd>Grow source window 25% (or, grow tty window 1 line, if visible).
-
-     <br><dt><kbd>Ctrl-l</kbd><dd>Clear and redraw the screen.
-
-     <br><dt><kbd>F5</kbd><dd>Send a run command to GDB.
-
-     <br><dt><kbd>F6</kbd><dd>Send a continue command to GDB.
-
-     <br><dt><kbd>F7</kbd><dd>Send a finish command to GDB.
-
-     <br><dt><kbd>F8</kbd><dd>Send a next command to GDB.
-
-     <br><dt><kbd>F10</kbd><dd>Send a step command to GDB. 
+</p>
+<dl compact="compact">
+<dt><kbd>cgdbmodekey</kbd></dt>
+<dd><p>Puts the user into command mode. However, you are already in this mode.
+This is defaulted to the <tt class="key">ESC</tt> key.
+</p>
+</dd>
+<dt><kbd>i</kbd></dt>
+<dd><p>Puts the user into <em>GDB mode</em>.
+</p>
+</dd>
+<dt><kbd>I</kbd></dt>
+<dd><p>Puts the user into <em>TTY mode</em>.
+</p>
+</dd>
+<dt><kbd>T</kbd></dt>
+<dd><p>Opens a window to give input to the debugged program.
+</p>
+</dd>
+<dt><kbd>Ctrl-T</kbd></dt>
+<dd><p>Opens a new tty for the debugged program.
+</p>
+</dd>
+<dt><kbd>k</kbd></dt>
+<dt><kbd>up arrow</kbd></dt>
+<dd><p>Move up a line.
+</p>
+</dd>
+<dt><kbd>j</kbd></dt>
+<dt><kbd>down arrow</kbd></dt>
+<dd><p>Move down a line.
+</p>
+</dd>
+<dt><kbd>h</kbd></dt>
+<dt><kbd>left arrow</kbd></dt>
+<dd><p>Move left a line.
+</p>
+</dd>
+<dt><kbd>l</kbd></dt>
+<dt><kbd>right arrow</kbd></dt>
+<dd><p>Move right a line.
+</p>
+</dd>
+<dt><kbd>Ctrl-b</kbd></dt>
+<dt><kbd>page up</kbd></dt>
+<dd><p>Move up a page.
+</p>
+</dd>
+<dt><kbd>Ctrl-u</kbd></dt>
+<dd><p>Move up 1/2 a page.
+</p>
+</dd>
+<dt><kbd>Ctrl-f</kbd></dt>
+<dt><kbd>page down</kbd></dt>
+<dd><p>Move down a page.
+</p>
+</dd>
+<dt><kbd>Ctrl-d</kbd></dt>
+<dd><p>Move down 1/2 a page.
+</p>
+</dd>
+<dt><kbd>gg</kbd></dt>
+<dd><p>Move to the top of file.
+</p>
+</dd>
+<dt><kbd>G</kbd></dt>
+<dd><p>Move to the bottom of file.
+</p>
+</dd>
+<dt><kbd>/</kbd></dt>
+<dd><p>search from current cursor position.
+</p>
+</dd>
+<dt><kbd>?</kbd></dt>
+<dd><p>reverse search from current cursor position.
+</p>
+</dd>
+<dt><kbd>n</kbd></dt>
+<dd><p>next forward search.
+</p>
+</dd>
+<dt><kbd>N</kbd></dt>
+<dd><p>next reverse search.
+</p>
+</dd>
+<dt><kbd>o</kbd></dt>
+<dd><p>open the file dialog.
+</p>
+</dd>
+<dt><kbd>spacebar</kbd></dt>
+<dd><p>Sets a breakpoint at the current line number.
+</p>
+</dd>
+<dt><kbd>t</kbd></dt>
+<dd><p>Sets a temporary breakpoint at the current line number.
+</p>
+</dd>
+<dt><kbd>-</kbd></dt>
+<dd><p>Shrink source window 1 line.
+</p>
+</dd>
+<dt><kbd>=</kbd></dt>
+<dd><p>Grow source window 1 line.
+</p>
+</dd>
+<dt><kbd>_</kbd></dt>
+<dd><p>Shrink source window 25% (or, shrink tty window 1 line, if visible).
+</p>
+</dd>
+<dt><kbd>+</kbd></dt>
+<dd><p>Grow source window 25% (or, grow tty window 1 line, if visible).
+</p>
+</dd>
+<dt><kbd>Ctrl-l</kbd></dt>
+<dd><p>Clear and redraw the screen.
+</p>
+</dd>
+<dt><kbd>F5</kbd></dt>
+<dd><p>Send a run command to GDB.
+</p>
+</dd>
+<dt><kbd>F6</kbd></dt>
+<dd><p>Send a continue command to GDB.
+</p>
+</dd>
+<dt><kbd>F7</kbd></dt>
+<dd><p>Send a finish command to GDB.
+</p>
+</dd>
+<dt><kbd>F8</kbd></dt>
+<dd><p>Send a next command to GDB.
+</p>
+</dd>
+<dt><kbd>F10</kbd></dt>
+<dd><p>Send a step command to GDB.
+</p></dd>
 </dl>
 
-   </body></html>
+<hr>
+<div class="header">
+<p>
+Next: <a href="GDB-Mode.html#GDB-Mode" accesskey="n" rel="next">GDB Mode</a>, Up: <a href="Controlling-CGDB.html#Controlling-CGDB" accesskey="u" rel="up">Controlling CGDB</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
+
+
+</body>
+</html>

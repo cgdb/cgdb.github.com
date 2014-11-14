@@ -1,85 +1,120 @@
-<html lang="en">
-<head>
-<title>Understanding CGDB - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Invocation.html#Invocation" title="Invocation">
-<link rel="next" href="Controlling-CGDB.html#Controlling-CGDB" title="Controlling CGDB">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: Understanding CGDB</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: Understanding CGDB">
+<meta name="keywords" content="CGDB Manual 0.6.8: Understanding CGDB">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Source-Window.html#Source-Window" rel="next" title="Source Window">
+<link href="Invocation.html#Invocation" rel="prev" title="Invocation">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Understanding-CGDB"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Controlling-CGDB.html#Controlling-CGDB">Controlling CGDB</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Invocation.html#Invocation">Invocation</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
+Next: <a href="Controlling-CGDB.html#Controlling-CGDB" accesskey="n" rel="next">Controlling CGDB</a>, Previous: <a href="Invocation.html#Invocation" accesskey="p" rel="prev">Invocation</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="Understanding-the-core-concepts-of-CGDB"></a>
 <h2 class="chapter">2 Understanding the core concepts of CGDB</h2>
+<a name="index-understanding-CGDB"></a>
 
-<p><a name="index-understanding-CGDB-2"></a>
-<a name="index-status-bar-3"></a><a name="index-CGDB-mode-4"></a><a name="index-GDB-mode-5"></a><a name="index-TTY-mode-6"></a>The CGDB user interface currently consists of two windows and a status bar. 
-The source window is currently on the top and the GDB window is on the
-bottom.  The <dfn>status bar</dfn> currently separates the two windows.
-
-   <p>The interface has several modes depending on which window is focused. 
-<dfn>CGDB mode</dfn> is when the source window is focused, <dfn>GDB mode</dfn> is when
-the GDB window is focused and <dfn>TTY mode</dfn> is when the TTY window is focused.
-
-   <p>Beginning with CGDB version 1.0, the windows are movable,
+<a name="index-status-bar"></a>
+<a name="index-CGDB-mode"></a>
+<a name="index-GDB-mode"></a>
+<a name="index-TTY-mode"></a>
+<p>The CGDB user interface currently consists of two windows and a status bar.  
+The source window is currently on the top and the GDB window is on the 
+bottom.  The <em>status bar</em> currently separates the two windows.
+</p>
+<p>The interface has several modes depending on which window is focused.  
+<em>CGDB mode</em> is when the source window is focused, <em>GDB mode</em> is when 
+the GDB window is focused and <em>TTY mode</em> is when the TTY window is focused.
+</p>
+<p>Beginning with CGDB version 1.0, the windows are movable,
 and the user will be able to create as many or as few that is desired. 
 Currently however, all of my time is spent developing the interface between
-CGDB and GDB. Once this is complete, the UI of CGDB will become much more
+CGDB and GDB. Once this is complete, the UI of CGDB will become much more 
 polished.  If you are a ncurses developer, and have spare time to work on this
 task, please contact me.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Source-Window.html#Source-Window" accesskey="1">Source Window</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding the source window.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="GDB-Window.html#GDB-Window" accesskey="2">GDB Window</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding the GDB window.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="File-Dialog-Window.html#File-Dialog-Window" accesskey="3">File Dialog Window</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding the file dialog window.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="TTY-Window.html#TTY-Window" accesskey="4">TTY Window</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding the TTY window.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Status-Bar.html#Status-Bar" accesskey="5">Status Bar</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding the status bar.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Switching-Windows.html#Switching-Windows" accesskey="6">Switching Windows</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Switching between windows.
+</td></tr>
+</table>
 
-<ul class="menu">
-<li><a accesskey="1" href="Source-Window.html#Source-Window">Source Window</a>:                Understanding the source window. 
-<li><a accesskey="2" href="GDB-Window.html#GDB-Window">GDB Window</a>:                   Understanding the GDB window. 
-<li><a accesskey="3" href="File-Dialog-Window.html#File-Dialog-Window">File Dialog Window</a>:           Understanding the file dialog window. 
-<li><a accesskey="4" href="TTY-Window.html#TTY-Window">TTY Window</a>:                   Understanding the TTY window. 
-<li><a accesskey="5" href="Status-Bar.html#Status-Bar">Status Bar</a>:                   Understanding the status bar. 
-<li><a accesskey="6" href="Switching-Windows.html#Switching-Windows">Switching Windows</a>:            Switching between windows. 
-</ul>
 
-   </body></html>
 
+
+</body>
+</html>

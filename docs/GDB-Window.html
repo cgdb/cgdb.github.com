@@ -1,77 +1,102 @@
-<html lang="en">
-<head>
-<title>GDB Window - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Understanding-CGDB.html#Understanding-CGDB" title="Understanding CGDB">
-<link rel="prev" href="Source-Window.html#Source-Window" title="Source Window">
-<link rel="next" href="File-Dialog-Window.html#File-Dialog-Window" title="File Dialog Window">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: GDB Window</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: GDB Window">
+<meta name="keywords" content="CGDB Manual 0.6.8: GDB Window">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Understanding-CGDB.html#Understanding-CGDB" rel="up" title="Understanding CGDB">
+<link href="File-Dialog-Window.html#File-Dialog-Window" rel="next" title="File Dialog Window">
+<link href="Source-Window.html#Source-Window" rel="prev" title="Source Window">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="GDB-Window"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="File-Dialog-Window.html#File-Dialog-Window">File Dialog Window</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Source-Window.html#Source-Window">Source Window</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Understanding-CGDB.html#Understanding-CGDB">Understanding CGDB</a>
-<hr>
+Next: <a href="File-Dialog-Window.html#File-Dialog-Window" accesskey="n" rel="next">File Dialog Window</a>, Previous: <a href="Source-Window.html#Source-Window" accesskey="p" rel="prev">Source Window</a>, Up: <a href="Understanding-CGDB.html#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="Understanding-the-GDB-window_002e"></a>
 <h3 class="section">2.2 Understanding the GDB window.</h3>
+<a name="index-GDB-window"></a>
 
-<p><a name="index-GDB-window-9"></a>
-<a name="index-GDB-window-10"></a>The <dfn>GDB window</dfn> is how CGDB allows the user to interface with the GNU
-debugger.  If you wish to pass a command to GDB, simply type it into this
-window and GDB will receive the command.  This interface is intended to be
+<a name="index-GDB-window-1"></a>
+<p>The <em>GDB window</em> is how CGDB allows the user to interface with the GNU 
+debugger.  If you wish to pass a command to GDB, simply type it into this 
+window and GDB will receive the command.  This interface is intended to be 
 100% identical to using GDB on a terminal.
-
-   <p>There is a limited set of keys that can be typed into this window that CGDB
+</p>
+<p>There is a limited set of keys that can be typed into this window that CGDB
 interprets and handles, instead of sending to GDB.  They are all available in
 <a href="GDB-Mode.html#GDB-Mode">GDB Mode</a>.
-
-   <p>CGDB attempts to buffer commands the same way they would be if you typed them
-at the terminal.  So, if you type several commands before a single one
+</p>
+<p>CGDB attempts to buffer commands the same way they would be if you typed them
+at the terminal.  So, if you type several commands before a single one 
 finishes, they will each be run in order.  There will be no way to stop these
 commands from being run besides from typing <kbd>Ctrl-C</kbd>, like you would at any
 normal terminal when working with GDB.
+</p>
 
-   </body></html>
 
+
+</body>
+</html>

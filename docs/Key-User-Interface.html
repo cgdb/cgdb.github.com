@@ -1,108 +1,141 @@
-<html lang="en">
-<head>
-<title>Key User Interface - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Highlighting-Groups.html#Highlighting-Groups" title="Highlighting Groups">
-<link rel="next" href="Sending-I_002fO-to-Inferior.html#Sending-I_002fO-to-Inferior" title="Sending I/O to Inferior">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: Key User Interface</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: Key User Interface">
+<meta name="keywords" content="CGDB Manual 0.6.8: Key User Interface">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Configuring-the-KUI-Time-Out-Options.html#Configuring-the-KUI-Time-Out-Options" rel="next" title="Configuring the KUI Time Out Options">
+<link href="Available-Colors.html#Available-Colors" rel="prev" title="Available Colors">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Key-User-Interface"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Sending-I_002fO-to-Inferior.html#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Highlighting-Groups.html#Highlighting-Groups">Highlighting Groups</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
+Next: <a href="Sending-I_002fO-to-Inferior.html#Sending-I_002fO-to-Inferior" accesskey="n" rel="next">Sending I/O to Inferior</a>, Previous: <a href="Highlighting-Groups.html#Highlighting-Groups" accesskey="p" rel="prev">Highlighting Groups</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="CGDB-key-user-interface"></a>
 <h2 class="chapter">6 CGDB key user interface</h2>
+<a name="index-CGDB-key-user-interface"></a>
 
-<p><a name="index-CGDB-key-user-interface-28"></a>
-The Key User Interface is how CGDB receives input from the user.  It is
-usually referred to as the <dfn>KUI</dfn>.  CGDB simply asks the KUI for the next
-key the user typed and the KUI will provide it.
-
-   <p>The KUI has 2 major responsibilities besides reading normal user input
-and providing it to CGDB.  It needs to detect when the user has typed a
+<p>The Key User Interface is how CGDB receives input from the user.  It is 
+usually referred to as the <em>KUI</em>.  CGDB simply asks the KUI for the next 
+key the user typed and the KUI will provide it.  
+</p>
+<p>The KUI has 2 major responsibilities besides reading normal user input 
+and providing it to CGDB.  It needs to detect when the user has typed a 
 user defined map or when the user has hit a special key on the keyboard.
-
-   <p>A user defined map, or simply <dfn>map</dfn>, is used to change the meaning
-of typed keys.  Some users may refer to this type of functionality as a
-<dfn>macro</dfn>.  An example would be <code>map a b</code>.  If the user then typed
-the &lt;a&gt; character, the KUI would detect that it was mapped to &lt;b&gt;
-and return &lt;b&gt; to CGDB.
-
-   <p>When the user types a special key on the keyboard, a <dfn>key code</dfn> is
-sent to CGDB.  Typically, keys like  <kbd>HOME</kbd>, <kbd>DEL</kbd>, &lt;F1&gt;, etc,
+</p>
+<p>A user defined map, or simply <em>map</em>, is used to change the meaning
+of typed keys.  Some users may refer to this type of functionality as a 
+<em>macro</em>.  An example would be <code>map a b</code>.  If the user then typed 
+the <tt class="key">a</tt> character, the KUI would detect that it was mapped to <tt class="key">b</tt> 
+and return <tt class="key">b</tt> to CGDB.
+</p>
+<p>When the user types a special key on the keyboard, a <em>key code</em> is
+sent to CGDB.  Typically, keys like  <kbd>HOME</kbd>, <kbd>DEL</kbd>, <tt class="key">F1</tt>, etc,
 when pressed will send several characters to the application instead of just
 one character like a normal key does.  These characters combined are called a
-<dfn>key sequence</dfn>.  The KUI is responsible for assembling the key sequences
-back together and reporting to CGDB that a particular key was typed by the
-user.  The <kbd>ESC</kbd> key is special because typically most key codes start with
-that key.  This usually gives all key codes a common first key in its key
-sequence.  The KUI uses the terminfo database to determine what key sequences
-are sent by which keycodes.  There are a few commonly used key sequences
+<em>key sequence</em>.  The KUI is responsible for assembling the key sequences 
+back together and reporting to CGDB that a particular key was typed by the 
+user.  The <kbd>ESC</kbd> key is special because typically most key codes start with 
+that key.  This usually gives all key codes a common first key in its key 
+sequence.  The KUI uses the terminfo database to determine what key sequences 
+are sent by which keycodes.  There are a few commonly used key sequences 
 that are hard coded into CGDB.
-
-   <p>A major challenge the KUI has to overcome is determining when a map or a
+</p>
+<p>A major challenge the KUI has to overcome is determining when a map or a 
 key sequence is received.  The KUI sometimes will need to read more than
-one character to determine this.  For example, if the user has 2 maps,
-<code>map abc def</code> and <code>map abd def</code>, the KUI would have to buffer at
-least the characters &lt;a&gt; and &lt;b&gt; before it could determine if the
-user was going to type a map.  After the next key press, if the user types
-&lt;c&gt; or &lt;d&gt; then a map was received and the KUI will return
-<kbd>d e f</kbd> to CGDB.  Otherwise, no map was received and the KUI must return
+one character to determine this.  For example, if the user has 2 maps, 
+<code>map abc def</code> and <code>map abd def</code>, the KUI would have to buffer at 
+least the characters <tt class="key">a</tt> and <tt class="key">b</tt> before it could determine if the 
+user was going to type a map.  After the next key press, if the user types 
+<tt class="key">c</tt> or <tt class="key">d</tt> then a map was received and the KUI will return 
+<kbd>d e f</kbd> to CGDB.  Otherwise, no map was received and the KUI must return 
 <kbd>a b</kbd> to CGDB.
-
-   <p>The options <var>timeout</var>, <var>ttimeout</var>, <var>timeoutlen</var> and
+</p>
+<p>The options <var>timeout</var>, <var>ttimeout</var>, <var>timeoutlen</var> and 
 <var>ttimeoutlen</var> can be used to tell the KUI if it should timeout on
 partial mappings or key sequences, and if so, how long it should wait before
-timing out.
+timing out.  
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Configuring-the-KUI-Time-Out-Options.html#Configuring-the-KUI-Time-Out-Options" accesskey="1">Configuring the KUI Time Out Options</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The KUI&rsquo;s time out options
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Using-Maps.html#Using-Maps" accesskey="2">Using Maps</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Using maps
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Understanding-Keycodes.html#Understanding-Keycodes" accesskey="3">Understanding Keycodes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding keycodes
+</td></tr>
+</table>
 
-<ul class="menu">
-<li><a accesskey="1" href="Configuring-the-KUI-Time-Out-Options.html#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a>:         The KUI's time out options
-<li><a accesskey="2" href="Using-Maps.html#Using-Maps">Using Maps</a>:                                   Using maps
-<li><a accesskey="3" href="Understanding-Keycodes.html#Understanding-Keycodes">Understanding Keycodes</a>:                       Understanding keycodes
-</ul>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Sending-I_002fO-to-Inferior.html#Sending-I_002fO-to-Inferior" accesskey="n" rel="next">Sending I/O to Inferior</a>, Previous: <a href="Highlighting-Groups.html#Highlighting-Groups" accesskey="p" rel="prev">Highlighting Groups</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
-   </body></html>
 
+
+</body>
+</html>

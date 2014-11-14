@@ -1,89 +1,117 @@
-<html lang="en">
-<head>
-<title>Highlighting Groups - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Configuring-CGDB.html#Configuring-CGDB" title="Configuring CGDB">
-<link rel="next" href="Key-User-Interface.html#Key-User-Interface" title="Key User Interface">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: Highlighting Groups</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: Highlighting Groups">
+<meta name="keywords" content="CGDB Manual 0.6.8: Highlighting Groups">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Available-Highlighting-Groups.html#Available-Highlighting-Groups" rel="next" title="Available Highlighting Groups">
+<link href="Configuring-CGDB.html#Configuring-CGDB" rel="prev" title="Configuring CGDB">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Highlighting-Groups"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Configuring-CGDB.html#Configuring-CGDB">Configuring CGDB</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
+Next: <a href="Key-User-Interface.html#Key-User-Interface" accesskey="n" rel="next">Key User Interface</a>, Previous: <a href="Configuring-CGDB.html#Configuring-CGDB" accesskey="p" rel="prev">Configuring CGDB</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="CGDB-highlighting-groups"></a>
 <h2 class="chapter">5 CGDB highlighting groups</h2>
+<a name="index-highlighting-groups"></a>
 
-<p><a name="index-highlighting-groups-24"></a>
-CGDB is capable of using colors if the terminal it is run in supports them. 
+<p>CGDB is capable of using colors if the terminal it is run in supports them.  
 Until version 0.6.1, CGDB did not allow the user to configure these colors in
 any way.  CGDB color use is now fully configurable.
-
-   <p>CGDB's modeled its use of color highlighting after vim.  Any data that will
-be colored in the terminal is represented by a highlighting group. 
-A <dfn>highlighting group</dfn> represents data that should be formatted using
-foreground colors, background colors and attributes.  There are currently
-several types of highlighting groups in CGDB.  There are syntax highlighting
-groups, which represent syntax highlighting of sources files.  There are also
-User Interface groups, which represent things like CGDB's logo, or the status
+</p>
+<p>CGDB&rsquo;s modeled its use of color highlighting after vim.  Any data that will
+be colored in the terminal is represented by a highlighting group.  
+A <em>highlighting group</em> represents data that should be formatted using
+foreground colors, background colors and attributes.  There are currently 
+several types of highlighting groups in CGDB.  There are syntax highlighting 
+groups, which represent syntax highlighting of sources files.  There are also 
+User Interface groups, which represent things like CGDB&rsquo;s logo, or the status 
 bar.
-
-   <p>Each highlighting group has a default set of attributes and colors associated
+</p>
+<p>Each highlighting group has a default set of attributes and colors associated 
 with it.  You can modify a highlighting groups properties by using the
 highlight command.  See <a href="Configuring-CGDB.html#Configuring-CGDB">Configuring CGDB</a>.
-
-   <p>Note that CGDB currently supports using the same background color the terminal
+</p>
+<p>Note that CGDB currently supports using the same background color the terminal 
 was using before CGDB was started.  However, this only works when CGDB was
 linked with ncurses.  If you link CGDB with curses, then CGDB will force
 the background to Black.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="Available-Highlighting-Groups.html#Available-Highlighting-Groups" accesskey="1">Available Highlighting Groups</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The different highlighting groups.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Available-Attributes.html#Available-Attributes" accesskey="2">Available Attributes</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The different attributes.
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="Available-Colors.html#Available-Colors" accesskey="3">Available Colors</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">The different colors.
+</td></tr>
+</table>
 
-<ul class="menu">
-<li><a accesskey="1" href="Available-Highlighting-Groups.html#Available-Highlighting-Groups">Available Highlighting Groups</a>:          The different highlighting groups. 
-<li><a accesskey="2" href="Available-Attributes.html#Available-Attributes">Available Attributes</a>:                   The different attributes. 
-<li><a accesskey="3" href="Available-Colors.html#Available-Colors">Available Colors</a>:                       The different colors. 
-</ul>
 
-   </body></html>
 
+
+</body>
+</html>

@@ -1,225 +1,347 @@
-<html lang="en">
-<head>
-<title>Configuring CGDB - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Controlling-CGDB.html#Controlling-CGDB" title="Controlling CGDB">
-<link rel="next" href="Highlighting-Groups.html#Highlighting-Groups" title="Highlighting Groups">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: Configuring CGDB</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: Configuring CGDB">
+<meta name="keywords" content="CGDB Manual 0.6.8: Configuring CGDB">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Highlighting-Groups.html#Highlighting-Groups" rel="next" title="Highlighting Groups">
+<link href="TTY-Mode.html#TTY-Mode" rel="prev" title="TTY Mode">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Configuring-CGDB"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Highlighting-Groups.html#Highlighting-Groups">Highlighting Groups</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Controlling-CGDB.html#Controlling-CGDB">Controlling CGDB</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
+Next: <a href="Highlighting-Groups.html#Highlighting-Groups" accesskey="n" rel="next">Highlighting Groups</a>, Previous: <a href="Controlling-CGDB.html#Controlling-CGDB" accesskey="p" rel="prev">Controlling CGDB</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="CGDB-configuration-commands"></a>
 <h2 class="chapter">4 CGDB configuration commands</h2>
+<a name="index-configuring-CGDB"></a>
 
-<p><a name="index-configuring-CGDB-23"></a>
-There may be several features that you find useful in CGDB.  CGDB is capable
+<p>There may be several features that you find useful in CGDB.  CGDB is capable
 of automating any of these commands through the use of the config file called
-<samp><span class="file">cgdbrc</span></samp>.  It looks in <samp><span class="env">$HOME</span></samp><samp><span class="file">/.cgdb/</span></samp> for that file.  If it
-exists, CGDB executes each line in the file in order.  It is as if the user
+<samp>cgdbrc</samp>.  It looks in <code>$HOME</code><samp>/.cgdb/</samp> for that file.  If it 
+exists, CGDB executes each line in the file in order.  It is as if the user 
 typed in all the commands into the status bar after the tui was initialized.
-
-   <p>The following variables change the behavior of some aspect of CGDB.  Many
+</p>
+<p>The following variables change the behavior of some aspect of CGDB.  Many
 of these commands may be abbreviated in some way, and all boolean commands
-my be negated by appending &lsquo;<samp><span class="samp">no</span></samp>&rsquo; to the front.  For example:
+my be negated by appending &lsquo;<samp>no</samp>&rsquo; to the front.  For example: 
 <kbd>:set ignorecase</kbd> turns on case-insensitive searching; while
 <kbd>:set noignorecase</kbd> turns on case-sensitive searching.
-
-     <dl>
-<dt><kbd>:set as=</kbd><var>style</var><dt><kbd>:set arrowstyle=</kbd><var>style</var><dd>Set the arrow style to <var>style</var>.  Possible values for <var>style</var>
-are &lsquo;<samp><span class="samp">short</span></samp>&rsquo;, &lsquo;<samp><span class="samp">long</span></samp>&rsquo;, and &lsquo;<samp><span class="samp">highlight</span></samp>&rsquo;.  Changes the style of
-the arrow that is used to indicate the currently executing line in the source
-viewer.  The default value is short.  A longer arrow is available, for easier
-readability.  Finally, the &lsquo;<samp><span class="samp">highlight</span></samp>&rsquo; option draws no arrow at all,
+</p>
+<dl compact="compact">
+<dt><kbd>:set as=<var>style</var></kbd></dt>
+<dt><kbd>:set arrowstyle=<var>style</var></kbd></dt>
+<dd><p>Set the arrow style to <var>style</var>.  Possible values for <var>style</var>
+are &lsquo;<samp>short</samp>&rsquo;, &lsquo;<samp>long</samp>&rsquo;, and &lsquo;<samp>highlight</samp>&rsquo;.  Changes the style of 
+the arrow that is used to indicate the currently executing line in the source 
+viewer.  The default value is short.  A longer arrow is available, for easier 
+readability.  Finally, the &lsquo;<samp>highlight</samp>&rsquo; option draws no arrow at all, 
 instead drawing the entire line in inverse video.
-
-     <br><dt><kbd>:set asr</kbd><dt><kbd>:set autosourcereload</kbd><dd>If this is on, CGDB will automatically reload a source file if it has
-changed since CGDB has opened it.  If it is off, the file will never be
-reloaded, until you start CGDB again. The default is on. 
-This feature is useful when you are debugging a program, then you modify
-a source file, recompile, and type <kbd>r</kbd> in GDB's CLI window. The file in
-this case will be updated to show the new version.  Note, CGDB only looks at
-the timestamp of the source file to determine if it has changed. So if
-you modify the source file, and didn't recompile yet, CGDB will still
+</p>
+</dd>
+<dt><kbd>:set asr</kbd></dt>
+<dt><kbd>:set autosourcereload</kbd></dt>
+<dd><p>If this is on, CGDB will automatically reload a source file if it has 
+changed since CGDB has opened it.  If it is off, the file will never be 
+reloaded, until you start CGDB again. The default is on.
+This feature is useful when you are debugging a program, then you modify 
+a source file, recompile, and type <kbd>r</kbd> in GDB&rsquo;s CLI window. The file in 
+this case will be updated to show the new version.  Note, CGDB only looks at 
+the timestamp of the source file to determine if it has changed. So if 
+you modify the source file, and didn&rsquo;t recompile yet, CGDB will still 
 pick up on the changes.
-
-     <br><dt><kbd>:set cgdbmodekey=</kbd><var>key</var><dd>This option is used to determine what key puts CGDB into <dfn>CGDB Mode</dfn>. 
+</p>
+</dd>
+<dt><kbd>:set cgdbmodekey=<var>key</var></kbd></dt>
+<dd><p>This option is used to determine what key puts CGDB into <em>CGDB Mode</em>.
 By default, the <kbd>ESC</kbd> key is used.  <var>key</var> can be any normal key
-on the keyboard.  It can also be any keycode, as long as the keycode notation
+on the keyboard.  It can also be any keycode, as long as the keycode notation 
 is used.  This option is especially useful when the user wants to use
-readline in vi mode.  If the user types <code>set cgdbmodekey=&lt;PageUp&gt;</code>
+readline in vi mode.  If the user types <code>set cgdbmodekey=&lt;PageUp&gt;</code> 
 then the <kbd>Page Up</kbd> key will put CGDB into CGDB mode and the <kbd>ESC</kbd>
 key will flow through to readline.
-
-     <br><dt><kbd>:set ic</kbd><dt><kbd>:set ignorecase</kbd><dd>Sets searching case insensitive.  The default is off.
-
-     <br><dt><kbd>:set stc</kbd><dt><kbd>:set showtgdbcommands</kbd><dd>If this is on, CGDB will show all of the commands that it sends to GDB. 
+</p>
+</dd>
+<dt><kbd>:set ic</kbd></dt>
+<dt><kbd>:set ignorecase</kbd></dt>
+<dd><p>Sets searching case insensitive.  The default is off.
+</p>
+</dd>
+<dt><kbd>:set stc</kbd></dt>
+<dt><kbd>:set showtgdbcommands</kbd></dt>
+<dd><p>If this is on, CGDB will show all of the commands that it sends to GDB. 
 If it is off, CGDB will not show the commands that it gives to GDB. 
-The default is off.
-
-     <br><dt><kbd>:set syn=</kbd><var>style</var><dt><kbd>:set syntax=</kbd><var>style</var><dd>Sets the current highlighting mode of the current file to have the syntax
-<var>style</var>.  Possible values for <var>syntax</var> are &lsquo;<samp><span class="samp">c</span></samp>&rsquo;, &lsquo;<samp><span class="samp">ada</span></samp>&rsquo;, and
-&lsquo;<samp><span class="samp">off</span></samp>&rsquo;.  Normally, the user will never have to do this, since CGDB
-automatically detects what syntax a file should be based on its file
-extension.  However, this feature can currently be useful for debugging
+The default is off. 
+</p>
+</dd>
+<dt><kbd>:set syn=<var>style</var></kbd></dt>
+<dt><kbd>:set syntax=<var>style</var></kbd></dt>
+<dd><p>Sets the current highlighting mode of the current file to have the syntax 
+<var>style</var>.  Possible values for <var>syntax</var> are &lsquo;<samp>c</samp>&rsquo;, &lsquo;<samp>ada</samp>&rsquo;, and 
+&lsquo;<samp>off</samp>&rsquo;.  Normally, the user will never have to do this, since CGDB 
+automatically detects what syntax a file should be based on its file 
+extension.  However, this feature can currently be useful for debugging 
 purposes.
-
-     <br><dt><kbd>:set to</kbd><dt><kbd>:set timeout</kbd><dd>This option is used along with the <var>ttimeout</var> option to determine the
-behavior CGDB should have when it receives part of a mapped key sequence or
+</p>
+</dd>
+<dt><kbd>:set to</kbd></dt>
+<dt><kbd>:set timeout</kbd></dt>
+<dd><p>This option is used along with the <var>ttimeout</var> option to determine the 
+behavior CGDB should have when it receives part of a mapped key sequence or 
 a keyboard code sequence.  If this option is on, CGDB will time out on both
-user defined mappings and on key codes from the keyboard.  If this option
+user defined mappings and on key codes from the keyboard.  If this option 
 is off, user defined mappings will not be timed out on.  In this case, CGDB
 will determine if it should time out on key codes from the keyboard by
 examining the <var>ttimeout</var> option.  To determine how CGDB will time out
-on mappings and key codes, and what time out lengths CGDB will use, please
+on mappings and key codes, and what time out lengths CGDB will use, please 
 refer to the chart in <a href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>.  The default value for this
 option is on.
-
-     <br><dt><kbd>:set tm=</kbd><var>delay</var><dt><kbd>:set timeoutlen=</kbd><var>delay</var><dd>This option is used along with the <var>ttimeoutlen</var> option.  It
+</p>
+</dd>
+<dt><kbd>:set tm=<var>delay</var></kbd></dt>
+<dt><kbd>:set timeoutlen=<var>delay</var></kbd></dt>
+<dd><p>This option is used along with the <var>ttimeoutlen</var> option.  It 
 represents the number of milliseconds that CGDB should wait for a key code
-from the keyboard or for a mapped key sequence to complete.  If <var>delay</var> is
+from the keyboard or for a mapped key sequence to complete.  If <var>delay</var> is 
 0, CGDB immediately accepts each character it receives.  This will prevent any
-mappings or key codes to complete.  <var>delay</var> may be any value between
-0 and 10000, inclusive.  The default setting for the <var>delay</var> variable is
+mappings or key codes to complete.  <var>delay</var> may be any value between 
+0 and 10000, inclusive.  The default setting for the <var>delay</var> variable is 
 1000 (one second).
-
-     <br><dt><kbd>:set ttimeout</kbd><dd>This option is used along with the <var>timeout</var> option to determine the
-behavior CGDB should have when it receives part of keyboard code sequence. 
+</p>
+</dd>
+<dt><kbd>:set ttimeout</kbd></dt>
+<dd><p>This option is used along with the <var>timeout</var> option to determine the 
+behavior CGDB should have when it receives part of keyboard code sequence.  
 If this option is on, CGDB will time out on key codes from the keyboard.  If
 this option is off, CGDB will determine if it should time out on key codes
 from the keyboard by examining the <var>timeout</var> option.  To determine how
 CGDB will time out on key codes, what what time length it will use, please
-refer to the chart in <a href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>.  The default value for this
+refer to the chart in <a href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>.  The default value for this 
 option is on.
+</p>
 
-     <br><dt><kbd>:set ttm=</kbd><var>delay</var><dt><kbd>:set ttimeoutlen=</kbd><var>delay</var><dd>This option is used along with the <var>ttimeoutlen</var> option.  It
+</dd>
+<dt><kbd>:set ttm=<var>delay</var></kbd></dt>
+<dt><kbd>:set ttimeoutlen=<var>delay</var></kbd></dt>
+<dd><p>This option is used along with the <var>ttimeoutlen</var> option.  It 
 represents the number of milliseconds that CGDB should wait for a key code
-from the keyboard.  If <var>delay</var> is 0, CGDB immediately accepts each character
-it receives.  This will prevent any key codes to complete.  <var>delay</var> may
-be any value between 0 and 10000, inclusive.  The default setting for the
+from the keyboard.  If <var>delay</var> is 0, CGDB immediately accepts each character 
+it receives.  This will prevent any key codes to complete.  <var>delay</var> may 
+be any value between 0 and 10000, inclusive.  The default setting for the 
 <var>delay</var> variable is 100 (one tenth of a second).
-
-     <br><dt><kbd>:set ts=</kbd><var>number</var><dt><kbd>:set tabstop=</kbd><var>number</var><dd>Sets the number of spaces that should be rendered on the screen for &lt;TAB&gt;
+</p>
+</dd>
+<dt><kbd>:set ts=<var>number</var></kbd></dt>
+<dt><kbd>:set tabstop=<var>number</var></kbd></dt>
+<dd><p>Sets the number of spaces that should be rendered on the screen for <tt class="key">TAB</tt>
 characters.  The default value for <var>number</var> is 8.
-
-     <br><dt><kbd>:set wmh=</kbd><var>number</var><dt><kbd>:set winminheight=</kbd><var>number</var><dd>The minimal height of a window.  Windows will never become smaller than
+</p>
+</dd>
+<dt><kbd>:set wmh=<var>number</var></kbd></dt>
+<dt><kbd>:set winminheight=<var>number</var></kbd></dt>
+<dd><p>The minimal height of a window.  Windows will never become smaller than 
 this value.  The default value for <var>number</var> is 0.
-
-     <br><dt><kbd>:set winsplit=</kbd><var>style</var><dd>Set the split point between source and GDB window.  This is especially useful
-as an init setting in your <samp><span class="file">cgdbrc</span></samp> file.  See <a href="Configuring-CGDB.html#Configuring-CGDB">Configuring CGDB</a>.  The
-possible values for <var>style</var> are &lsquo;<samp><span class="samp">top_full</span></samp>&rsquo;, &lsquo;<samp><span class="samp">top_big</span></samp>&rsquo;,
-&lsquo;<samp><span class="samp">even</span></samp>&rsquo;, &lsquo;<samp><span class="samp">bottom_big</span></samp>&rsquo;, and &lsquo;<samp><span class="samp">bottom_full</span></samp>&rsquo;.
-
-     <br><dt><kbd>:set ws</kbd><dt><kbd>:set wrapscan</kbd><dd>Searches wrap around the end of file.  The default is on.
-
-     <br><dt><kbd>:c</kbd><dt><kbd>:continue</kbd><dd>Send a continue command to GDB.
-
-     <dt><kbd>:down</kbd><dd>Send a down command to GDB.
-
-     <br><dt><kbd>:e</kbd><dt><kbd>:edit</kbd><dd>reloads the file in the source window.  this can be useful if the file has
+</p>
+</dd>
+<dt><kbd>:set winsplit=<var>style</var></kbd></dt>
+<dd><p>Set the split point between source and GDB window.  This is especially useful
+as an init setting in your <samp>cgdbrc</samp> file.  See <a href="#Configuring-CGDB">Configuring CGDB</a>.  The 
+possible values for <var>style</var> are &lsquo;<samp>top_full</samp>&rsquo;, &lsquo;<samp>top_big</samp>&rsquo;, 
+&lsquo;<samp>even</samp>&rsquo;, &lsquo;<samp>bottom_big</samp>&rsquo;, and &lsquo;<samp>bottom_full</samp>&rsquo;.
+</p>
+</dd>
+<dt><kbd>:set ws</kbd></dt>
+<dt><kbd>:set wrapscan</kbd></dt>
+<dd><p>Searches wrap around the end of file.  The default is on.
+</p>
+</dd>
+<dt><kbd>:c</kbd></dt>
+<dt><kbd>:continue</kbd></dt>
+<dd><p>Send a continue command to GDB.
+</p>
+</dd>
+<dt><kbd>:down</kbd></dt>
+<dd><p>Send a down command to GDB.
+</p>
+</dd>
+<dt><kbd>:e</kbd></dt>
+<dt><kbd>:edit</kbd></dt>
+<dd><p>reloads the file in the source window.  this can be useful if the file has 
 changed since it was opened by cgdb.
-
-     <br><dt><kbd>:f</kbd><dt><kbd>:finish</kbd><dd>Send a finish command to GDB.
-
-     <br><dt><kbd>:help</kbd><dd>This will display the current manual in text format, in the
-<dfn>source window</dfn>.
-
-     <br><dt><kbd>:hi </kbd><var>group</var><kbd> cterm=</kbd><var>attributes</var><kbd> ctermfg=</kbd><var>color</var><kbd> ctermbg=</kbd><var>color</var><kbd> term=</kbd><var>attributes</var><dt><kbd>:highlight </kbd><var>group</var><kbd> cterm=</kbd><var>attributes</var><kbd> ctermfg=</kbd><var>color</var><kbd> ctermbg=</kbd><var>color</var><kbd> term=</kbd><var>attributes</var><dd>Set the <var>color</var> and <var>attributes</var> for a highlighting group.  The syntax
-mimics vim's &ldquo;highlight&rdquo; command.  Possible values for <var>group</var>,
+</p>
+</dd>
+<dt><kbd>:f</kbd></dt>
+<dt><kbd>:finish</kbd></dt>
+<dd><p>Send a finish command to GDB.
+</p>
+</dd>
+<dt><kbd>:help</kbd></dt>
+<dd><p>This will display the current manual in text format, in the 
+<em>source window</em>.
+</p>
+</dd>
+<dt><kbd>:hi <var>group</var> cterm=<var>attributes</var> ctermfg=<var>color</var> ctermbg=<var>color</var> term=<var>attributes</var></kbd></dt>
+<dt><kbd>:highlight <var>group</var> cterm=<var>attributes</var> ctermfg=<var>color</var> ctermbg=<var>color</var> term=<var>attributes</var></kbd></dt>
+<dd><p>Set the <var>color</var> and <var>attributes</var> for a highlighting group.  The syntax 
+mimics vim&rsquo;s &ldquo;highlight&rdquo; command.  Possible values for <var>group</var>, 
 <var>attributes</var> and <var>color</var> are available in <a href="Highlighting-Groups.html#Highlighting-Groups">Highlighting Groups</a>.
-
-     <p>You can give as many or as few of the name=value pairs as you wish, in any
-order.  &lsquo;<samp><span class="samp">ctermfg</span></samp>&rsquo; and &lsquo;<samp><span class="samp">ctermbg</span></samp>&rsquo; set the foreground and background
-colors.  These can be specified by color number or by using the same color
+</p>
+<p>You can give as many or as few of the name=value pairs as you wish, in any 
+order.  &lsquo;<samp>ctermfg</samp>&rsquo; and &lsquo;<samp>ctermbg</samp>&rsquo; set the foreground and background 
+colors.  These can be specified by color number or by using the same color 
 names that vim uses.  When CGDB is linked with ncurses, the number you use to
 represent the color can be between -1 and COLORS.  When CGDB is linked against
-curses, it must be between 0 and COLORS.
-
-     <p>&lsquo;<samp><span class="samp">cterm</span></samp>&rsquo; sets the video attributes for color terminals.  &lsquo;<samp><span class="samp">term</span></samp>&rsquo; sets
+curses, it must be between 0 and COLORS.  
+</p>
+<p>&lsquo;<samp>cterm</samp>&rsquo; sets the video attributes for color terminals.  &lsquo;<samp>term</samp>&rsquo; sets
 the video attributes for monochrome terminals.  Some examples are,
-     <pre class="smallexample">          :highlight Logo cterm=bold,underline ctermfg=Red ctermbg=Black
-          :highlight Normal cterm=reverse ctermfg=White ctermbg=Black
-          :hi Normal term=bold
-</pre>
-     <br><dt><kbd>:insert</kbd><dd>Move focus to the GDB window.
+</p><div class="smallexample">
+<pre class="smallexample">:highlight Logo cterm=bold,underline ctermfg=Red ctermbg=Black
+:highlight Normal cterm=reverse ctermfg=White ctermbg=Black
+:hi Normal term=bold
+</pre></div>
 
-     <br><dt><kbd>:n</kbd><dt><kbd>:next</kbd><dd>Send a next command to GDB.
-
-     <br><dt><kbd>:q</kbd><dt><kbd>:quit</kbd><dd>Quit CGDB.
-
-     <br><dt><kbd>:r</kbd><dt><kbd>:run</kbd><dd>Send a run command to GDB.
-
-     <br><dt><kbd>:start</kbd><dd>Send a start command to GDB.
-
-     <br><dt><kbd>:k</kbd><dt><kbd>:kill</kbd><dd>Send a kill command to GDB.
-
-     <br><dt><kbd>:s</kbd><dt><kbd>:step</kbd><dd>Send a step command to GDB.
-
-     <br><dt><kbd>:syntax</kbd><dd>Turn the syntax on or off.
-
-     <dt><kbd>:up</kbd><dd>Send an up command to GDB.
-
-     <br><dt><kbd>:map </kbd><var>lhs</var> <var>rhs</var><dd>Create a new mapping or overwrite an existing mapping in CGDB mode. 
-After the command is run, if <var>lhs</var> is typed, CGDB will get <var>rhs</var>
-instead.  For more details on how to use the map command look in
-<a href="Using-Maps.html#Using-Maps">Using Maps</a>. 
-<br><dt><kbd>:unm </kbd><var>lhs</var><br><dt><kbd>:unmap </kbd><var>lhs</var><dd>Delete an existing mapping from CGDB mode.  <var>lhs</var> is what was typed
-in the left hand side when the user created the mapping.  For example, if
+</dd>
+<dt><kbd>:insert</kbd></dt>
+<dd><p>Move focus to the GDB window.
+</p>
+</dd>
+<dt><kbd>:n</kbd></dt>
+<dt><kbd>:next</kbd></dt>
+<dd><p>Send a next command to GDB.
+</p>
+</dd>
+<dt><kbd>:q</kbd></dt>
+<dt><kbd>:quit</kbd></dt>
+<dd><p>Quit CGDB.
+</p>
+</dd>
+<dt><kbd>:r</kbd></dt>
+<dt><kbd>:run</kbd></dt>
+<dd><p>Send a run command to GDB.
+</p>
+</dd>
+<dt><kbd>:start</kbd></dt>
+<dd><p>Send a start command to GDB.
+</p>
+</dd>
+<dt><kbd>:k</kbd></dt>
+<dt><kbd>:kill</kbd></dt>
+<dd><p>Send a kill command to GDB.
+</p>
+</dd>
+<dt><kbd>:s</kbd></dt>
+<dt><kbd>:step</kbd></dt>
+<dd><p>Send a step command to GDB.
+</p>
+</dd>
+<dt><kbd>:syntax</kbd></dt>
+<dd><p>Turn the syntax on or off.
+</p>
+</dd>
+<dt><kbd>:up</kbd></dt>
+<dd><p>Send an up command to GDB.
+</p>
+</dd>
+<dt><kbd>:map <var>lhs</var> <var>rhs</var></kbd></dt>
+<dd><p>Create a new mapping or overwrite an existing mapping in CGDB mode.  
+After the command is run, if <var>lhs</var> is typed, CGDB will get <var>rhs</var> 
+instead.  For more details on how to use the map command look in 
+<a href="Using-Maps.html#Using-Maps">Using Maps</a>.
+</p></dd>
+<dt><kbd>:unm <var>lhs</var></kbd></dt>
+<dt><kbd>:unmap <var>lhs</var></kbd></dt>
+<dd><p>Delete an existing mapping from CGDB mode.  <var>lhs</var> is what was typed
+in the left hand side when the user created the mapping.  For example, if 
 the user typed <code>:map a&lt;Space&gt;b foo</code> then the user could delete the
-existing mapping with <code>:unmap a&lt;Space&gt;b</code>. 
-<br><dt><kbd>:im </kbd><var>lhs</var> <var>rhs</var><dt><kbd>:imap </kbd><var>lhs</var> <var>rhs</var><dd>Create a new mapping or overwrite an existing mapping in GDB mode. 
-After the command is run, if <var>lhs</var> is typed, CGDB will get <var>rhs</var>
-instead.  For more details on how to use the map command look in
-<a href="Using-Maps.html#Using-Maps">Using Maps</a>. 
-<br><dt><kbd>:iu </kbd><var>lhs</var><br><dt><kbd>:iunmap </kbd><var>lhs</var><dd>Delete an existing mapping from GDB mode.  <var>lhs</var> is what was typed
-in the left hand side when the user created the mapping.  For example, if
+existing mapping with <code>:unmap a&lt;Space&gt;b</code>.
+</p></dd>
+<dt><kbd>:im <var>lhs</var> <var>rhs</var></kbd></dt>
+<dt><kbd>:imap <var>lhs</var> <var>rhs</var></kbd></dt>
+<dd><p>Create a new mapping or overwrite an existing mapping in GDB mode.  
+After the command is run, if <var>lhs</var> is typed, CGDB will get <var>rhs</var> 
+instead.  For more details on how to use the map command look in 
+<a href="Using-Maps.html#Using-Maps">Using Maps</a>.
+</p></dd>
+<dt><kbd>:iu <var>lhs</var></kbd></dt>
+<dt><kbd>:iunmap <var>lhs</var></kbd></dt>
+<dd><p>Delete an existing mapping from GDB mode.  <var>lhs</var> is what was typed
+in the left hand side when the user created the mapping.  For example, if 
 the user typed <code>:imap a&lt;Space&gt;b foo</code> then the user could delete the
-existing mapping with <code>:iunmap a&lt;Space&gt;b</code>. 
+existing mapping with <code>:iunmap a&lt;Space&gt;b</code>.
+</p></dd>
 </dl>
 
-   </body></html>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Highlighting-Groups.html#Highlighting-Groups" accesskey="n" rel="next">Highlighting Groups</a>, Previous: <a href="Controlling-CGDB.html#Controlling-CGDB" accesskey="p" rel="prev">Controlling CGDB</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
+
+
+</body>
+</html>

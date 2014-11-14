@@ -1,114 +1,140 @@
-<html lang="en">
-<head>
-<title>Configuring the KUI Time Out Options - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Key-User-Interface.html#Key-User-Interface" title="Key User Interface">
-<link rel="next" href="Using-Maps.html#Using-Maps" title="Using Maps">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: Configuring the KUI Time Out Options</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: Configuring the KUI Time Out Options">
+<meta name="keywords" content="CGDB Manual 0.6.8: Configuring the KUI Time Out Options">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Key-User-Interface.html#Key-User-Interface" rel="up" title="Key User Interface">
+<link href="Using-Maps.html#Using-Maps" rel="next" title="Using Maps">
+<link href="Key-User-Interface.html#Key-User-Interface" rel="prev" title="Key User Interface">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Configuring-the-KUI-Time-Out-Options"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Using-Maps.html#Using-Maps">Using Maps</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>
-<hr>
+Next: <a href="Using-Maps.html#Using-Maps" accesskey="n" rel="next">Using Maps</a>, Up: <a href="Key-User-Interface.html#Key-User-Interface" accesskey="u" rel="up">Key User Interface</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
+<hr>
+<a name="The-KUI_0027s-time-out-options"></a>
+<h3 class="section">6.1 The KUI&rsquo;s time out options</h3>
+<a name="index-timeout"></a>
+<a name="index-ttimeout"></a>
+<a name="index-timeoutlen"></a>
+<a name="index-ttimeoutlen"></a>
 
-<h3 class="section">6.1 The KUI's time out options</h3>
-
-<p><a name="index-timeout-29"></a><a name="index-ttimeout-30"></a><a name="index-timeoutlen-31"></a><a name="index-ttimeoutlen-32"></a>
-The KUI may be configured to time out on either maps or key sequences.
-
-   <p>When the KUI is matching a partial map or key sequence it is capable
-of timing out.  This means it will simply accepts the keys it has received so
-far if a certain amount of time elapses between key presses.  This is
+<p>The KUI may be configured to time out on either maps or key sequences.
+</p>
+<p>When the KUI is matching a partial map or key sequence it is capable
+of timing out.  This means it will simply accepts the keys it has received so 
+far if a certain amount of time elapses between key presses.  This is 
 obvious when the user is typing a map because the user must press each key
-individually.  For partial key sequences, this is less obvious.  That is
-because the user only presses a single key, but multiple characters are sent
+individually.  For partial key sequences, this is less obvious.  That is 
+because the user only presses a single key, but multiple characters are sent 
 to CGDB.  The table below describes how the user can configure the KUI
 to time out on key codes or maps.  The <var>timeout</var> and <var>ttimeout</var>
 options control this functionality.
+</p>
+<table>
+<thead><tr><th width="15%">timeout</th><th width="15%">ttimeout</th><th width="45%">action</th></tr></thead>
+<tr><td width="15%">off</td><td width="15%">off</td><td width="45%">do not time out</td></tr>
+<tr><td width="15%">on</td><td width="15%">on or off</td><td width="45%">time out on maps and key codes</td></tr>
+<tr><td width="15%">off</td><td width="15%">on</td><td width="45%">time out on key codes</td></tr>
+</table>
 
-   <p><table summary=""><tr align="left"><th valign="top" width="15%">timeout </th><th valign="top" width="15%">ttimeout </th><th valign="top" width="45%">action
-<br></th></tr><tr align="left"><td valign="top" width="15%">off
-</td><td valign="top" width="15%">off
-</td><td valign="top" width="45%">do not time out
-<br></td></tr><tr align="left"><td valign="top" width="15%">on
-</td><td valign="top" width="15%">on or off
-</td><td valign="top" width="45%">time out on maps and key codes
-<br></td></tr><tr align="left"><td valign="top" width="15%">off
-</td><td valign="top" width="15%">on
-</td><td valign="top" width="45%">time out on key codes
-   <br></td></tr></table>
-
-   <p>It is also possible to tell the KUI how long to wait before timing out on
+<p>It is also possible to tell the KUI how long to wait before timing out on 
 a partial match.  If <var>timeout</var> is on, then the KUI will wait a certain
-amount of time for the next character, when matching a map, before it
-decides a match is no longer possible.  If <var>timeout</var> or
-<var>ttimeout</var> is on, then the KUI will wait a certain amount of time for
-the next character, when matching a key sequence, before it decides a
+amount of time for the next character, when matching a map, before it 
+decides a match is no longer possible.  If <var>timeout</var> or 
+<var>ttimeout</var> is on, then the KUI will wait a certain amount of time for 
+the next character, when matching a key sequence, before it decides a 
 match is no longer possible.  The <var>timeoutlen</var> and <var>ttimeoutlen</var>
 options can be configured by the user to tell the KUI how long to wait
-before timing out.  The table below describes when the KUI uses which
+before timing out.  The table below describes when the KUI uses which 
 option.
+</p>
+<table>
+<thead><tr><th width="15%">timeoutlen</th><th width="20%">mapping delay</th><th width="20%">key code delay</th></tr></thead>
+<tr><td width="15%">&lt; 0</td><td width="20%"><var>timeoutlen</var></td><td width="20%"><var>timeoutlen</var></td></tr>
+<tr><td width="15%">&gt;= 0</td><td width="20%"><var>timeoutlen</var></td><td width="20%"><var>ttimeoutlen</var></td></tr>
+</table>
 
-   <p><table summary=""><tr align="left"><th valign="top" width="15%">timeoutlen </th><th valign="top" width="20%">mapping delay </th><th valign="top" width="20%">key code delay
-<br></th></tr><tr align="left"><td valign="top" width="15%">&lt; 0
-</td><td valign="top" width="20%"><var>timeoutlen</var>
-</td><td valign="top" width="20%"><var>timeoutlen</var>
-<br></td></tr><tr align="left"><td valign="top" width="15%">&gt;= 0
-</td><td valign="top" width="20%"><var>timeoutlen</var>
-</td><td valign="top" width="20%"><var>ttimeoutlen</var>
-   <br></td></tr></table>
-
-   <p>A value of 0 means that the KUI will time out right away.  It will not be
+<p>A value of 0 means that the KUI will time out right away.  It will not be 
 possible to match a map or key code in this circumstance.
-
-   <p>A common problem could be that when the user types a special key like
-the left or right arrows, CGDB will go into the source mode and not
+</p>
+<p>A common problem could be that when the user types a special key like 
+the left or right arrows, CGDB will go into the source mode and not 
 perform the action requested by the user.  This typically means that the
-key code delay is to small.  If you try setting the option
-<code>set ttimeoutlen=1000</code> CGDB should start acting like the user expects. 
+key code delay is to small.  If you try setting the option 
+<code>set ttimeoutlen=1000</code> CGDB should start acting like the user expects.
 If not, please report this to the CGDB mailing list.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Using-Maps.html#Using-Maps" accesskey="n" rel="next">Using Maps</a>, Up: <a href="Key-User-Interface.html#Key-User-Interface" accesskey="u" rel="up">Key User Interface</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
-   </body></html>
 
+
+</body>
+</html>

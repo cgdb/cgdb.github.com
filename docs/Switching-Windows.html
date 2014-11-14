@@ -1,71 +1,97 @@
-<html lang="en">
-<head>
-<title>Switching Windows - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Understanding-CGDB.html#Understanding-CGDB" title="Understanding CGDB">
-<link rel="prev" href="Status-Bar.html#Status-Bar" title="Status Bar">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: Switching Windows</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: Switching Windows">
+<meta name="keywords" content="CGDB Manual 0.6.8: Switching Windows">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Understanding-CGDB.html#Understanding-CGDB" rel="up" title="Understanding CGDB">
+<link href="Controlling-CGDB.html#Controlling-CGDB" rel="next" title="Controlling CGDB">
+<link href="Status-Bar.html#Status-Bar" rel="prev" title="Status Bar">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Switching-Windows"></a>
+<div class="header">
 <p>
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Status-Bar.html#Status-Bar">Status Bar</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Understanding-CGDB.html#Understanding-CGDB">Understanding CGDB</a>
-<hr>
+Previous: <a href="Status-Bar.html#Status-Bar" accesskey="p" rel="prev">Status Bar</a>, Up: <a href="Understanding-CGDB.html#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="Switch-between-windows"></a>
 <h3 class="section">2.6 Switch between windows</h3>
+<a name="index-switch-between-windows"></a>
 
-<p><a name="index-switch-between-windows-17"></a>
-When CGDB is invoked, the interface is in <dfn>GDB mode</dfn>.  A &lsquo;<samp><span class="samp">*</span></samp>&rsquo; at the
+<p>When CGDB is invoked, the interface is in <em>GDB mode</em>.  A &lsquo;<samp>*</samp>&rsquo; at the 
 right of the status bar indicates that input will be passed to GDB.  To change
-the focus to the source window, hit the &lt;ESC&gt; key.  The
-<dfn>cgdb mode key</dfn> is the key that is responsible for switching the user
-into <dfn>CGDB mode</dfn> from a different mode.  The cgdb mode
-key is defaulted to the &lt;ESC&gt; key.  To change this value, look at the
+the focus to the source window, hit the <tt class="key">ESC</tt> key.  The 
+<em>cgdb mode key</em> is the key that is responsible for switching the user
+into <em>CGDB mode</em> from a different mode.  The cgdb mode 
+key is defaulted to the <tt class="key">ESC</tt> key.  To change this value, look at the 
 configuration options for CGDB.  See <a href="Configuring-CGDB.html#Configuring-CGDB">Configuring CGDB</a>.
-
-   <p>The interface is now in <dfn>CGDB mode</dfn>.  To switch back into <dfn>GDB mode</dfn>,
+</p>
+<p>The interface is now in <em>CGDB mode</em>.  To switch back into <em>GDB mode</em>, 
 press <kbd>i</kbd>.  This syntax is based on the popular Unix text-editor, vi.
+</p>
 
-   </body></html>
 
+
+</body>
+</html>

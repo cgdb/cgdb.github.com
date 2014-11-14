@@ -1,73 +1,102 @@
-<html lang="en">
-<head>
-<title>Controlling CGDB - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Understanding-CGDB.html#Understanding-CGDB" title="Understanding CGDB">
-<link rel="next" href="Configuring-CGDB.html#Configuring-CGDB" title="Configuring CGDB">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: Controlling CGDB</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: Controlling CGDB">
+<meta name="keywords" content="CGDB Manual 0.6.8: Controlling CGDB">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="CGDB-Mode.html#CGDB-Mode" rel="next" title="CGDB Mode">
+<link href="Switching-Windows.html#Switching-Windows" rel="prev" title="Switching Windows">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Controlling-CGDB"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Configuring-CGDB.html#Configuring-CGDB">Configuring CGDB</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Understanding-CGDB.html#Understanding-CGDB">Understanding CGDB</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
+Next: <a href="Configuring-CGDB.html#Configuring-CGDB" accesskey="n" rel="next">Configuring CGDB</a>, Previous: <a href="Understanding-CGDB.html#Understanding-CGDB" accesskey="p" rel="prev">Understanding CGDB</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="CGDB-commands"></a>
 <h2 class="chapter">3 CGDB commands</h2>
+<a name="index-controlling-CGDB"></a>
 
-<p><a name="index-controlling-CGDB-18"></a>
-CGDB can be controlled in a variety of different ways.  Each mode that CGDB
-is in acts differently. Currently CGDB implicitly changes modes depending on
-which window is active.  The following information will help you determine
+<p>CGDB can be controlled in a variety of different ways.  Each mode that CGDB 
+is in acts differently. Currently CGDB implicitly changes modes depending on 
+which window is active.  The following information will help you determine 
 what commands are accessible during which modes.
+</p>
+<table class="menu" border="0" cellspacing="0">
+<tr><td align="left" valign="top">&bull; <a href="CGDB-Mode.html#CGDB-Mode" accesskey="1">CGDB Mode</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands available during CGDB mode
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="GDB-Mode.html#GDB-Mode" accesskey="2">GDB Mode</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands available during GDB mode
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="File-Dialog-Mode.html#File-Dialog-Mode" accesskey="3">File Dialog Mode</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands available during the file dialog mode
+</td></tr>
+<tr><td align="left" valign="top">&bull; <a href="TTY-Mode.html#TTY-Mode" accesskey="4">TTY Mode</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands available during TTY mode
+</td></tr>
+</table>
 
-<ul class="menu">
-<li><a accesskey="1" href="CGDB-Mode.html#CGDB-Mode">CGDB Mode</a>:                    Commands available during CGDB mode
-<li><a accesskey="2" href="GDB-Mode.html#GDB-Mode">GDB Mode</a>:                     Commands available during GDB mode
-<li><a accesskey="3" href="File-Dialog-Mode.html#File-Dialog-Mode">File Dialog Mode</a>:             Commands available during the file dialog mode
-<li><a accesskey="4" href="TTY-Mode.html#TTY-Mode">TTY Mode</a>:                     Commands available during TTY mode
-</ul>
 
-   </body></html>
 
+
+</body>
+</html>

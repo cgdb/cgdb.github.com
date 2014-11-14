@@ -1,82 +1,108 @@
-<html lang="en">
-<head>
-<title>Using Maps - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Key-User-Interface.html#Key-User-Interface" title="Key User Interface">
-<link rel="prev" href="Configuring-the-KUI-Time-Out-Options.html#Configuring-the-KUI-Time-Out-Options" title="Configuring the KUI Time Out Options">
-<link rel="next" href="Understanding-Keycodes.html#Understanding-Keycodes" title="Understanding Keycodes">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: Using Maps</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: Using Maps">
+<meta name="keywords" content="CGDB Manual 0.6.8: Using Maps">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Key-User-Interface.html#Key-User-Interface" rel="up" title="Key User Interface">
+<link href="Understanding-Keycodes.html#Understanding-Keycodes" rel="next" title="Understanding Keycodes">
+<link href="Configuring-the-KUI-Time-Out-Options.html#Configuring-the-KUI-Time-Out-Options" rel="prev" title="Configuring the KUI Time Out Options">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Using-Maps"></a>
-<p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Understanding-Keycodes.html#Understanding-Keycodes">Understanding Keycodes</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Configuring-the-KUI-Time-Out-Options.html#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>
-<hr>
-</div>
 
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<a name="Using-Maps"></a>
+<div class="header">
+<p>
+Next: <a href="Understanding-Keycodes.html#Understanding-Keycodes" accesskey="n" rel="next">Understanding Keycodes</a>, Previous: <a href="Configuring-the-KUI-Time-Out-Options.html#Configuring-the-KUI-Time-Out-Options" accesskey="p" rel="prev">Configuring the KUI Time Out Options</a>, Up: <a href="Key-User-Interface.html#Key-User-Interface" accesskey="u" rel="up">Key User Interface</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a name="Using-maps"></a>
 <h3 class="section">6.2 Using maps</h3>
 
-<p>CGDB fully supports the use of maps.  It allows the user to change the
-meaning of typed keys. For example, you could have the following map
+<p>CGDB fully supports the use of maps.  It allows the user to change the 
+meaning of typed keys. For example, you could have the following map 
 <code>:map &lt;F2&gt; ip&lt;Space&gt;argc&lt;CR&gt;</code>.
-
-   <p>When the user is in CGDB mode and they hit &lt;F2&gt;, the value of the map
+</p>
+<p>When the user is in CGDB mode and they hit <tt class="key">F2</tt>, the value of the map
 will be used instead.  The <kbd>i</kbd> key will first be received by CGDB, and
 it will put the user into insert mode.  Next, CGDB will get <kbd>p argc</kbd>
-followed by the &lt;Enter&gt; key.
-
-   <p>CGDB currently supports two mapping lists.  Any mapping that was added
-with the <var>map</var> command will be used by CGDB when it is in CGDB mode. 
+followed by the <tt class="key">Enter</tt> key.
+</p>
+<p>CGDB currently supports two mapping lists.  Any mapping that was added 
+with the <var>map</var> command will be used by CGDB when it is in CGDB mode.
 You can delete a mapping that you have created with the <var>map</var> command
-with the <var>unmap</var> command.  If you want to have mappings in GDB mode, you
+with the <var>unmap</var> command.  If you want to have mappings in GDB mode, you 
 can use the <var>imap</var> command.  Similarly, <var>iunmap</var> will delete a
-mapping in the <var>imap</var> set.  Some examples of this would be
-<pre class="example">     map a&lt;Space&gt;b foo
-     unmap a&lt;Space&gt;b
-     
-     imap a&lt;CR&gt;b foo
-     iunmap a&lt;CR&gt;b
-</pre>
-   </body></html>
+mapping in the <var>imap</var> set.  Some examples of this would be 
+</p><div class="example">
+<pre class="example">map a&lt;Space&gt;b foo
+unmap a&lt;Space&gt;b
 
+imap a&lt;CR&gt;b foo
+iunmap a&lt;CR&gt;b
+</pre></div>
+
+
+
+
+</body>
+</html>

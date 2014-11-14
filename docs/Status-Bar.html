@@ -1,80 +1,105 @@
-<html lang="en">
-<head>
-<title>Status Bar - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Understanding-CGDB.html#Understanding-CGDB" title="Understanding CGDB">
-<link rel="prev" href="TTY-Window.html#TTY-Window" title="TTY Window">
-<link rel="next" href="Switching-Windows.html#Switching-Windows" title="Switching Windows">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: Status Bar</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: Status Bar">
+<meta name="keywords" content="CGDB Manual 0.6.8: Status Bar">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Understanding-CGDB.html#Understanding-CGDB" rel="up" title="Understanding CGDB">
+<link href="Switching-Windows.html#Switching-Windows" rel="next" title="Switching Windows">
+<link href="TTY-Window.html#TTY-Window" rel="prev" title="TTY Window">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Status-Bar"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Switching-Windows.html#Switching-Windows">Switching Windows</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="TTY-Window.html#TTY-Window">TTY Window</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Understanding-CGDB.html#Understanding-CGDB">Understanding CGDB</a>
-<hr>
+Next: <a href="Switching-Windows.html#Switching-Windows" accesskey="n" rel="next">Switching Windows</a>, Previous: <a href="TTY-Window.html#TTY-Window" accesskey="p" rel="prev">TTY Window</a>, Up: <a href="Understanding-CGDB.html#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="Understanding-the-status-bar_002e"></a>
 <h3 class="section">2.5 Understanding the status bar.</h3>
+<a name="index-status-bar-1"></a>
 
-<p><a name="index-status-bar-15"></a>
-<a name="index-status-bar-16"></a>The <dfn>status bar</dfn> is the general purpose way for CGDB to show the user
-which commands they are currently typing or report errors to the user when
-they occur.  CGDB does not use popup's or other forms of I/O to alert the
+<a name="index-status-bar-2"></a>
+<p>The <em>status bar</em> is the general purpose way for CGDB to show the user 
+which commands they are currently typing or report errors to the user when 
+they occur.  CGDB does not use popup&rsquo;s or other forms of I/O to alert the 
 user of information or problems.
-
-   <p>While CGDB is running, you can configure it with any of the commands that
-are valid in CGDB's configuration file.  Simply type <kbd>:</kbd> in the source
-window, and you will see the colon, and the rest of the command you type
-appear in the status bar.  When you are finished typing the command that
-you are interested in, type <code>enter</code>.  This will alert CGDB to execute
+</p>
+<p>While CGDB is running, you can configure it with any of the commands that 
+are valid in CGDB&rsquo;s configuration file.  Simply type <kbd>:</kbd> in the source 
+window, and you will see the colon, and the rest of the command you type 
+appear in the status bar.  When you are finished typing the command that 
+you are interested in, type <code>enter</code>.  This will alert CGDB to execute 
 the command.  If at any point you would like to cancel the current
 command typed so far, type the cgdb mode key.  This will put you back
-into CGDB mode.  For a description of the cgdb mode key, see
+into CGDB mode.  For a description of the cgdb mode key, see 
 <a href="Switching-Windows.html#Switching-Windows">Switching Windows</a>.
-
-   <p>The full list of commands that are available in the source window is in
+</p>
+<p>The full list of commands that are available in the source window is in
 <a href="Configuring-CGDB.html#Configuring-CGDB">Configuring CGDB</a>.
+</p>
 
-   </body></html>
 
+
+</body>
+</html>

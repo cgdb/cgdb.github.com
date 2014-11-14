@@ -1,81 +1,106 @@
-<html lang="en">
-<head>
-<title>TTY Window - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Understanding-CGDB.html#Understanding-CGDB" title="Understanding CGDB">
-<link rel="prev" href="File-Dialog-Window.html#File-Dialog-Window" title="File Dialog Window">
-<link rel="next" href="Status-Bar.html#Status-Bar" title="Status Bar">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: TTY Window</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: TTY Window">
+<meta name="keywords" content="CGDB Manual 0.6.8: TTY Window">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Understanding-CGDB.html#Understanding-CGDB" rel="up" title="Understanding CGDB">
+<link href="Status-Bar.html#Status-Bar" rel="next" title="Status Bar">
+<link href="File-Dialog-Window.html#File-Dialog-Window" rel="prev" title="File Dialog Window">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="TTY-Window"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Status-Bar.html#Status-Bar">Status Bar</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="File-Dialog-Window.html#File-Dialog-Window">File Dialog Window</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Understanding-CGDB.html#Understanding-CGDB">Understanding CGDB</a>
-<hr>
+Next: <a href="Status-Bar.html#Status-Bar" accesskey="n" rel="next">Status Bar</a>, Previous: <a href="File-Dialog-Window.html#File-Dialog-Window" accesskey="p" rel="prev">File Dialog Window</a>, Up: <a href="Understanding-CGDB.html#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="Understanding-the-TTY-window_002e"></a>
 <h3 class="section">2.4 Understanding the TTY window.</h3>
+<a name="index-tty-window"></a>
 
-<p><a name="index-tty-window-13"></a>
-<a name="index-TTY-window-14"></a>The <dfn>TTY window</dfn> is available to allow the user to pass input to the program
+<a name="index-TTY-window"></a>
+<p>The <em>TTY window</em> is available to allow the user to pass input to the program 
 being debugged. This window will act similar to the GDB window, except that
-the data you type will get sent to the program being debugged. 
+the data you type will get sent to the program being debugged.  
 See <a href="Sending-I_002fO-to-Inferior.html#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>.
-
-   <p>You will notice that the TTY window has a terminal device between it and the
-program being debugged.  So, if the program being debugged uses say readline,
+</p>
+<p>You will notice that the TTY window has a terminal device between it and the 
+program being debugged.  So, if the program being debugged uses say readline, 
 which allows command line editing, the same interface will be provided via the
-TTY window as at the terminal.  You can see the name of the terminal device
+TTY window as at the terminal.  You can see the name of the terminal device 
 in the TTY status bar.
-
-   <p>The full list of commands that are available in the source window is in
+</p>
+<p>The full list of commands that are available in the source window is in
 <a href="TTY-Mode.html#TTY-Mode">TTY Mode</a>.
-
-   <p>Sending I/O to the program being debugged can be confusing.  It is described
+</p>
+<p>Sending I/O to the program being debugged can be confusing.  It is described
 better in <a href="Sending-I_002fO-to-Inferior.html#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>.  Unless the I/O with the program
 being debugged is simple, I usually prefer starting the application on a
 separate terminal and attaching to it with CGDB.
+</p>
 
-   </body></html>
 
+
+</body>
+</html>

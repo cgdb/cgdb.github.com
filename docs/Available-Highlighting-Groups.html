@@ -1,94 +1,149 @@
-<html lang="en">
-<head>
-<title>Available Highlighting Groups - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="up" href="Highlighting-Groups.html#Highlighting-Groups" title="Highlighting Groups">
-<link rel="next" href="Available-Attributes.html#Available-Attributes" title="Available Attributes">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: Available Highlighting Groups</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: Available Highlighting Groups">
+<meta name="keywords" content="CGDB Manual 0.6.8: Available Highlighting Groups">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Highlighting-Groups.html#Highlighting-Groups" rel="up" title="Highlighting Groups">
+<link href="Available-Attributes.html#Available-Attributes" rel="next" title="Available Attributes">
+<link href="Highlighting-Groups.html#Highlighting-Groups" rel="prev" title="Highlighting Groups">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Available-Highlighting-Groups"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Available-Attributes.html#Available-Attributes">Available Attributes</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="Highlighting-Groups.html#Highlighting-Groups">Highlighting Groups</a>
-<hr>
+Next: <a href="Available-Attributes.html#Available-Attributes" accesskey="n" rel="next">Available Attributes</a>, Up: <a href="Highlighting-Groups.html#Highlighting-Groups" accesskey="u" rel="up">Highlighting Groups</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="The-different-highlighting-groups"></a>
 <h3 class="section">5.1 The different highlighting groups</h3>
+<a name="index-highlighting-groups-1"></a>
 
-<p><a name="index-highlighting-groups-25"></a>
-Below is a list of all the highlighting groups that CDGB will use when syntax
+<p>Below is a list of all the highlighting groups that CDGB will use when syntax 
 highlighting source files.
-
-     <dl>
-<dt><code>Statement</code><dd>This represents the keywords a language defines. 
-<br><dt><code>Type</code><dd>This represents the types a language defines. 
-<br><dt><code>Constant</code><dd>This represents either a string or numeric value. 
-<br><dt><code>Comment</code><dd>This represents the comments in a source file. 
-<br><dt><code>PreProc</code><dd>This represents the C/C++ preprocessor commands. 
-<br><dt><code>Normal</code><dd>This represents all normal text. 
+</p>
+<dl compact="compact">
+<dt><code>Statement</code></dt>
+<dd><p>This represents the keywords a language defines.
+</p></dd>
+<dt><code>Type</code></dt>
+<dd><p>This represents the types a language defines.
+</p></dd>
+<dt><code>Constant</code></dt>
+<dd><p>This represents either a string or numeric value.
+</p></dd>
+<dt><code>Comment</code></dt>
+<dd><p>This represents the comments in a source file.
+</p></dd>
+<dt><code>PreProc</code></dt>
+<dd><p>This represents the C/C++ preprocessor commands.
+</p></dd>
+<dt><code>Normal</code></dt>
+<dd><p>This represents all normal text.
+</p></dd>
 </dl>
 
-   <p>Below is a list of all the highlighting groups that CGDB will use when it is
-displaying it's User Interface.
-
-     <dl>
-<dt><code>StatusLine</code><dd>This represents the <dfn>status bar</dfn> in CGDB.  The file dialog's status
-bar also uses this group. 
-<br><dt><code>IncSearch</code><dd>This represents the group used when the user is searching in either the source
-window, or the <dfn>file dialog window</dfn>. 
-<br><dt><code>Arrow</code><dd>This represents the arrow that CGDB draws to point to the currently viewed
-line. 
-<br><dt><code>LineHighlight</code><dd>This represents the group used when the user has the <code>arrowstyle</code> option
-set to <code>highlight</code>. 
-<br><dt><code>Breakpoint</code><dd>This represents the group that is used when CGDB displays a line that has a
-breakpoint set. 
-<br><dt><code>DisabledBreakpoint</code><dd>This represents the group that is used when CGDB displays a line that has a
-disabled breakpoint set. 
-<br><dt><code>SelectedLineNr</code><dd>This represents the group that is used when CGDB is displaying the currently
-selected line.  This is the line that the cursor is on. 
-<br><dt><code>Logo</code><dd>This is the group CGDB uses to display its logo on startup when no source
-file can be auto detected. 
+<p>Below is a list of all the highlighting groups that CGDB will use when it is
+displaying it&rsquo;s User Interface.
+</p>
+<dl compact="compact">
+<dt><code>StatusLine</code></dt>
+<dd><p>This represents the <em>status bar</em> in CGDB.  The file dialog&rsquo;s status 
+bar also uses this group.
+</p></dd>
+<dt><code>IncSearch</code></dt>
+<dd><p>This represents the group used when the user is searching in either the source 
+window, or the <em>file dialog window</em>.
+</p></dd>
+<dt><code>Arrow</code></dt>
+<dd><p>This represents the arrow that CGDB draws to point to the currently viewed 
+line.
+</p></dd>
+<dt><code>LineHighlight</code></dt>
+<dd><p>This represents the group used when the user has the <code>arrowstyle</code> option 
+set to <code>highlight</code>.
+</p></dd>
+<dt><code>Breakpoint</code></dt>
+<dd><p>This represents the group that is used when CGDB displays a line that has a 
+breakpoint set.
+</p></dd>
+<dt><code>DisabledBreakpoint</code></dt>
+<dd><p>This represents the group that is used when CGDB displays a line that has a 
+disabled breakpoint set.
+</p></dd>
+<dt><code>SelectedLineNr</code></dt>
+<dd><p>This represents the group that is used when CGDB is displaying the currently
+selected line.  This is the line that the cursor is on.
+</p></dd>
+<dt><code>Logo</code></dt>
+<dd><p>This is the group CGDB uses to display its logo on startup when no source 
+file can be auto detected.
+</p></dd>
 </dl>
 
-   </body></html>
 
+
+
+
+</body>
+</html>

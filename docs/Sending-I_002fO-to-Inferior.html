@@ -1,100 +1,129 @@
-<html lang="en">
-<head>
-<title>Sending I/O to Inferior - CGDB Manual 0.6.7</title>
-<meta http-equiv="Content-Type" content="text/html">
-<meta name="description" content="CGDB Manual 0.6.7">
-<meta name="generator" content="makeinfo 4.13">
-<link title="Top" rel="start" href="index.html#Top">
-<link rel="prev" href="Key-User-Interface.html#Key-User-Interface" title="Key User Interface">
-<link rel="next" href="Terminal-Control-Flow.html#Terminal-Control-Flow" title="Terminal Control Flow">
-<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
-<!--
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<!-- 
 This manual is for GNU CGDB
-(version 0.6.7, 14 January 2013),
+(version 0.6.8, 13 November 2014),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
 
-     This document is part of a free software program; you can
-     redistribute it and/or modify it under the terms of the GNU
-     General Public License as published by the Free Software
-     Foundation; either version 2 of the License, or (at your option)
-     any later version.
+This document is part of a free software program; you can redistribute it
+and/or modify it under the terms of the GNU General Public License as
+published by the Free Software Foundation; either version 2 of the License,
+or (at your option) any later version.
 
-     This program is distributed in the hope that it will be useful,
-     but WITHOUT ANY WARRANTY; without even the implied warranty of
-     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-     General Public License for more details.
+This program is distributed in the hope that it will be useful, but WITHOUT
+ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+details.
 
-     You should have received a copy of the GNU General Public License
-     along with this program; if not, write to the Free Software
-     Foundation, Inc., 59 Temple Place, Suite 330, Boston MA 02111-1307
-     USA
-   -->
-<meta http-equiv="Content-Style-Type" content="text/css">
-<style type="text/css"><!--
-  pre.display { font-family:inherit }
-  pre.format  { font-family:inherit }
-  pre.smalldisplay { font-family:inherit; font-size:smaller }
-  pre.smallformat  { font-family:inherit; font-size:smaller }
-  pre.smallexample { font-size:smaller }
-  pre.smalllisp    { font-size:smaller }
-  span.sc    { font-variant:small-caps }
-  span.roman { font-family:serif; font-weight:normal; } 
-  span.sansserif { font-family:sans-serif; font-weight:normal; } 
---></style>
+You should have received a copy of the GNU General Public License along with
+this program; if not, write to the Free Software Foundation, Inc., 59 Temple
+Place, Suite 330, Boston MA 02111-1307 USA -->
+<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<head>
+<title>CGDB Manual 0.6.8: Sending I/O to Inferior</title>
+
+<meta name="description" content="CGDB Manual 0.6.8: Sending I/O to Inferior">
+<meta name="keywords" content="CGDB Manual 0.6.8: Sending I/O to Inferior">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="index.html#Top" rel="start" title="Top">
+<link href="Index.html#Index" rel="index" title="Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html#Top" rel="up" title="Top">
+<link href="Terminal-Control-Flow.html#Terminal-Control-Flow" rel="next" title="Terminal Control Flow">
+<link href="Understanding-Keycodes.html#Understanding-Keycodes" rel="prev" title="Understanding Keycodes">
+<style type="text/css">
+<!--
+a.summary-letter {text-decoration: none}
+blockquote.smallquotation {font-size: smaller}
+div.display {margin-left: 3.2em}
+div.example {margin-left: 3.2em}
+div.indentedblock {margin-left: 3.2em}
+div.lisp {margin-left: 3.2em}
+div.smalldisplay {margin-left: 3.2em}
+div.smallexample {margin-left: 3.2em}
+div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
+div.smalllisp {margin-left: 3.2em}
+kbd {font-style:oblique}
+pre.display {font-family: inherit}
+pre.format {font-family: inherit}
+pre.menu-comment {font-family: serif}
+pre.menu-preformatted {font-family: serif}
+pre.smalldisplay {font-family: inherit; font-size: smaller}
+pre.smallexample {font-size: smaller}
+pre.smallformat {font-family: inherit; font-size: smaller}
+pre.smalllisp {font-size: smaller}
+span.nocodebreak {white-space:nowrap}
+span.nolinebreak {white-space:nowrap}
+span.roman {font-family:serif; font-weight:normal}
+span.sansserif {font-family:sans-serif; font-weight:normal}
+ul.no-bullet {list-style: none}
+-->
+</style>
+
+
 </head>
-<body>
-<div class="node">
-<a name="Sending-I%2fO-to-Inferior"></a>
+
+<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
 <a name="Sending-I_002fO-to-Inferior"></a>
+<div class="header">
 <p>
-Next:&nbsp;<a rel="next" accesskey="n" href="Terminal-Control-Flow.html#Terminal-Control-Flow">Terminal Control Flow</a>,
-Previous:&nbsp;<a rel="previous" accesskey="p" href="Key-User-Interface.html#Key-User-Interface">Key User Interface</a>,
-Up:&nbsp;<a rel="up" accesskey="u" href="index.html#Top">Top</a>
-<hr>
+Next: <a href="Terminal-Control-Flow.html#Terminal-Control-Flow" accesskey="n" rel="next">Terminal Control Flow</a>, Previous: <a href="Key-User-Interface.html#Key-User-Interface" accesskey="p" rel="prev">Key User Interface</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
-
+<hr>
+<a name="Sending-I_002fO-to-the-program-being-debugged"></a>
 <h2 class="chapter">7 Sending I/O to the program being debugged</h2>
+<a name="index-sending-I_002fO-to-inferior"></a>
 
-<p><a name="index-sending-I_002fO-to-inferior-33"></a>
-If the program being debugged takes input on the terminal it is recommended
+<p>If the program being debugged takes input on the terminal it is recommended
 that the user start the program on one terminal, and attach to it with CGDB
-from another terminal.  This is the easiest way to pass input to the
+from another terminal.  This is the easiest way to pass input to the 
 debugged program.
-
-   <p>However, if the user wishes to pass input to the program being debugged from
-within CGDB, there is a mechanism available for doing so.  As of this writing,
-the technique described below does not work on windows, using a natively
+</p>
+<p>However, if the user wishes to pass input to the program being debugged from
+within CGDB, there is a mechanism available for doing so.  As of this writing, 
+the technique described below does not work on windows, using a natively 
 compiled GDB.  It may work when using the GDB that comes with Cygwin.
-
-   <p>This technique is similar to getting in and out of <dfn>GDB mode</dfn>.  The tty
-window is not visible by default.  This is because it is only needed if the
-user wishes to send data to the program being debugged.  To display the tty
-window, hit <kbd>T</kbd> while in command mode.  After hitting <kbd>T</kbd> you will
-notice that there is another window in the middle of the <dfn>source window</dfn>
-and the <dfn>gdb window</dfn>.  This is called the <dfn>tty window</dfn>. You will also
-see a new status bar called the tty status bar.  There will be a &lsquo;<samp><span class="samp">*</span></samp>&rsquo; on
-the tty status bar after the <kbd>T</kbd> was hit.  This is because when the
-window is opened with the <kbd>T</kbd> command, CGDB automatically puts the user
-into <dfn>TTY mode</dfn>.  To get out of this window hit the cgdb mode key. 
-This will put you back into command mode.  To make the tty window appear and
+</p>
+<p>This technique is similar to getting in and out of <em>GDB mode</em>.  The tty 
+window is not visible by default.  This is because it is only needed if the 
+user wishes to send data to the program being debugged.  To display the tty 
+window, hit <kbd>T</kbd> while in command mode.  After hitting <kbd>T</kbd> you will 
+notice that there is another window in the middle of the <em>source window</em> 
+and the <em>gdb window</em>.  This is called the <em>tty window</em>. You will also 
+see a new status bar called the tty status bar.  There will be a &lsquo;<samp>*</samp>&rsquo; on 
+the tty status bar after the <kbd>T</kbd> was hit.  This is because when the 
+window is opened with the <kbd>T</kbd> command, CGDB automatically puts the user 
+into <em>TTY mode</em>.  To get out of this window hit the cgdb mode key.  
+This will put you back into command mode.  To make the tty window appear and 
 disappear hit the <kbd>T</kbd> key while in command mode.  It is a toggle.
-
-   <p>Once the tty window is already open, the user can then hit <kbd>I</kbd> in
-command mode to get into <dfn>TTY mode</dfn>.  The user can then hit the
-cgdb mode key in the <dfn>TTY mode</dfn> to get back into command mode.
-
-   <p>When the tty window is open, all data that comes from the program, goes
+</p>
+<p>Once the tty window is already open, the user can then hit <kbd>I</kbd> in
+command mode to get into <em>TTY mode</em>.  The user can then hit the 
+cgdb mode key in the <em>TTY mode</em> to get back into command mode.
+</p>
+<p>When the tty window is open, all data that comes from the program, goes
 there.  Any data typed into the tty window will ONLY go to the program
 being debugged.  It will not go to GDB. When the tty window is closed,
-all output from the debugged program will go to the <dfn>GDB window</dfn> AND to
-the <dfn>tty window</dfn> (for viewing later when the tty window is opened).
-
-   <p>If the user wishes to get a new tty for the program being debugged then
+all output from the debugged program will go to the <em>GDB window</em> AND to
+the <em>tty window</em> (for viewing later when the tty window is opened). 
+</p>
+<p>If the user wishes to get a new tty for the program being debugged then
 they can type <kbd>Ctrl-T</kbd>.  This will delete all the buffered data
 waiting to be read into the debugged program. This might be useful when
 you rerun or start a new program.
+</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="Terminal-Control-Flow.html#Terminal-Control-Flow" accesskey="n" rel="next">Terminal Control Flow</a>, Previous: <a href="Key-User-Interface.html#Key-User-Interface" accesskey="p" rel="prev">Key User Interface</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
-   </body></html>
 
+
+</body>
+</html>
