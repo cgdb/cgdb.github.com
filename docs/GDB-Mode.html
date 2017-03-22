@@ -2,7 +2,7 @@
 <html>
 <!-- 
 This manual is for GNU CGDB
-(version 0.6.8, 13 November 2014),
+(version 0.7.0, 21 March 2017),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
@@ -20,12 +20,12 @@ details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston MA 02111-1307 USA -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>CGDB Manual 0.6.8: GDB Mode</title>
+<title>CGDB Manual 0.7.0: GDB Mode</title>
 
-<meta name="description" content="CGDB Manual 0.6.8: GDB Mode">
-<meta name="keywords" content="CGDB Manual 0.6.8: GDB Mode">
+<meta name="description" content="CGDB Manual 0.7.0: GDB Mode">
+<meta name="keywords" content="CGDB Manual 0.7.0: GDB Mode">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -39,16 +39,16 @@ Place, Suite 330, Boston MA 02111-1307 USA -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -57,10 +57,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -68,7 +67,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="GDB-Mode"></a>
 <div class="header">
 <p>
@@ -79,15 +78,29 @@ Next: <a href="File-Dialog-Mode.html#File-Dialog-Mode" accesskey="n" rel="next">
 <h3 class="section">3.2 Commands available during GDB mode</h3>
 <a name="index-commands_002c-in-GDB-mode"></a>
 
-<p>When in <em>GDB mode</em>, the user is mostly interested in working with the GDB 
-console.  That is, sending commands to GDB and receiving data back from GDB.
-Almost all data passed into this window is directly sent to readline and then
-to GDB.
+<p>When in <em>GDB mode</em>, the user is in command mode or scroll mode.
+When in command mode, the user is typing in commands to interact with GDB.
+When in scroll mode, the user can scroll through the GDB output.
+You can enter scroll mode by typing <kbd>page up</kbd> and quit scroll mode
+by typing <kbd>q</kbd>, <kbd>i</kbd> or <kbd>enter</kbd>.
 </p>
-<p>It is important to understand that CGDB parses the keys entered in
-the GDB window and has the first chance at dealing with them.  If it is
-interested in the keys, it will handle them. Below is a list of keys that
-CGDB is interested in, and does not pass along any further.
+<p>The commands available in <a href="#GDB-Mode">GDB Mode</a> when in command mode are:
+</p>
+<dl compact="compact">
+<dt><kbd>cgdbmodekey</kbd></dt>
+<dd><p>Switch back to source window.  This is defaulted to the <tt class="key">ESC</tt> key.
+</p>
+</dd>
+<dt><kbd>page up</kbd></dt>
+<dd><p>Move up a page and enter scroll mode.
+</p></dd>
+</dl>
+
+<p>When in command mode, CGDB will pass along any other keys to the readline
+library. When readline has determined that a command has been received, it
+alerts CGDB, and a command is then sent to GDB.
+</p>
+<p>The commands available in <a href="#GDB-Mode">GDB Mode</a> when in scroll mode are:
 </p>
 <dl compact="compact">
 <dt><kbd>cgdbmodekey</kbd></dt>
@@ -102,20 +115,82 @@ CGDB is interested in, and does not pass along any further.
 <dd><p>Move down a page.
 </p>
 </dd>
+<dt><kbd>Ctrl-u</kbd></dt>
+<dd><p>Move up 1/2 a page.
+</p>
+</dd>
+<dt><kbd>Ctrl-d</kbd></dt>
+<dd><p>Move down 1/2 a page.
+</p>
+</dd>
 <dt><kbd>F11</kbd></dt>
+<dt><kbd>home key</kbd></dt>
+<dt><kbd>gg</kbd></dt>
 <dd><p>Go to the beginning of the GDB buffer.
 </p>
 </dd>
 <dt><kbd>F12</kbd></dt>
+<dt><kbd>end key</kbd></dt>
+<dt><kbd>G</kbd></dt>
 <dd><p>Go to the end of the GDB buffer.
+</p>
+</dd>
+<dt><kbd>k</kbd></dt>
+<dt><kbd>up arrow</kbd></dt>
+<dt><kbd>Ctrl-p</kbd></dt>
+<dd><p>Move up a line.
+</p>
+</dd>
+<dt><kbd>j</kbd></dt>
+<dt><kbd>down arrow</kbd></dt>
+<dt><kbd>Ctrl-n</kbd></dt>
+<dd><p>Move down a line.
+</p>
+</dd>
+<dt><kbd>/</kbd></dt>
+<dd><p>search from current cursor position.
+</p>
+</dd>
+<dt><kbd>?</kbd></dt>
+<dd><p>reverse search from current cursor position.
+</p>
+</dd>
+<dt><kbd>n</kbd></dt>
+<dd><p>next forward search.
+</p>
+</dd>
+<dt><kbd>N</kbd></dt>
+<dd><p>next reverse search.
+</p>
+</dd>
+<dt><kbd>m[a-z]</kbd></dt>
+<dd><p>Set a mark at the cursor position. 
+</p>
+</dd>
+<dt><kbd>'[a-z]</kbd></dt>
+<dd><p>Jump to the corresponding mark.
+</p>
+</dd>
+<dt><kbd>''</kbd></dt>
+<dd><p>Jump to the last jump location.
+</p>
+</dd>
+<dt><kbd>'.</kbd></dt>
+<dd><p>Jump to the last line.
+</p>
+</dd>
+<dt><kbd>q</kbd></dt>
+<dt><kbd>i</kbd></dt>
+<dt><kbd>enter</kbd></dt>
+<dd><p>Exit scroll mode.
 </p></dd>
 </dl>
 
-<p>Any other keys, besides the ones above, CGDB is currently not interested in.  
-CGDB will pass along these keys to the readline library. When readline has 
-determined that a command has been received, it alerts CGDB, and a command is
-then sent to GDB. This is the same method used when invoking GDB directly.
-</p>
+<hr>
+<div class="header">
+<p>
+Next: <a href="File-Dialog-Mode.html#File-Dialog-Mode" accesskey="n" rel="next">File Dialog Mode</a>, Previous: <a href="CGDB-Mode.html#CGDB-Mode" accesskey="p" rel="prev">CGDB Mode</a>, Up: <a href="Controlling-CGDB.html#Controlling-CGDB" accesskey="u" rel="up">Controlling CGDB</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

@@ -2,7 +2,7 @@
 <html>
 <!-- 
 This manual is for GNU CGDB
-(version 0.6.8, 13 November 2014),
+(version 0.7.0, 21 March 2017),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
@@ -20,12 +20,12 @@ details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston MA 02111-1307 USA -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>CGDB Manual 0.6.8: Top</title>
+<title>CGDB Manual 0.7.0: Top</title>
 
-<meta name="description" content="CGDB Manual 0.6.8: Top">
-<meta name="keywords" content="CGDB Manual 0.6.8: Top">
+<meta name="description" content="CGDB Manual 0.7.0: Top">
+<meta name="keywords" content="CGDB Manual 0.7.0: Top">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -38,16 +38,16 @@ Place, Suite 330, Boston MA 02111-1307 USA -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -56,10 +56,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -67,8 +66,8 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">CGDB Manual 0.6.8</h1>
+<body lang="en">
+<h1 class="settitle" align="center">CGDB Manual 0.7.0</h1>
 
 
 
@@ -85,16 +84,14 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Understanding-the-source-window_002e" href="Source-Window.html#Source-Window">2.1 Understanding the source window.</a></li>
     <li><a name="toc-Understanding-the-GDB-window_002e" href="GDB-Window.html#GDB-Window">2.2 Understanding the GDB window.</a></li>
     <li><a name="toc-Understanding-the-file-dialog-window_002e" href="File-Dialog-Window.html#File-Dialog-Window">2.3 Understanding the file dialog window.</a></li>
-    <li><a name="toc-Understanding-the-TTY-window_002e" href="TTY-Window.html#TTY-Window">2.4 Understanding the TTY window.</a></li>
-    <li><a name="toc-Understanding-the-status-bar_002e" href="Status-Bar.html#Status-Bar">2.5 Understanding the status bar.</a></li>
-    <li><a name="toc-Switch-between-windows" href="Switching-Windows.html#Switching-Windows">2.6 Switch between windows</a></li>
+    <li><a name="toc-Understanding-the-status-bar_002e" href="Status-Bar.html#Status-Bar">2.4 Understanding the status bar.</a></li>
+    <li><a name="toc-Switch-between-windows" href="Switching-Windows.html#Switching-Windows">2.5 Switch between windows</a></li>
   </ul></li>
   <li><a name="toc-CGDB-commands" href="Controlling-CGDB.html#Controlling-CGDB">3 CGDB commands</a>
   <ul class="no-bullet">
     <li><a name="toc-Commands-available-during-CGDB-mode" href="CGDB-Mode.html#CGDB-Mode">3.1 Commands available during CGDB mode</a></li>
     <li><a name="toc-Commands-available-during-GDB-mode" href="GDB-Mode.html#GDB-Mode">3.2 Commands available during GDB mode</a></li>
     <li><a name="toc-Commands-available-during-the-file-dialog-mode" href="File-Dialog-Mode.html#File-Dialog-Mode">3.3 Commands available during the file dialog mode</a></li>
-    <li><a name="toc-Commands-available-during-TTY-mode" href="TTY-Mode.html#TTY-Mode">3.4 Commands available during TTY mode</a></li>
   </ul></li>
   <li><a name="toc-CGDB-configuration-commands" href="Configuring-CGDB.html#Configuring-CGDB">4 CGDB configuration commands</a></li>
   <li><a name="toc-CGDB-highlighting-groups" href="Highlighting-Groups.html#Highlighting-Groups">5 CGDB highlighting groups</a>
@@ -128,7 +125,7 @@ Next: <a href="Summary.html#Summary" accesskey="n" rel="next">Summary</a>, Up: <
 <h1 class="top">CGDB</h1>
 
 <p>This manual is for <acronym>GNU</acronym> CGDB
-(version 0.6.8, 13 November 2014),
+(version 0.7.0, 21 March 2017),
 the <acronym>GNU</acronym> ncurses based front end to GDB.
 </p>
 <p>Copyright &copy; 2013 CGDB Team
@@ -154,6 +151,7 @@ Place, Suite 330, Boston MA 02111-1307 USA
 <tr><td align="left" valign="top">&bull; <a href="Summary.html#Summary" accesskey="1">Summary</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Summary of CGDB
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Invocation.html#Invocation" accesskey="2">Invocation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Getting in and out of CGDB
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="Understanding-CGDB.html#Understanding-CGDB" accesskey="3">Understanding CGDB</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding the core concepts of CGDB
@@ -171,12 +169,15 @@ Place, Suite 330, Boston MA 02111-1307 USA
 <tr><td align="left" valign="top">&bull; <a href="Terminal-Control-Flow.html#Terminal-Control-Flow" accesskey="9">Terminal Control Flow</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Allowing terminal control flow in CGDB
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Building-CGDB.html#Building-CGDB">Building CGDB</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Building CGDB from source
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Copying-This-Manual.html#Copying-This-Manual">Copying This Manual</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="Index.html#Index">Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>

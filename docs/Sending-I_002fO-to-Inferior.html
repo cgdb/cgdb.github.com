@@ -2,7 +2,7 @@
 <html>
 <!-- 
 This manual is for GNU CGDB
-(version 0.6.8, 13 November 2014),
+(version 0.7.0, 21 March 2017),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
@@ -20,12 +20,12 @@ details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston MA 02111-1307 USA -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>CGDB Manual 0.6.8: Sending I/O to Inferior</title>
+<title>CGDB Manual 0.7.0: Sending I/O to Inferior</title>
 
-<meta name="description" content="CGDB Manual 0.6.8: Sending I/O to Inferior">
-<meta name="keywords" content="CGDB Manual 0.6.8: Sending I/O to Inferior">
+<meta name="description" content="CGDB Manual 0.7.0: Sending I/O to Inferior">
+<meta name="keywords" content="CGDB Manual 0.7.0: Sending I/O to Inferior">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -39,16 +39,16 @@ Place, Suite 330, Boston MA 02111-1307 USA -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -57,10 +57,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -68,7 +67,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="Sending-I_002fO-to-Inferior"></a>
 <div class="header">
 <p>
@@ -84,44 +83,6 @@ that the user start the program on one terminal, and attach to it with CGDB
 from another terminal.  This is the easiest way to pass input to the 
 debugged program.
 </p>
-<p>However, if the user wishes to pass input to the program being debugged from
-within CGDB, there is a mechanism available for doing so.  As of this writing, 
-the technique described below does not work on windows, using a natively 
-compiled GDB.  It may work when using the GDB that comes with Cygwin.
-</p>
-<p>This technique is similar to getting in and out of <em>GDB mode</em>.  The tty 
-window is not visible by default.  This is because it is only needed if the 
-user wishes to send data to the program being debugged.  To display the tty 
-window, hit <kbd>T</kbd> while in command mode.  After hitting <kbd>T</kbd> you will 
-notice that there is another window in the middle of the <em>source window</em> 
-and the <em>gdb window</em>.  This is called the <em>tty window</em>. You will also 
-see a new status bar called the tty status bar.  There will be a &lsquo;<samp>*</samp>&rsquo; on 
-the tty status bar after the <kbd>T</kbd> was hit.  This is because when the 
-window is opened with the <kbd>T</kbd> command, CGDB automatically puts the user 
-into <em>TTY mode</em>.  To get out of this window hit the cgdb mode key.  
-This will put you back into command mode.  To make the tty window appear and 
-disappear hit the <kbd>T</kbd> key while in command mode.  It is a toggle.
-</p>
-<p>Once the tty window is already open, the user can then hit <kbd>I</kbd> in
-command mode to get into <em>TTY mode</em>.  The user can then hit the 
-cgdb mode key in the <em>TTY mode</em> to get back into command mode.
-</p>
-<p>When the tty window is open, all data that comes from the program, goes
-there.  Any data typed into the tty window will ONLY go to the program
-being debugged.  It will not go to GDB. When the tty window is closed,
-all output from the debugged program will go to the <em>GDB window</em> AND to
-the <em>tty window</em> (for viewing later when the tty window is opened). 
-</p>
-<p>If the user wishes to get a new tty for the program being debugged then
-they can type <kbd>Ctrl-T</kbd>.  This will delete all the buffered data
-waiting to be read into the debugged program. This might be useful when
-you rerun or start a new program.
-</p>
-<hr>
-<div class="header">
-<p>
-Next: <a href="Terminal-Control-Flow.html#Terminal-Control-Flow" accesskey="n" rel="next">Terminal Control Flow</a>, Previous: <a href="Key-User-Interface.html#Key-User-Interface" accesskey="p" rel="prev">Key User Interface</a>, Up: <a href="index.html#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
-</div>
 
 
 

@@ -2,7 +2,7 @@
 <html>
 <!-- 
 This manual is for GNU CGDB
-(version 0.6.8, 13 November 2014),
+(version 0.7.0, 21 March 2017),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
@@ -20,12 +20,12 @@ details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston MA 02111-1307 USA -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>CGDB Manual 0.6.8: Status Bar</title>
+<title>CGDB Manual 0.7.0: Status Bar</title>
 
-<meta name="description" content="CGDB Manual 0.6.8: Status Bar">
-<meta name="keywords" content="CGDB Manual 0.6.8: Status Bar">
+<meta name="description" content="CGDB Manual 0.7.0: Status Bar">
+<meta name="keywords" content="CGDB Manual 0.7.0: Status Bar">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -35,20 +35,20 @@ Place, Suite 330, Boston MA 02111-1307 USA -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="Understanding-CGDB.html#Understanding-CGDB" rel="up" title="Understanding CGDB">
 <link href="Switching-Windows.html#Switching-Windows" rel="next" title="Switching Windows">
-<link href="TTY-Window.html#TTY-Window" rel="prev" title="TTY Window">
+<link href="File-Dialog-Window.html#File-Dialog-Window" rel="prev" title="File Dialog Window">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -57,10 +57,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -68,15 +67,15 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="Status-Bar"></a>
 <div class="header">
 <p>
-Next: <a href="Switching-Windows.html#Switching-Windows" accesskey="n" rel="next">Switching Windows</a>, Previous: <a href="TTY-Window.html#TTY-Window" accesskey="p" rel="prev">TTY Window</a>, Up: <a href="Understanding-CGDB.html#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="Switching-Windows.html#Switching-Windows" accesskey="n" rel="next">Switching Windows</a>, Previous: <a href="File-Dialog-Window.html#File-Dialog-Window" accesskey="p" rel="prev">File Dialog Window</a>, Up: <a href="Understanding-CGDB.html#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <hr>
 <a name="Understanding-the-status-bar_002e"></a>
-<h3 class="section">2.5 Understanding the status bar.</h3>
+<h3 class="section">2.4 Understanding the status bar.</h3>
 <a name="index-status-bar-1"></a>
 
 <a name="index-status-bar-2"></a>

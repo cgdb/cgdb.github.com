@@ -2,7 +2,7 @@
 <html>
 <!-- 
 This manual is for GNU CGDB
-(version 0.6.8, 13 November 2014),
+(version 0.7.0, 21 March 2017),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
@@ -20,12 +20,12 @@ details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston MA 02111-1307 USA -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>CGDB Manual 0.6.8</title>
+<title>CGDB Manual 0.7.0</title>
 
-<meta name="description" content="CGDB Manual 0.6.8">
-<meta name="keywords" content="CGDB Manual 0.6.8">
+<meta name="description" content="CGDB Manual 0.7.0">
+<meta name="keywords" content="CGDB Manual 0.7.0">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -37,16 +37,16 @@ Place, Suite 330, Boston MA 02111-1307 USA -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -55,10 +55,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -66,8 +65,8 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
-<h1 class="settitle" align="center">CGDB Manual 0.6.8</h1>
+<body lang="en">
+<h1 class="settitle" align="center">CGDB Manual 0.7.0</h1>
 
 
 
@@ -84,16 +83,14 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Understanding-the-source-window_002e" href="#Source-Window">2.1 Understanding the source window.</a></li>
     <li><a name="toc-Understanding-the-GDB-window_002e" href="#GDB-Window">2.2 Understanding the GDB window.</a></li>
     <li><a name="toc-Understanding-the-file-dialog-window_002e" href="#File-Dialog-Window">2.3 Understanding the file dialog window.</a></li>
-    <li><a name="toc-Understanding-the-TTY-window_002e" href="#TTY-Window">2.4 Understanding the TTY window.</a></li>
-    <li><a name="toc-Understanding-the-status-bar_002e" href="#Status-Bar">2.5 Understanding the status bar.</a></li>
-    <li><a name="toc-Switch-between-windows" href="#Switching-Windows">2.6 Switch between windows</a></li>
+    <li><a name="toc-Understanding-the-status-bar_002e" href="#Status-Bar">2.4 Understanding the status bar.</a></li>
+    <li><a name="toc-Switch-between-windows" href="#Switching-Windows">2.5 Switch between windows</a></li>
   </ul></li>
   <li><a name="toc-CGDB-commands" href="#Controlling-CGDB">3 CGDB commands</a>
   <ul class="no-bullet">
     <li><a name="toc-Commands-available-during-CGDB-mode" href="#CGDB-Mode">3.1 Commands available during CGDB mode</a></li>
     <li><a name="toc-Commands-available-during-GDB-mode" href="#GDB-Mode">3.2 Commands available during GDB mode</a></li>
     <li><a name="toc-Commands-available-during-the-file-dialog-mode" href="#File-Dialog-Mode">3.3 Commands available during the file dialog mode</a></li>
-    <li><a name="toc-Commands-available-during-TTY-mode" href="#TTY-Mode">3.4 Commands available during TTY mode</a></li>
   </ul></li>
   <li><a name="toc-CGDB-configuration-commands" href="#Configuring-CGDB">4 CGDB configuration commands</a></li>
   <li><a name="toc-CGDB-highlighting-groups" href="#Highlighting-Groups">5 CGDB highlighting groups</a>
@@ -126,7 +123,7 @@ Next: <a href="#Summary" accesskey="n" rel="next">Summary</a>, Up: <a href="dir.
 <h1 class="top">CGDB</h1>
 
 <p>This manual is for <acronym>GNU</acronym> CGDB
-(version 0.6.8, 13 November 2014),
+(version 0.7.0, 21 March 2017),
 the <acronym>GNU</acronym> ncurses based front end to GDB.
 </p>
 <p>Copyright &copy; 2013 CGDB Team
@@ -152,6 +149,7 @@ Place, Suite 330, Boston MA 02111-1307 USA
 <tr><td align="left" valign="top">&bull; <a href="#Summary" accesskey="1">Summary</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Summary of CGDB
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Invocation" accesskey="2">Invocation</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Getting in and out of CGDB
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Understanding-CGDB" accesskey="3">Understanding CGDB</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding the core concepts of CGDB
@@ -169,12 +167,15 @@ Place, Suite 330, Boston MA 02111-1307 USA
 <tr><td align="left" valign="top">&bull; <a href="#Terminal-Control-Flow" accesskey="9">Terminal Control Flow</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Allowing terminal control flow in CGDB
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Building-CGDB">Building CGDB</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Building CGDB from source
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Copying-This-Manual">Copying This Manual</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
+
 </pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Index">Index</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">
 </td></tr>
 </table>
@@ -197,12 +198,8 @@ split screen showing the source as it executes.  The UI is modeled on the
 classic Unix text editor, vi.  Those familiar with vi should feel right at 
 home using CGDB.
 </p>
-<p>The library responsible for communicating with GDB is called Trivial GDB 
-(tgdb, or more accurately, libtgdb).  This abstraction allows the UI code to 
-be independent of the debugger, as well as greatly simplifying its 
-implementation.
-</p>
-<p>Those wanting to develop other interfaces to GDB are welcome to use libtgdb 
+<p>The library responsible for communicating with GDB is called gdbwire.
+Those wanting to develop other interfaces to GDB are welcome to use gdbwire 
 as the basis for their program.  Many of the headaches of parsing GDB&rsquo;s output 
 and annotations can be avoided by using it.
 </p>
@@ -252,14 +249,13 @@ Next: <a href="#Controlling-CGDB" accesskey="n" rel="next">Controlling CGDB</a>,
 <a name="index-status-bar"></a>
 <a name="index-CGDB-mode"></a>
 <a name="index-GDB-mode"></a>
-<a name="index-TTY-mode"></a>
 <p>The CGDB user interface currently consists of two windows and a status bar.  
 The source window is currently on the top and the GDB window is on the 
 bottom.  The <em>status bar</em> currently separates the two windows.
 </p>
 <p>The interface has several modes depending on which window is focused.  
-<em>CGDB mode</em> is when the source window is focused, <em>GDB mode</em> is when 
-the GDB window is focused and <em>TTY mode</em> is when the TTY window is focused.
+<em>CGDB mode</em> is when the source window is focused and <em>GDB mode</em> is when 
+the GDB window is focused.
 </p>
 <p>Beginning with CGDB version 1.0, the windows are movable,
 and the user will be able to create as many or as few that is desired. 
@@ -275,11 +271,9 @@ task, please contact me.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#File-Dialog-Window" accesskey="3">File Dialog Window</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding the file dialog window.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#TTY-Window" accesskey="4">TTY Window</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding the TTY window.
+<tr><td align="left" valign="top">&bull; <a href="#Status-Bar" accesskey="4">Status Bar</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding the status bar.
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Status-Bar" accesskey="5">Status Bar</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Understanding the status bar.
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Switching-Windows" accesskey="6">Switching Windows</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Switching between windows.
+<tr><td align="left" valign="top">&bull; <a href="#Switching-Windows" accesskey="5">Switching Windows</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Switching between windows.
 </td></tr>
 </table>
 
@@ -311,13 +305,15 @@ at the commands in <a href="#CGDB-Mode">CGDB Mode</a>.
 currently executing line. The line number will be highlighted green, to
 represent that the particular line, is the current line being debugged by GDB.
 Also, CGDB will display an arrow extending from the line number, to the 
-source line.  You can configure what type of arrow CGDB uses with the
-<code>:set arrowstyle</code> configuration option. By default, the <code>short</code>
-arrow is used.  However, my personal favorite is the <code>long</code> arrow.
+source line.  You can configure what type of display CGDB uses with the
+<code>:set executinglinedisplay</code> configuration option. By default,
+the <code>longarrow</code> display is used.
 </p>
 <p>As you navigate through the source window, the current line the cursor is
-on will be highlighted white.  This simply helps you keep track of where you
-are in the file.
+on will be highlighted with a block.  This simply helps you keep track of
+where you are in the file. You can configure what type of display CGDB uses
+with the <code>:set selectedlinedisplay</code> configuration option. By deafult,
+the <code>block</code> display is used.
 </p>
 <p>Also, you can set or delete breakpoints in CGDB from the source window.  Simply
 navigate to the line that you are interested in setting a breakpoint, and hit
@@ -362,11 +358,14 @@ finishes, they will each be run in order.  There will be no way to stop these
 commands from being run besides from typing <kbd>Ctrl-C</kbd>, like you would at any
 normal terminal when working with GDB.
 </p>
+<a name="index-regular-expression-search-1"></a>
+<p>CGDB also supports regular expression searching within the GDB window.
+</p>
 <hr>
 <a name="File-Dialog-Window"></a>
 <div class="header">
 <p>
-Next: <a href="#TTY-Window" accesskey="n" rel="next">TTY Window</a>, Previous: <a href="#GDB-Window" accesskey="p" rel="prev">GDB Window</a>, Up: <a href="#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Status-Bar" accesskey="n" rel="next">Status Bar</a>, Previous: <a href="#GDB-Window" accesskey="p" rel="prev">GDB Window</a>, Up: <a href="#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Understanding-the-file-dialog-window_002e"></a>
 <h3 class="section">2.3 Understanding the file dialog window.</h3>
@@ -390,43 +389,13 @@ lot of time as the number of files grow.
 <a href="#File-Dialog-Mode">File Dialog Mode</a>.
 </p>
 <hr>
-<a name="TTY-Window"></a>
-<div class="header">
-<p>
-Next: <a href="#Status-Bar" accesskey="n" rel="next">Status Bar</a>, Previous: <a href="#File-Dialog-Window" accesskey="p" rel="prev">File Dialog Window</a>, Up: <a href="#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<a name="Understanding-the-TTY-window_002e"></a>
-<h3 class="section">2.4 Understanding the TTY window.</h3>
-<a name="index-tty-window"></a>
-
-<a name="index-TTY-window"></a>
-<p>The <em>TTY window</em> is available to allow the user to pass input to the program 
-being debugged. This window will act similar to the GDB window, except that
-the data you type will get sent to the program being debugged.  
-See <a href="#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>.
-</p>
-<p>You will notice that the TTY window has a terminal device between it and the 
-program being debugged.  So, if the program being debugged uses say readline, 
-which allows command line editing, the same interface will be provided via the
-TTY window as at the terminal.  You can see the name of the terminal device 
-in the TTY status bar.
-</p>
-<p>The full list of commands that are available in the source window is in
-<a href="#TTY-Mode">TTY Mode</a>.
-</p>
-<p>Sending I/O to the program being debugged can be confusing.  It is described
-better in <a href="#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a>.  Unless the I/O with the program
-being debugged is simple, I usually prefer starting the application on a
-separate terminal and attaching to it with CGDB.
-</p>
-<hr>
 <a name="Status-Bar"></a>
 <div class="header">
 <p>
-Next: <a href="#Switching-Windows" accesskey="n" rel="next">Switching Windows</a>, Previous: <a href="#TTY-Window" accesskey="p" rel="prev">TTY Window</a>, Up: <a href="#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Switching-Windows" accesskey="n" rel="next">Switching Windows</a>, Previous: <a href="#File-Dialog-Window" accesskey="p" rel="prev">File Dialog Window</a>, Up: <a href="#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Understanding-the-status-bar_002e"></a>
-<h3 class="section">2.5 Understanding the status bar.</h3>
+<h3 class="section">2.4 Understanding the status bar.</h3>
 <a name="index-status-bar-1"></a>
 
 <a name="index-status-bar-2"></a>
@@ -455,7 +424,7 @@ into CGDB mode.  For a description of the cgdb mode key, see
 Previous: <a href="#Status-Bar" accesskey="p" rel="prev">Status Bar</a>, Up: <a href="#Understanding-CGDB" accesskey="u" rel="up">Understanding CGDB</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Switch-between-windows"></a>
-<h3 class="section">2.6 Switch between windows</h3>
+<h3 class="section">2.5 Switch between windows</h3>
 <a name="index-switch-between-windows"></a>
 
 <p>When CGDB is invoked, the interface is in <em>GDB mode</em>.  A &lsquo;<samp>*</samp>&rsquo; at the 
@@ -491,8 +460,6 @@ what commands are accessible during which modes.
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#File-Dialog-Mode" accesskey="3">File Dialog Mode</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands available during the file dialog mode
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#TTY-Mode" accesskey="4">TTY Mode</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Commands available during TTY mode
-</td></tr>
 </table>
 
 <hr>
@@ -520,26 +487,26 @@ This is defaulted to the <tt class="key">ESC</tt> key.
 <dd><p>Puts the user into <em>GDB mode</em>.
 </p>
 </dd>
-<dt><kbd>I</kbd></dt>
-<dd><p>Puts the user into <em>TTY mode</em>.
-</p>
-</dd>
-<dt><kbd>T</kbd></dt>
-<dd><p>Opens a window to give input to the debugged program.
+<dt><kbd>s</kbd></dt>
+<dd><p>Puts the user into scroll mode in the <em>GDB mode</em>.
 </p>
 </dd>
 <dt><kbd>Ctrl-T</kbd></dt>
 <dd><p>Opens a new tty for the debugged program.
 </p>
 </dd>
-<dt><kbd>k</kbd></dt>
-<dt><kbd>up arrow</kbd></dt>
-<dd><p>Move up a line.
+<dt><kbd>Ctrl-W</kbd></dt>
+<dd><p>Toggle the window orientation (horizontal &lt;-&gt; vertical).
 </p>
 </dd>
-<dt><kbd>j</kbd></dt>
-<dt><kbd>down arrow</kbd></dt>
-<dd><p>Move down a line.
+<dt><kbd>[&lt;number&gt;]k</kbd></dt>
+<dt><kbd>[&lt;number&gt;]up arrow</kbd></dt>
+<dd><p>Move up a line or up &lsquo;<samp>&lt;number&gt;</samp>&rsquo; lines.
+</p>
+</dd>
+<dt><kbd>[&lt;number&gt;]j</kbd></dt>
+<dt><kbd>[&lt;number&gt;]down arrow</kbd></dt>
+<dd><p>Move down a line or down &lsquo;<samp>&lt;number&gt;</samp>&rsquo; lines.
 </p>
 </dd>
 <dt><kbd>h</kbd></dt>
@@ -574,8 +541,27 @@ This is defaulted to the <tt class="key">ESC</tt> key.
 <dd><p>Move to the top of file.
 </p>
 </dd>
-<dt><kbd>G</kbd></dt>
-<dd><p>Move to the bottom of file.
+<dt><kbd>[&lt;number&gt;]G</kbd></dt>
+<dd><p>Move to the bottom of file or to a line number within the file.
+</p>
+</dd>
+<dt><kbd>m[a-zA-Z]</kbd></dt>
+<dd><p>Set a mark at the cursor position.  A lower case letter sets a local mark
+that is valid within one file.  An upper case letter sets a global mark
+valid between files. If there are ten files, each file can have a mark
+&lsquo;<samp>a</samp>&rsquo;, but only one can have a mark &lsquo;<samp>A</samp>&rsquo;.
+</p>
+</dd>
+<dt><kbd>'[a-zA-Z]</kbd></dt>
+<dd><p>Jump to the corresponding local or global mark.
+</p>
+</dd>
+<dt><kbd>''</kbd></dt>
+<dd><p>Jump to the last jump location.
+</p>
+</dd>
+<dt><kbd>'.</kbd></dt>
+<dd><p>Jump to the currently executing line.
 </p>
 </dd>
 <dt><kbd>/</kbd></dt>
@@ -607,19 +593,19 @@ This is defaulted to the <tt class="key">ESC</tt> key.
 </p>
 </dd>
 <dt><kbd>-</kbd></dt>
-<dd><p>Shrink source window 1 line.
+<dd><p>Shrink source window 1 line or column (depending on split orientation).
 </p>
 </dd>
 <dt><kbd>=</kbd></dt>
-<dd><p>Grow source window 1 line.
+<dd><p>Grow source window 1 line or column (depending on split orientation).
 </p>
 </dd>
 <dt><kbd>_</kbd></dt>
-<dd><p>Shrink source window 25% (or, shrink tty window 1 line, if visible).
+<dd><p>Shrink source window 25%
 </p>
 </dd>
 <dt><kbd>+</kbd></dt>
-<dd><p>Grow source window 25% (or, grow tty window 1 line, if visible).
+<dd><p>Grow source window 25%
 </p>
 </dd>
 <dt><kbd>Ctrl-l</kbd></dt>
@@ -657,15 +643,29 @@ Next: <a href="#File-Dialog-Mode" accesskey="n" rel="next">File Dialog Mode</a>,
 <h3 class="section">3.2 Commands available during GDB mode</h3>
 <a name="index-commands_002c-in-GDB-mode"></a>
 
-<p>When in <em>GDB mode</em>, the user is mostly interested in working with the GDB 
-console.  That is, sending commands to GDB and receiving data back from GDB.
-Almost all data passed into this window is directly sent to readline and then
-to GDB.
+<p>When in <em>GDB mode</em>, the user is in command mode or scroll mode.
+When in command mode, the user is typing in commands to interact with GDB.
+When in scroll mode, the user can scroll through the GDB output.
+You can enter scroll mode by typing <kbd>page up</kbd> and quit scroll mode
+by typing <kbd>q</kbd>, <kbd>i</kbd> or <kbd>enter</kbd>.
 </p>
-<p>It is important to understand that CGDB parses the keys entered in
-the GDB window and has the first chance at dealing with them.  If it is
-interested in the keys, it will handle them. Below is a list of keys that
-CGDB is interested in, and does not pass along any further.
+<p>The commands available in <a href="#GDB-Mode">GDB Mode</a> when in command mode are:
+</p>
+<dl compact="compact">
+<dt><kbd>cgdbmodekey</kbd></dt>
+<dd><p>Switch back to source window.  This is defaulted to the <tt class="key">ESC</tt> key.
+</p>
+</dd>
+<dt><kbd>page up</kbd></dt>
+<dd><p>Move up a page and enter scroll mode.
+</p></dd>
+</dl>
+
+<p>When in command mode, CGDB will pass along any other keys to the readline
+library. When readline has determined that a command has been received, it
+alerts CGDB, and a command is then sent to GDB.
+</p>
+<p>The commands available in <a href="#GDB-Mode">GDB Mode</a> when in scroll mode are:
 </p>
 <dl compact="compact">
 <dt><kbd>cgdbmodekey</kbd></dt>
@@ -680,25 +680,82 @@ CGDB is interested in, and does not pass along any further.
 <dd><p>Move down a page.
 </p>
 </dd>
+<dt><kbd>Ctrl-u</kbd></dt>
+<dd><p>Move up 1/2 a page.
+</p>
+</dd>
+<dt><kbd>Ctrl-d</kbd></dt>
+<dd><p>Move down 1/2 a page.
+</p>
+</dd>
 <dt><kbd>F11</kbd></dt>
+<dt><kbd>home key</kbd></dt>
+<dt><kbd>gg</kbd></dt>
 <dd><p>Go to the beginning of the GDB buffer.
 </p>
 </dd>
 <dt><kbd>F12</kbd></dt>
+<dt><kbd>end key</kbd></dt>
+<dt><kbd>G</kbd></dt>
 <dd><p>Go to the end of the GDB buffer.
+</p>
+</dd>
+<dt><kbd>k</kbd></dt>
+<dt><kbd>up arrow</kbd></dt>
+<dt><kbd>Ctrl-p</kbd></dt>
+<dd><p>Move up a line.
+</p>
+</dd>
+<dt><kbd>j</kbd></dt>
+<dt><kbd>down arrow</kbd></dt>
+<dt><kbd>Ctrl-n</kbd></dt>
+<dd><p>Move down a line.
+</p>
+</dd>
+<dt><kbd>/</kbd></dt>
+<dd><p>search from current cursor position.
+</p>
+</dd>
+<dt><kbd>?</kbd></dt>
+<dd><p>reverse search from current cursor position.
+</p>
+</dd>
+<dt><kbd>n</kbd></dt>
+<dd><p>next forward search.
+</p>
+</dd>
+<dt><kbd>N</kbd></dt>
+<dd><p>next reverse search.
+</p>
+</dd>
+<dt><kbd>m[a-z]</kbd></dt>
+<dd><p>Set a mark at the cursor position. 
+</p>
+</dd>
+<dt><kbd>'[a-z]</kbd></dt>
+<dd><p>Jump to the corresponding mark.
+</p>
+</dd>
+<dt><kbd>''</kbd></dt>
+<dd><p>Jump to the last jump location.
+</p>
+</dd>
+<dt><kbd>'.</kbd></dt>
+<dd><p>Jump to the last line.
+</p>
+</dd>
+<dt><kbd>q</kbd></dt>
+<dt><kbd>i</kbd></dt>
+<dt><kbd>enter</kbd></dt>
+<dd><p>Exit scroll mode.
 </p></dd>
 </dl>
 
-<p>Any other keys, besides the ones above, CGDB is currently not interested in.  
-CGDB will pass along these keys to the readline library. When readline has 
-determined that a command has been received, it alerts CGDB, and a command is
-then sent to GDB. This is the same method used when invoking GDB directly.
-</p>
 <hr>
 <a name="File-Dialog-Mode"></a>
 <div class="header">
 <p>
-Next: <a href="#TTY-Mode" accesskey="n" rel="next">TTY Mode</a>, Previous: <a href="#GDB-Mode" accesskey="p" rel="prev">GDB Mode</a>, Up: <a href="#Controlling-CGDB" accesskey="u" rel="up">Controlling CGDB</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Previous: <a href="#GDB-Mode" accesskey="p" rel="prev">GDB Mode</a>, Up: <a href="#Controlling-CGDB" accesskey="u" rel="up">Controlling CGDB</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Commands-available-during-the-file-dialog-mode"></a>
 <h3 class="section">3.3 Commands available during the file dialog mode</h3>
@@ -744,9 +801,26 @@ once to finish the regular expression and again to select the file.
 <dd><p>Move up a page.
 </p>
 </dd>
+<dt><kbd>Ctrl-u</kbd></dt>
+<dd><p>Move up 1/2 a page.
+</p>
+</dd>
 <dt><kbd>Ctrl-f</kbd></dt>
 <dt><kbd>page down</kbd></dt>
 <dd><p>Move down a page.
+</p>
+</dd>
+<dt><kbd>Ctrl-d</kbd></dt>
+<dd><p>Move down 1/2 a page.
+</p>
+</dd>
+<dt><kbd>gg</kbd></dt>
+<dd><p>Move to the top of the file dialog.
+</p>
+</dd>
+<dt><kbd>[&lt;number&gt;]G</kbd></dt>
+<dd><p>Move to the bottom of the file dialog or to a line number within the file
+dialog.
 </p>
 </dd>
 <dt><kbd>/</kbd></dt>
@@ -767,37 +841,6 @@ once to finish the regular expression and again to select the file.
 </dd>
 <dt><kbd>enter</kbd></dt>
 <dd><p>Select the current file.
-</p></dd>
-</dl>
-
-<hr>
-<a name="TTY-Mode"></a>
-<div class="header">
-<p>
-Previous: <a href="#File-Dialog-Mode" accesskey="p" rel="prev">File Dialog Mode</a>, Up: <a href="#Controlling-CGDB" accesskey="u" rel="up">Controlling CGDB</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<a name="Commands-available-during-TTY-mode"></a>
-<h3 class="section">3.4 Commands available during TTY mode</h3>
-<a name="index-commands_002c-in-TTY-mode"></a>
-
-<dl compact="compact">
-<dt><kbd>cgdbmodekey</kbd></dt>
-<dd><p>Switch back to source window. This is defaulted to the <tt class="key">ESC</tt> key.
-</p></dd>
-<dt><kbd>page up</kbd></dt>
-<dd><p>Move up a page.
-</p>
-</dd>
-<dt><kbd>page down</kbd></dt>
-<dd><p>Move down a page.
-</p>
-</dd>
-<dt><kbd>F11</kbd></dt>
-<dd><p>Go to the beginning of the GDB buffer.
-</p>
-</dd>
-<dt><kbd>F12</kbd></dt>
-<dd><p>Go to the end of the GDB buffer.
 </p></dd>
 </dl>
 
@@ -824,16 +867,6 @@ my be negated by appending &lsquo;<samp>no</samp>&rsquo; to the front.  For exam
 <kbd>:set noignorecase</kbd> turns on case-sensitive searching.
 </p>
 <dl compact="compact">
-<dt><kbd>:set as=<var>style</var></kbd></dt>
-<dt><kbd>:set arrowstyle=<var>style</var></kbd></dt>
-<dd><p>Set the arrow style to <var>style</var>.  Possible values for <var>style</var>
-are &lsquo;<samp>short</samp>&rsquo;, &lsquo;<samp>long</samp>&rsquo;, and &lsquo;<samp>highlight</samp>&rsquo;.  Changes the style of 
-the arrow that is used to indicate the currently executing line in the source 
-viewer.  The default value is short.  A longer arrow is available, for easier 
-readability.  Finally, the &lsquo;<samp>highlight</samp>&rsquo; option draws no arrow at all, 
-instead drawing the entire line in inverse video.
-</p>
-</dd>
 <dt><kbd>:set asr</kbd></dt>
 <dt><kbd>:set autosourcereload</kbd></dt>
 <dd><p>If this is on, CGDB will automatically reload a source file if it has 
@@ -857,13 +890,87 @@ then the <kbd>Page Up</kbd> key will put CGDB into CGDB mode and the <kbd>ESC</k
 key will flow through to readline.
 </p>
 </dd>
+<dt><kbd>:set color</kbd></dt>
+<dd><p>This option is used to enable or disable color support in CGDB.
+The default is on.  When enabled, CGDB can display color when appropriate.
+This typically occurs when syntax highlighting source files in the source
+viewer.  When disabled, CGDB will not display colors.  It may instead use
+other terminal attributes for syntax highlighting, including bold and
+reverse attributes.  See the <code>highlight</code> commamnd and look for the
+&lsquo;<samp>cterm</samp>&rsquo; option.
+</p>
+<p>It should be noted that even when color is enabled in CGDB, if ncurses
+declares that the terminal does not support colors, CGDB will not use colors.
+</p>
+</dd>
+<dt><kbd>:set dwc</kbd></dt>
+<dt><kbd>:set debugwincolor</kbd></dt>
+<dd><p>This option controls if the debug window will display colors or not.
+The default value is on.  When enabled, if GDB or the program being debugged
+output an ANSI escape code representing color, then CGDB will display the
+corresponding color instead of the escape code.  When disabled, CGDB will
+display the ANSI escape code in the debug window.
+See <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#Colors">https://en.wikipedia.org/wiki/ANSI_escape_code#Colors</a> to learn
+more about ANSI escape codes.
+</p>
+</dd>
+<dt><kbd>:set dis</kbd></dt>
+<dt><kbd>:set disasm</kbd></dt>
+<dd><p>This option is used to enable or disable showing assembly code in cgdb.
+The default value is off.  When off, CGDB will display the source code
+to the user.  When no source code is available, CGDB will display the
+assembly code.  When this option is enabled, CGDB will display the mixed
+source and assembly when the source code is enabled and assembly code
+when the source code is not available. Please note that when assembly
+mode is displayed, it&rsquo;s displayed per function instead of per file.
+</p>
+</dd>
+<dt><kbd>:set eld=<var>style</var></kbd></dt>
+<dt><kbd>:set executinglinedisplay=<var>style</var></kbd></dt>
+<dd><p>Set the executing line display to <var>style</var>.  Possible values for <var>style</var>
+are &lsquo;<samp>shortarrow</samp>&rsquo;, &lsquo;<samp>longarrow</samp>&rsquo;, &lsquo;<samp>highlight</samp>&rsquo;, and &lsquo;<samp>block</samp>&rsquo;.
+Changes the display that is used to indicate the currently executing line in
+the source viewer.  The default value is &lsquo;<samp>longarrow</samp>&rsquo;.
+The &lsquo;<samp>shortarrow</samp>&rsquo; option draws an arrow next to the source line number.
+The &lsquo;<samp>longarrow</samp>&rsquo; option also draws an arrow next to the source line
+number, but extends the arrow until the source code.  The &lsquo;<samp>highlight</samp>&rsquo;
+option draws the entire line in inverse video and the &lsquo;<samp>block</samp>&rsquo; option
+draws an inverse block (cursor) next to the source code being executed.
+</p>
+</dd>
+<dt><kbd>:set hls</kbd></dt>
+<dt><kbd>:set hlsearch</kbd></dt>
+<dd><p>When enabled, if there is a previous search pattern, highlight all its matches.
+The default is disabled.
+</p>
+</dd>
 <dt><kbd>:set ic</kbd></dt>
 <dt><kbd>:set ignorecase</kbd></dt>
 <dd><p>Sets searching case insensitive.  The default is off.
 </p>
 </dd>
-<dt><kbd>:set stc</kbd></dt>
-<dt><kbd>:set showtgdbcommands</kbd></dt>
+<dt><kbd>:set sld=<var>style</var></kbd></dt>
+<dt><kbd>:set selectedlinedisplay=<var>style</var></kbd></dt>
+<dd><p>Set the selected line display to <var>style</var>.  Possible values for <var>style</var>
+are &lsquo;<samp>shortarrow</samp>&rsquo;, &lsquo;<samp>longarrow</samp>&rsquo;, &lsquo;<samp>highlight</samp>&rsquo;, and &lsquo;<samp>block</samp>&rsquo;.
+Changes the display that is used to indicate the currently selected line in
+the source viewer.  The default value is &lsquo;<samp>block</samp>&rsquo;.
+The &lsquo;<samp>shortarrow</samp>&rsquo; option draws an arrow next to the source line number.
+The &lsquo;<samp>longarrow</samp>&rsquo; option also draws an arrow next to the source line
+number, but extends the arrow until the source code.  The &lsquo;<samp>highlight</samp>&rsquo;
+option draws the entire line in inverse video and the &lsquo;<samp>block</samp>&rsquo; option
+draws an inverse block (cursor) next to the source code being selected.
+</p>
+</dd>
+<dt><kbd>:set showmarks</kbd></dt>
+<dd><p>This option controls if the source window will show marks or not.
+The default value is on. When enabled, CGDB will show the marks that
+the user has set in the vertical bar in the source window separating
+the line number from the source code.
+</p>
+</dd>
+<dt><kbd>:set sdc</kbd></dt>
+<dt><kbd>:set showdebugcommands</kbd></dt>
 <dd><p>If this is on, CGDB will show all of the commands that it sends to GDB. 
 If it is off, CGDB will not show the commands that it gives to GDB. 
 The default is off. 
@@ -872,11 +979,15 @@ The default is off.
 <dt><kbd>:set syn=<var>style</var></kbd></dt>
 <dt><kbd>:set syntax=<var>style</var></kbd></dt>
 <dd><p>Sets the current highlighting mode of the current file to have the syntax 
-<var>style</var>.  Possible values for <var>syntax</var> are &lsquo;<samp>c</samp>&rsquo;, &lsquo;<samp>ada</samp>&rsquo;, and 
-&lsquo;<samp>off</samp>&rsquo;.  Normally, the user will never have to do this, since CGDB 
-automatically detects what syntax a file should be based on its file 
-extension.  However, this feature can currently be useful for debugging 
-purposes.
+<var>style</var>.  Possible values for <var>syntax</var> are &lsquo;<samp>c</samp>&rsquo;, &lsquo;<samp>asm</samp>&rsquo;,
+&lsquo;<samp>d</samp>&rsquo;, &lsquo;<samp>go</samp>&rsquo;, &lsquo;<samp>ada</samp>&rsquo;, &lsquo;<samp>rust</samp>&rsquo;, &lsquo;<samp>off</samp>&rsquo;, &lsquo;<samp>no</samp>&rsquo;,
+&lsquo;<samp>on</samp>&rsquo; or &lsquo;<samp>yes</samp>&rsquo;.  Normally, the user will never have to do this,
+since CGDB automatically detects what syntax a file should be based on
+its file extension.  However, this feature can currently be useful for
+debugging purposes. &lsquo;<samp>on</samp>&rsquo; and &lsquo;<samp>yes</samp>&rsquo; enable syntax highlighting based
+on the source files extension. &lsquo;<samp>off</samp>&rsquo; and &lsquo;<samp>no</samp>&rsquo; disable syntax
+highlighting. The remaining values set the specific language highlighters
+independent of the source files extension.
 </p>
 </dd>
 <dt><kbd>:set to</kbd></dt>
@@ -935,14 +1046,30 @@ characters.  The default value for <var>number</var> is 8.
 <dt><kbd>:set wmh=<var>number</var></kbd></dt>
 <dt><kbd>:set winminheight=<var>number</var></kbd></dt>
 <dd><p>The minimal height of a window.  Windows will never become smaller than 
-this value.  The default value for <var>number</var> is 0.
+this value.  The default value for <var>number</var> is 0. This is useful
+when <var>winsplitorientation</var> is set to &lsquo;<samp>horizontal</samp>&rsquo;.
+</p>
+</dd>
+<dt><kbd>:set wmw=<var>number</var></kbd></dt>
+<dt><kbd>:set winminwidth=<var>number</var></kbd></dt>
+<dd><p>The minimal width of a window.  Windows will never become smaller than 
+this value.  The default value for <var>number</var> is 0. This is useful
+when <var>winsplitorientation</var> is set to &lsquo;<samp>vertical</samp>&rsquo;.
 </p>
 </dd>
 <dt><kbd>:set winsplit=<var>style</var></kbd></dt>
 <dd><p>Set the split point between source and GDB window.  This is especially useful
 as an init setting in your <samp>cgdbrc</samp> file.  See <a href="#Configuring-CGDB">Configuring CGDB</a>.  The 
-possible values for <var>style</var> are &lsquo;<samp>top_full</samp>&rsquo;, &lsquo;<samp>top_big</samp>&rsquo;, 
-&lsquo;<samp>even</samp>&rsquo;, &lsquo;<samp>bottom_big</samp>&rsquo;, and &lsquo;<samp>bottom_full</samp>&rsquo;.
+possible values for <var>style</var> are &lsquo;<samp>src_full</samp>&rsquo;, &lsquo;<samp>src_big</samp>&rsquo;, 
+&lsquo;<samp>even</samp>&rsquo;, &lsquo;<samp>gdb_big</samp>&rsquo;, and &lsquo;<samp>gdb_full</samp>&rsquo;.
+</p>
+</dd>
+<dt><kbd>:set wso=<var>style</var></kbd></dt>
+<dt><kbd>:set winsplitorientation=<var>style</var></kbd></dt>
+<dd><p>Sets the window split orientation to either &lsquo;<samp>horizontal</samp>&rsquo; (which places
+the source window above and the GDB window below), or &lsquo;<samp>vertical</samp>&rsquo; (
+hich places the source window on the left and the GDB window on the right). 
+See <a href="#Configuring-CGDB">Configuring CGDB</a>.
 </p>
 </dd>
 <dt><kbd>:set ws</kbd></dt>
@@ -973,6 +1100,10 @@ changed since it was opened by cgdb.
 <dt><kbd>:help</kbd></dt>
 <dd><p>This will display the current manual in text format, in the 
 <em>source window</em>.
+</p>
+</dd>
+<dt><kbd>:logo</kbd></dt>
+<dd><p>This will display one of CGDB&rsquo;s logos in the <em>source window</em>.
 </p>
 </dd>
 <dt><kbd>:hi <var>group</var> cterm=<var>attributes</var> ctermfg=<var>color</var> ctermbg=<var>color</var> term=<var>attributes</var></kbd></dt>
@@ -1032,6 +1163,11 @@ the video attributes for monochrome terminals.  Some examples are,
 </dd>
 <dt><kbd>:syntax</kbd></dt>
 <dd><p>Turn the syntax on or off.
+</p>
+</dd>
+<dt><kbd>:u</kbd></dt>
+<dt><kbd>:until</kbd></dt>
+<dd><p>Send an until command to GDB.
 </p>
 </dd>
 <dt><kbd>:up</kbd></dt>
@@ -1150,17 +1286,38 @@ displaying it&rsquo;s User Interface.
 <dd><p>This represents the <em>status bar</em> in CGDB.  The file dialog&rsquo;s status 
 bar also uses this group.
 </p></dd>
+<dt><code>Search</code></dt>
+<dd><p>This represents the group used when displaying the previous search in
+either the source window, the GDB window in scroll mode, or the <em>file
+dialog window</em>. This is only used when the <var>hlsearch</var> option is enabled.
+</p></dd>
 <dt><code>IncSearch</code></dt>
 <dd><p>This represents the group used when the user is searching in either the source 
-window, or the <em>file dialog window</em>.
+window, the GDB window in scroll mode, or the <em>file dialog window</em>.
 </p></dd>
-<dt><code>Arrow</code></dt>
-<dd><p>This represents the arrow that CGDB draws to point to the currently viewed 
-line.
+<dt><code>SelectedLineArrow</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>selectedlinedisplay</code> set to <code>shortarrow</code> or <code>longarrow</code>.
 </p></dd>
-<dt><code>LineHighlight</code></dt>
-<dd><p>This represents the group used when the user has the <code>arrowstyle</code> option 
-set to <code>highlight</code>.
+<dt><code>ExecutingLineArrow</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>executinglinedisplay</code> set to <code>shortarrow</code> or <code>longarrow</code>.
+</p></dd>
+<dt><code>SelectedLineHighlight</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>selectedlinedisplay</code> option set to <code>highlight</code>.
+</p></dd>
+<dt><code>ExecutingLineHighlight</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>executinglinedisplay</code> option set to <code>highlight</code>.
+</p></dd>
+<dt><code>SelectedLineBlock</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>selectedlinedisplay</code> option set to <code>block</code>.
+</p></dd>
+<dt><code>ExecutingLineBlock</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>executinglinedisplay</code> option set to <code>block</code>.
 </p></dd>
 <dt><code>Breakpoint</code></dt>
 <dd><p>This represents the group that is used when CGDB displays a line that has a 
@@ -1174,9 +1331,23 @@ disabled breakpoint set.
 <dd><p>This represents the group that is used when CGDB is displaying the currently
 selected line.  This is the line that the cursor is on.
 </p></dd>
+<dt><code>ExecutingLineNr</code></dt>
+<dd><p>This represents the group that is used when CGDB is displaying the currently
+executing line.
+</p></dd>
+<dt><code>ScrollModeStatus</code></dt>
+<dd><p>This represents the group that is used when CGDB is displaying the currently
+selected line number when in <a href="#GDB-Mode">GDB Mode</a> and the user is scrolling
+through the GDB buffer.
+</p></dd>
 <dt><code>Logo</code></dt>
 <dd><p>This is the group CGDB uses to display its logo on startup when no source 
 file can be auto detected.
+</p></dd>
+<dt><code>Mark</code></dt>
+<dd><p>This is the group CGDB uses to display a mark in the source window.
+Marks are displayed when the <code>showmarks</code> option is enabled.
+See the <code>showmarks</code> option for more detail.
 </p></dd>
 </dl>
 
@@ -1235,31 +1406,29 @@ Previous: <a href="#Available-Attributes" accesskey="p" rel="prev">Available Att
 <h3 class="section">5.3 The different colors</h3>
 <a name="index-colors"></a>
 
-<p>CGDB supports several colors, depending on how many colors your terminal 
-supports.  Below is a chart of the colors that CGDB provides.  The heading 
-NR-16 is used to represent terminals that support at least 16 colors.  The
-heading NR-8 is used to represent terminals that support at least 8 colors.  
-The integer values for each color represent the values passed to the curses
-function init_pair() to ask curses to create a new color.
+<p>CGDB supports several colors, depending on how many colors your terminal
+supports.  Below is a chart of the colors that CGDB provides.
+The values for each color represent the defines from the curses header
+file passed to init_pair() to ask curses to create a new color.
 </p>
 <table>
-<tr><td width="40%"><code>COLOR NAME</code></td><td width="20%"><code>NR-16</code></td><td width="20%"><code>NR-8</code></td><td width="20%"><code>NR-8 bold attribute</code></td></tr>
-<tr><td width="40%">Black</td><td width="20%">0</td><td width="20%">0</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkBlue</td><td width="20%">1</td><td width="20%">4</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkGreen</td><td width="20%">2</td><td width="20%">2</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkCyan</td><td width="20%">3</td><td width="20%">6</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkRed</td><td width="20%">4</td><td width="20%">1</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkMagenta</td><td width="20%">5</td><td width="20%">5</td><td width="20%">No</td></tr>
-<tr><td width="40%">Brown, DarkYellow</td><td width="20%">6</td><td width="20%">3</td><td width="20%">No</td></tr>
-<tr><td width="40%">LightGray, LightGrey, Gray, Grey</td><td width="20%">7</td><td width="20%">7</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkGray, DarkGrey</td><td width="20%">8</td><td width="20%">0</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Blue, LightBlue</td><td width="20%">9</td><td width="20%">4</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Green, LightGreen</td><td width="20%">10</td><td width="20%">2</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Cyan, LightCyan</td><td width="20%">11</td><td width="20%">6</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Red, LightRed</td><td width="20%">12</td><td width="20%">1</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Magenta, LightMagenta</td><td width="20%">13</td><td width="20%">5</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Yellow, LightYellow</td><td width="20%">14</td><td width="20%">3</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">White</td><td width="20%">15</td><td width="20%">7</td><td width="20%">Yes</td></tr>
+<tr><td width="40%"><code>COLOR NAME</code></td><td width="20%"><code>Color</code></td><td width="20%"><code>Bold attribute</code></td></tr>
+<tr><td width="40%">Black</td><td width="20%">COLOR_BLACK</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkBlue</td><td width="20%">COLOR_BLUE</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkGreen</td><td width="20%">COLOR_GREEN</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkCyan</td><td width="20%">COLOR_CYAN</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkRed</td><td width="20%">COLOR_RED</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkMagenta</td><td width="20%">COLOR_MAGENTA</td><td width="20%">No</td></tr>
+<tr><td width="40%">Brown, DarkYellow</td><td width="20%">COLOR_YELLOW</td><td width="20%">No</td></tr>
+<tr><td width="40%">LightGray, LightGrey, Gray, Grey</td><td width="20%">COLOR_WHITE</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkGray, DarkGrey</td><td width="20%">COLOR_BLACK</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Blue, LightBlue</td><td width="20%">COLOR_BLUE</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Green, LightGreen</td><td width="20%">COLOR_GREEN</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Cyan, LightCyan</td><td width="20%">COLOR_CYAN</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Red, LightRed</td><td width="20%">COLOR_RED</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Magenta, LightMagenta</td><td width="20%">COLOR_MAGENTA</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Yellow, LightYellow</td><td width="20%">COLOR_YELLOW</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">White</td><td width="20%">COLOR_WHITE</td><td width="20%">Yes</td></tr>
 </table>
 
 <hr>
@@ -1474,39 +1643,6 @@ that the user start the program on one terminal, and attach to it with CGDB
 from another terminal.  This is the easiest way to pass input to the 
 debugged program.
 </p>
-<p>However, if the user wishes to pass input to the program being debugged from
-within CGDB, there is a mechanism available for doing so.  As of this writing, 
-the technique described below does not work on windows, using a natively 
-compiled GDB.  It may work when using the GDB that comes with Cygwin.
-</p>
-<p>This technique is similar to getting in and out of <em>GDB mode</em>.  The tty 
-window is not visible by default.  This is because it is only needed if the 
-user wishes to send data to the program being debugged.  To display the tty 
-window, hit <kbd>T</kbd> while in command mode.  After hitting <kbd>T</kbd> you will 
-notice that there is another window in the middle of the <em>source window</em> 
-and the <em>gdb window</em>.  This is called the <em>tty window</em>. You will also 
-see a new status bar called the tty status bar.  There will be a &lsquo;<samp>*</samp>&rsquo; on 
-the tty status bar after the <kbd>T</kbd> was hit.  This is because when the 
-window is opened with the <kbd>T</kbd> command, CGDB automatically puts the user 
-into <em>TTY mode</em>.  To get out of this window hit the cgdb mode key.  
-This will put you back into command mode.  To make the tty window appear and 
-disappear hit the <kbd>T</kbd> key while in command mode.  It is a toggle.
-</p>
-<p>Once the tty window is already open, the user can then hit <kbd>I</kbd> in
-command mode to get into <em>TTY mode</em>.  The user can then hit the 
-cgdb mode key in the <em>TTY mode</em> to get back into command mode.
-</p>
-<p>When the tty window is open, all data that comes from the program, goes
-there.  Any data typed into the tty window will ONLY go to the program
-being debugged.  It will not go to GDB. When the tty window is closed,
-all output from the debugged program will go to the <em>GDB window</em> AND to
-the <em>tty window</em> (for viewing later when the tty window is opened). 
-</p>
-<p>If the user wishes to get a new tty for the program being debugged then
-they can type <kbd>Ctrl-T</kbd>.  This will delete all the buffered data
-waiting to be read into the debugged program. This might be useful when
-you rerun or start a new program.
-</p>
 <hr>
 <a name="Terminal-Control-Flow"></a>
 <div class="header">
@@ -1537,8 +1673,8 @@ Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manua
 <a name="index-building-CGDB"></a>
 
 <p>Building CGDB from source requires several packages. First, CGDB is hosted
-at http://sf.net/projects/cgdb. You can determine how to get CGDB from source 
-by looking here: http://sourceforge.net/svn/?group_id=72581.
+at GitHub. You can determine how to get CGDB from source by looking here:
+https://cgdb.github.io/
 </p>
 <p>Once you have the source to CGDB, now you can begin to build it.  You will of 
 course need many packages to build CGDB. Below is a list of all of them 
@@ -1579,12 +1715,6 @@ flex installed.  I have used flex 2.5.4 to build CGDB.
 <dd><p>If you modify <samp>doc/cgdb.texinfo</samp>, then you will be required to have this 
 package installed.  I have used version 4.7 to build the documentation for 
 CGDB.
-</p>
-</dd>
-<dt><code>help2man</code></dt>
-<dd><p>If you are doing a release, then you will be required to have this package
-installed.  In the <samp>doc/</samp> build directory, you can execute the command 
-<code>make cgdb.1</code>, and the CGDB man page will be generated.
 </p></dd>
 </dl>
 
@@ -2022,7 +2152,6 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-commands_002c-in-CGDB-mode">commands, in CGDB mode</a>:</td><td>&nbsp;</td><td valign="top"><a href="#CGDB-Mode">CGDB Mode</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-commands_002c-in-File-Dialog-mode">commands, in File Dialog mode</a>:</td><td>&nbsp;</td><td valign="top"><a href="#File-Dialog-Mode">File Dialog Mode</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-commands_002c-in-GDB-mode">commands, in GDB mode</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GDB-Mode">GDB Mode</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-commands_002c-in-TTY-mode">commands, in TTY mode</a>:</td><td>&nbsp;</td><td valign="top"><a href="#TTY-Mode">TTY Mode</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-configuring-CGDB">configuring CGDB</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Configuring-CGDB">Configuring CGDB</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-controlling-CGDB">controlling CGDB</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Controlling-CGDB">Controlling CGDB</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
@@ -2044,6 +2173,7 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-R">R</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-regular-expression-search">regular expression search</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Source-Window">Source Window</a></td></tr>
+<tr><td></td><td valign="top"><a href="#index-regular-expression-search-1">regular expression search</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GDB-Window">GDB Window</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-S">S</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-sending-I_002fO-to-inferior">sending I/O to inferior</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a></td></tr>
@@ -2059,9 +2189,6 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-timeoutlen">timeoutlen</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ttimeout">ttimeout</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-ttimeoutlen">ttimeoutlen</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Configuring-the-KUI-Time-Out-Options">Configuring the KUI Time Out Options</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-TTY-mode">TTY mode</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Understanding-CGDB">Understanding CGDB</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-tty-window">tty window</a>:</td><td>&nbsp;</td><td valign="top"><a href="#TTY-Window">TTY Window</a></td></tr>
-<tr><td></td><td valign="top"><a href="#index-TTY-window">TTY window</a>:</td><td>&nbsp;</td><td valign="top"><a href="#TTY-Window">TTY Window</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-U">U</a></th><td></td><td></td></tr>
 <tr><td></td><td valign="top"><a href="#index-understanding-CGDB">understanding CGDB</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Understanding-CGDB">Understanding CGDB</a></td></tr>

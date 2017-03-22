@@ -2,7 +2,7 @@
 <html>
 <!-- 
 This manual is for GNU CGDB
-(version 0.6.8, 13 November 2014),
+(version 0.7.0, 21 March 2017),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
@@ -20,12 +20,12 @@ details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston MA 02111-1307 USA -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>CGDB Manual 0.6.8: Available Colors</title>
+<title>CGDB Manual 0.7.0: Available Colors</title>
 
-<meta name="description" content="CGDB Manual 0.6.8: Available Colors">
-<meta name="keywords" content="CGDB Manual 0.6.8: Available Colors">
+<meta name="description" content="CGDB Manual 0.7.0: Available Colors">
+<meta name="keywords" content="CGDB Manual 0.7.0: Available Colors">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -39,16 +39,16 @@ Place, Suite 330, Boston MA 02111-1307 USA -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -57,10 +57,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -68,7 +67,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="Available-Colors"></a>
 <div class="header">
 <p>
@@ -79,31 +78,29 @@ Previous: <a href="Available-Attributes.html#Available-Attributes" accesskey="p"
 <h3 class="section">5.3 The different colors</h3>
 <a name="index-colors"></a>
 
-<p>CGDB supports several colors, depending on how many colors your terminal 
-supports.  Below is a chart of the colors that CGDB provides.  The heading 
-NR-16 is used to represent terminals that support at least 16 colors.  The
-heading NR-8 is used to represent terminals that support at least 8 colors.  
-The integer values for each color represent the values passed to the curses
-function init_pair() to ask curses to create a new color.
+<p>CGDB supports several colors, depending on how many colors your terminal
+supports.  Below is a chart of the colors that CGDB provides.
+The values for each color represent the defines from the curses header
+file passed to init_pair() to ask curses to create a new color.
 </p>
 <table>
-<tr><td width="40%"><code>COLOR NAME</code></td><td width="20%"><code>NR-16</code></td><td width="20%"><code>NR-8</code></td><td width="20%"><code>NR-8 bold attribute</code></td></tr>
-<tr><td width="40%">Black</td><td width="20%">0</td><td width="20%">0</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkBlue</td><td width="20%">1</td><td width="20%">4</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkGreen</td><td width="20%">2</td><td width="20%">2</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkCyan</td><td width="20%">3</td><td width="20%">6</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkRed</td><td width="20%">4</td><td width="20%">1</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkMagenta</td><td width="20%">5</td><td width="20%">5</td><td width="20%">No</td></tr>
-<tr><td width="40%">Brown, DarkYellow</td><td width="20%">6</td><td width="20%">3</td><td width="20%">No</td></tr>
-<tr><td width="40%">LightGray, LightGrey, Gray, Grey</td><td width="20%">7</td><td width="20%">7</td><td width="20%">No</td></tr>
-<tr><td width="40%">DarkGray, DarkGrey</td><td width="20%">8</td><td width="20%">0</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Blue, LightBlue</td><td width="20%">9</td><td width="20%">4</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Green, LightGreen</td><td width="20%">10</td><td width="20%">2</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Cyan, LightCyan</td><td width="20%">11</td><td width="20%">6</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Red, LightRed</td><td width="20%">12</td><td width="20%">1</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Magenta, LightMagenta</td><td width="20%">13</td><td width="20%">5</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">Yellow, LightYellow</td><td width="20%">14</td><td width="20%">3</td><td width="20%">Yes</td></tr>
-<tr><td width="40%">White</td><td width="20%">15</td><td width="20%">7</td><td width="20%">Yes</td></tr>
+<tr><td width="40%"><code>COLOR NAME</code></td><td width="20%"><code>Color</code></td><td width="20%"><code>Bold attribute</code></td></tr>
+<tr><td width="40%">Black</td><td width="20%">COLOR_BLACK</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkBlue</td><td width="20%">COLOR_BLUE</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkGreen</td><td width="20%">COLOR_GREEN</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkCyan</td><td width="20%">COLOR_CYAN</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkRed</td><td width="20%">COLOR_RED</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkMagenta</td><td width="20%">COLOR_MAGENTA</td><td width="20%">No</td></tr>
+<tr><td width="40%">Brown, DarkYellow</td><td width="20%">COLOR_YELLOW</td><td width="20%">No</td></tr>
+<tr><td width="40%">LightGray, LightGrey, Gray, Grey</td><td width="20%">COLOR_WHITE</td><td width="20%">No</td></tr>
+<tr><td width="40%">DarkGray, DarkGrey</td><td width="20%">COLOR_BLACK</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Blue, LightBlue</td><td width="20%">COLOR_BLUE</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Green, LightGreen</td><td width="20%">COLOR_GREEN</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Cyan, LightCyan</td><td width="20%">COLOR_CYAN</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Red, LightRed</td><td width="20%">COLOR_RED</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Magenta, LightMagenta</td><td width="20%">COLOR_MAGENTA</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">Yellow, LightYellow</td><td width="20%">COLOR_YELLOW</td><td width="20%">Yes</td></tr>
+<tr><td width="40%">White</td><td width="20%">COLOR_WHITE</td><td width="20%">Yes</td></tr>
 </table>
 
 

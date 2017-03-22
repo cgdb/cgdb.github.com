@@ -2,7 +2,7 @@
 <html>
 <!-- 
 This manual is for GNU CGDB
-(version 0.6.8, 13 November 2014),
+(version 0.7.0, 21 March 2017),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
@@ -20,12 +20,12 @@ details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston MA 02111-1307 USA -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>CGDB Manual 0.6.8: Building CGDB</title>
+<title>CGDB Manual 0.7.0: Building CGDB</title>
 
-<meta name="description" content="CGDB Manual 0.6.8: Building CGDB">
-<meta name="keywords" content="CGDB Manual 0.6.8: Building CGDB">
+<meta name="description" content="CGDB Manual 0.7.0: Building CGDB">
+<meta name="keywords" content="CGDB Manual 0.7.0: Building CGDB">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -39,16 +39,16 @@ Place, Suite 330, Boston MA 02111-1307 USA -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -57,10 +57,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -68,7 +67,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="Building-CGDB"></a>
 <div class="header">
 <p>
@@ -80,8 +79,8 @@ Next: <a href="Copying-This-Manual.html#Copying-This-Manual" accesskey="n" rel="
 <a name="index-building-CGDB"></a>
 
 <p>Building CGDB from source requires several packages. First, CGDB is hosted
-at http://sf.net/projects/cgdb. You can determine how to get CGDB from source 
-by looking here: http://sourceforge.net/svn/?group_id=72581.
+at GitHub. You can determine how to get CGDB from source by looking here:
+https://cgdb.github.io/
 </p>
 <p>Once you have the source to CGDB, now you can begin to build it.  You will of 
 course need many packages to build CGDB. Below is a list of all of them 
@@ -122,12 +121,6 @@ flex installed.  I have used flex 2.5.4 to build CGDB.
 <dd><p>If you modify <samp>doc/cgdb.texinfo</samp>, then you will be required to have this 
 package installed.  I have used version 4.7 to build the documentation for 
 CGDB.
-</p>
-</dd>
-<dt><code>help2man</code></dt>
-<dd><p>If you are doing a release, then you will be required to have this package
-installed.  In the <samp>doc/</samp> build directory, you can execute the command 
-<code>make cgdb.1</code>, and the CGDB man page will be generated.
 </p></dd>
 </dl>
 

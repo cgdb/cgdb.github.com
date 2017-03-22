@@ -2,7 +2,7 @@
 <html>
 <!-- 
 This manual is for GNU CGDB
-(version 0.6.8, 13 November 2014),
+(version 0.7.0, 21 March 2017),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
@@ -20,12 +20,12 @@ details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston MA 02111-1307 USA -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>CGDB Manual 0.6.8: Available Highlighting Groups</title>
+<title>CGDB Manual 0.7.0: Available Highlighting Groups</title>
 
-<meta name="description" content="CGDB Manual 0.6.8: Available Highlighting Groups">
-<meta name="keywords" content="CGDB Manual 0.6.8: Available Highlighting Groups">
+<meta name="description" content="CGDB Manual 0.7.0: Available Highlighting Groups">
+<meta name="keywords" content="CGDB Manual 0.7.0: Available Highlighting Groups">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -39,16 +39,16 @@ Place, Suite 330, Boston MA 02111-1307 USA -->
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -57,10 +57,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -68,7 +67,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="Available-Highlighting-Groups"></a>
 <div class="header">
 <p>
@@ -111,17 +110,38 @@ displaying it&rsquo;s User Interface.
 <dd><p>This represents the <em>status bar</em> in CGDB.  The file dialog&rsquo;s status 
 bar also uses this group.
 </p></dd>
+<dt><code>Search</code></dt>
+<dd><p>This represents the group used when displaying the previous search in
+either the source window, the GDB window in scroll mode, or the <em>file
+dialog window</em>. This is only used when the <var>hlsearch</var> option is enabled.
+</p></dd>
 <dt><code>IncSearch</code></dt>
 <dd><p>This represents the group used when the user is searching in either the source 
-window, or the <em>file dialog window</em>.
+window, the GDB window in scroll mode, or the <em>file dialog window</em>.
 </p></dd>
-<dt><code>Arrow</code></dt>
-<dd><p>This represents the arrow that CGDB draws to point to the currently viewed 
-line.
+<dt><code>SelectedLineArrow</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>selectedlinedisplay</code> set to <code>shortarrow</code> or <code>longarrow</code>.
 </p></dd>
-<dt><code>LineHighlight</code></dt>
-<dd><p>This represents the group used when the user has the <code>arrowstyle</code> option 
-set to <code>highlight</code>.
+<dt><code>ExecutingLineArrow</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>executinglinedisplay</code> set to <code>shortarrow</code> or <code>longarrow</code>.
+</p></dd>
+<dt><code>SelectedLineHighlight</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>selectedlinedisplay</code> option set to <code>highlight</code>.
+</p></dd>
+<dt><code>ExecutingLineHighlight</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>executinglinedisplay</code> option set to <code>highlight</code>.
+</p></dd>
+<dt><code>SelectedLineBlock</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>selectedlinedisplay</code> option set to <code>block</code>.
+</p></dd>
+<dt><code>ExecutingLineBlock</code></dt>
+<dd><p>This represents the group used when the user has the
+<code>executinglinedisplay</code> option set to <code>block</code>.
 </p></dd>
 <dt><code>Breakpoint</code></dt>
 <dd><p>This represents the group that is used when CGDB displays a line that has a 
@@ -135,13 +155,32 @@ disabled breakpoint set.
 <dd><p>This represents the group that is used when CGDB is displaying the currently
 selected line.  This is the line that the cursor is on.
 </p></dd>
+<dt><code>ExecutingLineNr</code></dt>
+<dd><p>This represents the group that is used when CGDB is displaying the currently
+executing line.
+</p></dd>
+<dt><code>ScrollModeStatus</code></dt>
+<dd><p>This represents the group that is used when CGDB is displaying the currently
+selected line number when in <a href="GDB-Mode.html#GDB-Mode">GDB Mode</a> and the user is scrolling
+through the GDB buffer.
+</p></dd>
 <dt><code>Logo</code></dt>
 <dd><p>This is the group CGDB uses to display its logo on startup when no source 
 file can be auto detected.
 </p></dd>
+<dt><code>Mark</code></dt>
+<dd><p>This is the group CGDB uses to display a mark in the source window.
+Marks are displayed when the <code>showmarks</code> option is enabled.
+See the <code>showmarks</code> option for more detail.
+</p></dd>
 </dl>
 
 
+<hr>
+<div class="header">
+<p>
+Next: <a href="Available-Attributes.html#Available-Attributes" accesskey="n" rel="next">Available Attributes</a>, Up: <a href="Highlighting-Groups.html#Highlighting-Groups" accesskey="u" rel="up">Highlighting Groups</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Index.html#Index" title="Index" rel="index">Index</a>]</p>
+</div>
 
 
 

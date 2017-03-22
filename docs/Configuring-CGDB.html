@@ -2,7 +2,7 @@
 <html>
 <!-- 
 This manual is for GNU CGDB
-(version 0.6.8, 13 November 2014),
+(version 0.7.0, 21 March 2017),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2013 CGDB Team
@@ -20,12 +20,12 @@ details.
 You should have received a copy of the GNU General Public License along with
 this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston MA 02111-1307 USA -->
-<!-- Created by GNU Texinfo 5.2, http://www.gnu.org/software/texinfo/ -->
+<!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>CGDB Manual 0.6.8: Configuring CGDB</title>
+<title>CGDB Manual 0.7.0: Configuring CGDB</title>
 
-<meta name="description" content="CGDB Manual 0.6.8: Configuring CGDB">
-<meta name="keywords" content="CGDB Manual 0.6.8: Configuring CGDB">
+<meta name="description" content="CGDB Manual 0.7.0: Configuring CGDB">
+<meta name="keywords" content="CGDB Manual 0.7.0: Configuring CGDB">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -35,20 +35,20 @@ Place, Suite 330, Boston MA 02111-1307 USA -->
 <link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
 <link href="index.html#Top" rel="up" title="Top">
 <link href="Highlighting-Groups.html#Highlighting-Groups" rel="next" title="Highlighting Groups">
-<link href="TTY-Mode.html#TTY-Mode" rel="prev" title="TTY Mode">
+<link href="File-Dialog-Mode.html#File-Dialog-Mode" rel="prev" title="File Dialog Mode">
 <style type="text/css">
 <!--
 a.summary-letter {text-decoration: none}
+blockquote.indentedblock {margin-right: 0em}
+blockquote.smallindentedblock {margin-right: 0em; font-size: smaller}
 blockquote.smallquotation {font-size: smaller}
 div.display {margin-left: 3.2em}
 div.example {margin-left: 3.2em}
-div.indentedblock {margin-left: 3.2em}
 div.lisp {margin-left: 3.2em}
 div.smalldisplay {margin-left: 3.2em}
 div.smallexample {margin-left: 3.2em}
-div.smallindentedblock {margin-left: 3.2em; font-size: smaller}
 div.smalllisp {margin-left: 3.2em}
-kbd {font-style:oblique}
+kbd {font-style: oblique}
 pre.display {font-family: inherit}
 pre.format {font-family: inherit}
 pre.menu-comment {font-family: serif}
@@ -57,10 +57,9 @@ pre.smalldisplay {font-family: inherit; font-size: smaller}
 pre.smallexample {font-size: smaller}
 pre.smallformat {font-family: inherit; font-size: smaller}
 pre.smalllisp {font-size: smaller}
-span.nocodebreak {white-space:nowrap}
-span.nolinebreak {white-space:nowrap}
-span.roman {font-family:serif; font-weight:normal}
-span.sansserif {font-family:sans-serif; font-weight:normal}
+span.nolinebreak {white-space: nowrap}
+span.roman {font-family: initial; font-weight: normal}
+span.sansserif {font-family: sans-serif; font-weight: normal}
 ul.no-bullet {list-style: none}
 -->
 </style>
@@ -68,7 +67,7 @@ ul.no-bullet {list-style: none}
 
 </head>
 
-<body lang="en" bgcolor="#FFFFFF" text="#000000" link="#0000FF" vlink="#800080" alink="#FF0000">
+<body lang="en">
 <a name="Configuring-CGDB"></a>
 <div class="header">
 <p>
@@ -92,16 +91,6 @@ my be negated by appending &lsquo;<samp>no</samp>&rsquo; to the front.  For exam
 <kbd>:set noignorecase</kbd> turns on case-sensitive searching.
 </p>
 <dl compact="compact">
-<dt><kbd>:set as=<var>style</var></kbd></dt>
-<dt><kbd>:set arrowstyle=<var>style</var></kbd></dt>
-<dd><p>Set the arrow style to <var>style</var>.  Possible values for <var>style</var>
-are &lsquo;<samp>short</samp>&rsquo;, &lsquo;<samp>long</samp>&rsquo;, and &lsquo;<samp>highlight</samp>&rsquo;.  Changes the style of 
-the arrow that is used to indicate the currently executing line in the source 
-viewer.  The default value is short.  A longer arrow is available, for easier 
-readability.  Finally, the &lsquo;<samp>highlight</samp>&rsquo; option draws no arrow at all, 
-instead drawing the entire line in inverse video.
-</p>
-</dd>
 <dt><kbd>:set asr</kbd></dt>
 <dt><kbd>:set autosourcereload</kbd></dt>
 <dd><p>If this is on, CGDB will automatically reload a source file if it has 
@@ -125,13 +114,87 @@ then the <kbd>Page Up</kbd> key will put CGDB into CGDB mode and the <kbd>ESC</k
 key will flow through to readline.
 </p>
 </dd>
+<dt><kbd>:set color</kbd></dt>
+<dd><p>This option is used to enable or disable color support in CGDB.
+The default is on.  When enabled, CGDB can display color when appropriate.
+This typically occurs when syntax highlighting source files in the source
+viewer.  When disabled, CGDB will not display colors.  It may instead use
+other terminal attributes for syntax highlighting, including bold and
+reverse attributes.  See the <code>highlight</code> commamnd and look for the
+&lsquo;<samp>cterm</samp>&rsquo; option.
+</p>
+<p>It should be noted that even when color is enabled in CGDB, if ncurses
+declares that the terminal does not support colors, CGDB will not use colors.
+</p>
+</dd>
+<dt><kbd>:set dwc</kbd></dt>
+<dt><kbd>:set debugwincolor</kbd></dt>
+<dd><p>This option controls if the debug window will display colors or not.
+The default value is on.  When enabled, if GDB or the program being debugged
+output an ANSI escape code representing color, then CGDB will display the
+corresponding color instead of the escape code.  When disabled, CGDB will
+display the ANSI escape code in the debug window.
+See <a href="https://en.wikipedia.org/wiki/ANSI_escape_code#Colors">https://en.wikipedia.org/wiki/ANSI_escape_code#Colors</a> to learn
+more about ANSI escape codes.
+</p>
+</dd>
+<dt><kbd>:set dis</kbd></dt>
+<dt><kbd>:set disasm</kbd></dt>
+<dd><p>This option is used to enable or disable showing assembly code in cgdb.
+The default value is off.  When off, CGDB will display the source code
+to the user.  When no source code is available, CGDB will display the
+assembly code.  When this option is enabled, CGDB will display the mixed
+source and assembly when the source code is enabled and assembly code
+when the source code is not available. Please note that when assembly
+mode is displayed, it&rsquo;s displayed per function instead of per file.
+</p>
+</dd>
+<dt><kbd>:set eld=<var>style</var></kbd></dt>
+<dt><kbd>:set executinglinedisplay=<var>style</var></kbd></dt>
+<dd><p>Set the executing line display to <var>style</var>.  Possible values for <var>style</var>
+are &lsquo;<samp>shortarrow</samp>&rsquo;, &lsquo;<samp>longarrow</samp>&rsquo;, &lsquo;<samp>highlight</samp>&rsquo;, and &lsquo;<samp>block</samp>&rsquo;.
+Changes the display that is used to indicate the currently executing line in
+the source viewer.  The default value is &lsquo;<samp>longarrow</samp>&rsquo;.
+The &lsquo;<samp>shortarrow</samp>&rsquo; option draws an arrow next to the source line number.
+The &lsquo;<samp>longarrow</samp>&rsquo; option also draws an arrow next to the source line
+number, but extends the arrow until the source code.  The &lsquo;<samp>highlight</samp>&rsquo;
+option draws the entire line in inverse video and the &lsquo;<samp>block</samp>&rsquo; option
+draws an inverse block (cursor) next to the source code being executed.
+</p>
+</dd>
+<dt><kbd>:set hls</kbd></dt>
+<dt><kbd>:set hlsearch</kbd></dt>
+<dd><p>When enabled, if there is a previous search pattern, highlight all its matches.
+The default is disabled.
+</p>
+</dd>
 <dt><kbd>:set ic</kbd></dt>
 <dt><kbd>:set ignorecase</kbd></dt>
 <dd><p>Sets searching case insensitive.  The default is off.
 </p>
 </dd>
-<dt><kbd>:set stc</kbd></dt>
-<dt><kbd>:set showtgdbcommands</kbd></dt>
+<dt><kbd>:set sld=<var>style</var></kbd></dt>
+<dt><kbd>:set selectedlinedisplay=<var>style</var></kbd></dt>
+<dd><p>Set the selected line display to <var>style</var>.  Possible values for <var>style</var>
+are &lsquo;<samp>shortarrow</samp>&rsquo;, &lsquo;<samp>longarrow</samp>&rsquo;, &lsquo;<samp>highlight</samp>&rsquo;, and &lsquo;<samp>block</samp>&rsquo;.
+Changes the display that is used to indicate the currently selected line in
+the source viewer.  The default value is &lsquo;<samp>block</samp>&rsquo;.
+The &lsquo;<samp>shortarrow</samp>&rsquo; option draws an arrow next to the source line number.
+The &lsquo;<samp>longarrow</samp>&rsquo; option also draws an arrow next to the source line
+number, but extends the arrow until the source code.  The &lsquo;<samp>highlight</samp>&rsquo;
+option draws the entire line in inverse video and the &lsquo;<samp>block</samp>&rsquo; option
+draws an inverse block (cursor) next to the source code being selected.
+</p>
+</dd>
+<dt><kbd>:set showmarks</kbd></dt>
+<dd><p>This option controls if the source window will show marks or not.
+The default value is on. When enabled, CGDB will show the marks that
+the user has set in the vertical bar in the source window separating
+the line number from the source code.
+</p>
+</dd>
+<dt><kbd>:set sdc</kbd></dt>
+<dt><kbd>:set showdebugcommands</kbd></dt>
 <dd><p>If this is on, CGDB will show all of the commands that it sends to GDB. 
 If it is off, CGDB will not show the commands that it gives to GDB. 
 The default is off. 
@@ -140,11 +203,15 @@ The default is off.
 <dt><kbd>:set syn=<var>style</var></kbd></dt>
 <dt><kbd>:set syntax=<var>style</var></kbd></dt>
 <dd><p>Sets the current highlighting mode of the current file to have the syntax 
-<var>style</var>.  Possible values for <var>syntax</var> are &lsquo;<samp>c</samp>&rsquo;, &lsquo;<samp>ada</samp>&rsquo;, and 
-&lsquo;<samp>off</samp>&rsquo;.  Normally, the user will never have to do this, since CGDB 
-automatically detects what syntax a file should be based on its file 
-extension.  However, this feature can currently be useful for debugging 
-purposes.
+<var>style</var>.  Possible values for <var>syntax</var> are &lsquo;<samp>c</samp>&rsquo;, &lsquo;<samp>asm</samp>&rsquo;,
+&lsquo;<samp>d</samp>&rsquo;, &lsquo;<samp>go</samp>&rsquo;, &lsquo;<samp>ada</samp>&rsquo;, &lsquo;<samp>rust</samp>&rsquo;, &lsquo;<samp>off</samp>&rsquo;, &lsquo;<samp>no</samp>&rsquo;,
+&lsquo;<samp>on</samp>&rsquo; or &lsquo;<samp>yes</samp>&rsquo;.  Normally, the user will never have to do this,
+since CGDB automatically detects what syntax a file should be based on
+its file extension.  However, this feature can currently be useful for
+debugging purposes. &lsquo;<samp>on</samp>&rsquo; and &lsquo;<samp>yes</samp>&rsquo; enable syntax highlighting based
+on the source files extension. &lsquo;<samp>off</samp>&rsquo; and &lsquo;<samp>no</samp>&rsquo; disable syntax
+highlighting. The remaining values set the specific language highlighters
+independent of the source files extension.
 </p>
 </dd>
 <dt><kbd>:set to</kbd></dt>
@@ -203,14 +270,30 @@ characters.  The default value for <var>number</var> is 8.
 <dt><kbd>:set wmh=<var>number</var></kbd></dt>
 <dt><kbd>:set winminheight=<var>number</var></kbd></dt>
 <dd><p>The minimal height of a window.  Windows will never become smaller than 
-this value.  The default value for <var>number</var> is 0.
+this value.  The default value for <var>number</var> is 0. This is useful
+when <var>winsplitorientation</var> is set to &lsquo;<samp>horizontal</samp>&rsquo;.
+</p>
+</dd>
+<dt><kbd>:set wmw=<var>number</var></kbd></dt>
+<dt><kbd>:set winminwidth=<var>number</var></kbd></dt>
+<dd><p>The minimal width of a window.  Windows will never become smaller than 
+this value.  The default value for <var>number</var> is 0. This is useful
+when <var>winsplitorientation</var> is set to &lsquo;<samp>vertical</samp>&rsquo;.
 </p>
 </dd>
 <dt><kbd>:set winsplit=<var>style</var></kbd></dt>
 <dd><p>Set the split point between source and GDB window.  This is especially useful
 as an init setting in your <samp>cgdbrc</samp> file.  See <a href="#Configuring-CGDB">Configuring CGDB</a>.  The 
-possible values for <var>style</var> are &lsquo;<samp>top_full</samp>&rsquo;, &lsquo;<samp>top_big</samp>&rsquo;, 
-&lsquo;<samp>even</samp>&rsquo;, &lsquo;<samp>bottom_big</samp>&rsquo;, and &lsquo;<samp>bottom_full</samp>&rsquo;.
+possible values for <var>style</var> are &lsquo;<samp>src_full</samp>&rsquo;, &lsquo;<samp>src_big</samp>&rsquo;, 
+&lsquo;<samp>even</samp>&rsquo;, &lsquo;<samp>gdb_big</samp>&rsquo;, and &lsquo;<samp>gdb_full</samp>&rsquo;.
+</p>
+</dd>
+<dt><kbd>:set wso=<var>style</var></kbd></dt>
+<dt><kbd>:set winsplitorientation=<var>style</var></kbd></dt>
+<dd><p>Sets the window split orientation to either &lsquo;<samp>horizontal</samp>&rsquo; (which places
+the source window above and the GDB window below), or &lsquo;<samp>vertical</samp>&rsquo; (
+hich places the source window on the left and the GDB window on the right). 
+See <a href="#Configuring-CGDB">Configuring CGDB</a>.
 </p>
 </dd>
 <dt><kbd>:set ws</kbd></dt>
@@ -241,6 +324,10 @@ changed since it was opened by cgdb.
 <dt><kbd>:help</kbd></dt>
 <dd><p>This will display the current manual in text format, in the 
 <em>source window</em>.
+</p>
+</dd>
+<dt><kbd>:logo</kbd></dt>
+<dd><p>This will display one of CGDB&rsquo;s logos in the <em>source window</em>.
 </p>
 </dd>
 <dt><kbd>:hi <var>group</var> cterm=<var>attributes</var> ctermfg=<var>color</var> ctermbg=<var>color</var> term=<var>attributes</var></kbd></dt>
@@ -300,6 +387,11 @@ the video attributes for monochrome terminals.  Some examples are,
 </dd>
 <dt><kbd>:syntax</kbd></dt>
 <dd><p>Turn the syntax on or off.
+</p>
+</dd>
+<dt><kbd>:u</kbd></dt>
+<dt><kbd>:until</kbd></dt>
+<dd><p>Send an until command to GDB.
 </p>
 </dd>
 <dt><kbd>:up</kbd></dt>
