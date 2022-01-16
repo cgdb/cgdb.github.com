@@ -2,7 +2,7 @@
 <html>
 <!-- 
 This manual is for GNU CGDB
-(version 0.7.1, 4 August 2019),
+(version 0.8.0, 16 January 2022),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2019 CGDB Team
@@ -22,10 +22,10 @@ this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston MA 02111-1307 USA -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>CGDB Manual 0.7.1: Configuring CGDB</title>
+<title>CGDB Manual 0.8.0: Configuring CGDB</title>
 
-<meta name="description" content="CGDB Manual 0.7.1: Configuring CGDB">
-<meta name="keywords" content="CGDB Manual 0.7.1: Configuring CGDB">
+<meta name="description" content="CGDB Manual 0.8.0: Configuring CGDB">
+<meta name="keywords" content="CGDB Manual 0.8.0: Configuring CGDB">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -78,11 +78,19 @@ Next: <a href="Highlighting-Groups.html#Highlighting-Groups" accesskey="n" rel="
 <h2 class="chapter">4 CGDB configuration commands</h2>
 <a name="index-configuring-CGDB"></a>
 
+<p>By default, CGDB stores its user-specific files (such as command history,
+program logs, and config files) in the <samp>~/.cgdb/</samp> directory.  This
+location is configurable; if the environment variable <code>CGDB_DIR</code> is set
+to a directory name, CGDB will use the specified directory instead of
+<samp>~/.cgdb/</samp>. 
+</p>
 <p>There may be several features that you find useful in CGDB.  CGDB is capable
 of automating any of these commands through the use of the config file called
-<samp>cgdbrc</samp>.  It looks in <code>$HOME</code><samp>/.cgdb/</samp> for that file.  If it 
-exists, CGDB executes each line in the file in order.  It is as if the user 
-typed in all the commands into the status bar after the tui was initialized.
+<samp>cgdbrc</samp>.  It looks in <code>$CGDB_DIR</code> for that file, or in
+<code>HOME</code><samp>/.cgdb/</samp> if the <code>CGDB_DIR</code> environment variable is not
+set.  If the <samp>cgdbrc</samp> file exists, CGDB executes each one of its lines
+in order.  It is as if the user typed in all the commands into the status bar
+after the tui was initialized.
 </p>
 <p>The following variables change the behavior of some aspect of CGDB.  Many
 of these commands may be abbreviated in some way, and all boolean commands
@@ -171,6 +179,12 @@ The default is disabled.
 <dt><kbd>:set ic</kbd></dt>
 <dt><kbd>:set ignorecase</kbd></dt>
 <dd><p>Sets searching case insensitive.  The default is off.
+</p>
+</dd>
+<dt><kbd>:set sbbs</kbd></dt>
+<dt><kbd>:set scrollbackbuffersize</kbd></dt>
+<dd><p>Set the size of the scrollback buffer for the gdb window to num lines.
+The default scrollback is 10000 lines. 
 </p>
 </dd>
 <dt><kbd>:set sld=<var>style</var></kbd></dt>
@@ -361,6 +375,10 @@ the video attributes for monochrome terminals.  Some examples are,
 <dd><p>Send a next command to GDB.
 </p>
 </dd>
+<dt><kbd>:nexti</kbd></dt>
+<dd><p>Send a nexti command to GDB.
+</p>
+</dd>
 <dt><kbd>:q</kbd></dt>
 <dt><kbd>:quit</kbd></dt>
 <dd><p>Quit CGDB.
@@ -383,6 +401,10 @@ the video attributes for monochrome terminals.  Some examples are,
 <dt><kbd>:s</kbd></dt>
 <dt><kbd>:step</kbd></dt>
 <dd><p>Send a step command to GDB.
+</p>
+</dd>
+<dt><kbd>:stepi</kbd></dt>
+<dd><p>Send a stepi command to GDB.
 </p>
 </dd>
 <dt><kbd>:syntax</kbd></dt>

@@ -2,7 +2,7 @@
 <html>
 <!-- 
 This manual is for GNU CGDB
-(version 0.7.1, 4 August 2019),
+(version 0.8.0, 16 January 2022),
 the GNU ncurses based front end to GDB.
 
 Copyright (C) 2019 CGDB Team
@@ -22,10 +22,10 @@ this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 Place, Suite 330, Boston MA 02111-1307 USA -->
 <!-- Created by GNU Texinfo 6.1, http://www.gnu.org/software/texinfo/ -->
 <head>
-<title>CGDB Manual 0.7.1</title>
+<title>CGDB Manual 0.8.0</title>
 
-<meta name="description" content="CGDB Manual 0.7.1">
-<meta name="keywords" content="CGDB Manual 0.7.1">
+<meta name="description" content="CGDB Manual 0.8.0">
+<meta name="keywords" content="CGDB Manual 0.8.0">
 <meta name="resource-type" content="document">
 <meta name="distribution" content="global">
 <meta name="Generator" content="makeinfo">
@@ -66,7 +66,7 @@ ul.no-bullet {list-style: none}
 </head>
 
 <body lang="en">
-<h1 class="settitle" align="center">CGDB Manual 0.7.1</h1>
+<h1 class="settitle" align="center">CGDB Manual 0.8.0</h1>
 
 
 
@@ -105,9 +105,8 @@ ul.no-bullet {list-style: none}
     <li><a name="toc-Using-maps" href="#Using-Maps">6.2 Using maps</a></li>
     <li><a name="toc-Understanding-keycodes" href="#Understanding-Keycodes">6.3 Understanding keycodes</a></li>
   </ul></li>
-  <li><a name="toc-Sending-I_002fO-to-the-program-being-debugged" href="#Sending-I_002fO-to-Inferior">7 Sending I/O to the program being debugged</a></li>
-  <li><a name="toc-Allowing-terminal-control-flow-in-CGDB" href="#Terminal-Control-Flow">8 Allowing terminal control flow in CGDB</a></li>
-  <li><a name="toc-Building-CGDB-from-source" href="#Building-CGDB">9 Building CGDB from source</a></li>
+  <li><a name="toc-Allowing-terminal-control-flow-in-CGDB" href="#Terminal-Control-Flow">7 Allowing terminal control flow in CGDB</a></li>
+  <li><a name="toc-Building-CGDB-from-source" href="#Building-CGDB">8 Building CGDB from source</a></li>
   <li><a name="toc-Copying-This-Manual-1" href="#Copying-This-Manual">Appendix A Copying This Manual</a></li>
   <li><a name="toc-Index-1" href="#Index">Index</a></li>
 </ul>
@@ -123,7 +122,7 @@ Next: <a href="#Summary" accesskey="n" rel="next">Summary</a>, Up: <a href="dir.
 <h1 class="top">CGDB</h1>
 
 <p>This manual is for <acronym>GNU</acronym> CGDB
-(version 0.7.1, 4 August 2019),
+(version 0.8.0, 16 January 2022),
 the <acronym>GNU</acronym> ncurses based front end to GDB.
 </p>
 <p>Copyright &copy; 2019 CGDB Team
@@ -162,13 +161,11 @@ Place, Suite 330, Boston MA 02111-1307 USA
 </td></tr>
 <tr><td align="left" valign="top">&bull; <a href="#Key-User-Interface" accesskey="7">Key User Interface</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">CGDB key user interface
 </td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Sending-I_002fO-to-Inferior" accesskey="8">Sending I/O to Inferior</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Sending I/O to the program being debugged
-</td></tr>
-<tr><td align="left" valign="top">&bull; <a href="#Terminal-Control-Flow" accesskey="9">Terminal Control Flow</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Allowing terminal control flow in CGDB
+<tr><td align="left" valign="top">&bull; <a href="#Terminal-Control-Flow" accesskey="8">Terminal Control Flow</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Allowing terminal control flow in CGDB
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
-</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Building-CGDB">Building CGDB</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Building CGDB from source
+</pre></th></tr><tr><td align="left" valign="top">&bull; <a href="#Building-CGDB" accesskey="9">Building CGDB</a>:</td><td>&nbsp;&nbsp;</td><td align="left" valign="top">Building CGDB from source
 </td></tr>
 <tr><th colspan="3" align="left" valign="top"><pre class="menu-comment">
 
@@ -728,18 +725,6 @@ alerts CGDB, and a command is then sent to GDB.
 <dd><p>next reverse search.
 </p>
 </dd>
-<dt><kbd>m[a-z]</kbd></dt>
-<dd><p>Set a mark at the cursor position. 
-</p>
-</dd>
-<dt><kbd>'[a-z]</kbd></dt>
-<dd><p>Jump to the corresponding mark.
-</p>
-</dd>
-<dt><kbd>''</kbd></dt>
-<dd><p>Jump to the last jump location.
-</p>
-</dd>
 <dt><kbd>'.</kbd></dt>
 <dd><p>Jump to the last line.
 </p>
@@ -854,11 +839,19 @@ Next: <a href="#Highlighting-Groups" accesskey="n" rel="next">Highlighting Group
 <h2 class="chapter">4 CGDB configuration commands</h2>
 <a name="index-configuring-CGDB"></a>
 
+<p>By default, CGDB stores its user-specific files (such as command history,
+program logs, and config files) in the <samp>~/.cgdb/</samp> directory.  This
+location is configurable; if the environment variable <code>CGDB_DIR</code> is set
+to a directory name, CGDB will use the specified directory instead of
+<samp>~/.cgdb/</samp>. 
+</p>
 <p>There may be several features that you find useful in CGDB.  CGDB is capable
 of automating any of these commands through the use of the config file called
-<samp>cgdbrc</samp>.  It looks in <code>$HOME</code><samp>/.cgdb/</samp> for that file.  If it 
-exists, CGDB executes each line in the file in order.  It is as if the user 
-typed in all the commands into the status bar after the tui was initialized.
+<samp>cgdbrc</samp>.  It looks in <code>$CGDB_DIR</code> for that file, or in
+<code>HOME</code><samp>/.cgdb/</samp> if the <code>CGDB_DIR</code> environment variable is not
+set.  If the <samp>cgdbrc</samp> file exists, CGDB executes each one of its lines
+in order.  It is as if the user typed in all the commands into the status bar
+after the tui was initialized.
 </p>
 <p>The following variables change the behavior of some aspect of CGDB.  Many
 of these commands may be abbreviated in some way, and all boolean commands
@@ -947,6 +940,12 @@ The default is disabled.
 <dt><kbd>:set ic</kbd></dt>
 <dt><kbd>:set ignorecase</kbd></dt>
 <dd><p>Sets searching case insensitive.  The default is off.
+</p>
+</dd>
+<dt><kbd>:set sbbs</kbd></dt>
+<dt><kbd>:set scrollbackbuffersize</kbd></dt>
+<dd><p>Set the size of the scrollback buffer for the gdb window to num lines.
+The default scrollback is 10000 lines. 
 </p>
 </dd>
 <dt><kbd>:set sld=<var>style</var></kbd></dt>
@@ -1137,6 +1136,10 @@ the video attributes for monochrome terminals.  Some examples are,
 <dd><p>Send a next command to GDB.
 </p>
 </dd>
+<dt><kbd>:nexti</kbd></dt>
+<dd><p>Send a nexti command to GDB.
+</p>
+</dd>
 <dt><kbd>:q</kbd></dt>
 <dt><kbd>:quit</kbd></dt>
 <dd><p>Quit CGDB.
@@ -1159,6 +1162,10 @@ the video attributes for monochrome terminals.  Some examples are,
 <dt><kbd>:s</kbd></dt>
 <dt><kbd>:step</kbd></dt>
 <dd><p>Send a step command to GDB.
+</p>
+</dd>
+<dt><kbd>:stepi</kbd></dt>
+<dd><p>Send a stepi command to GDB.
 </p>
 </dd>
 <dt><kbd>:syntax</kbd></dt>
@@ -1435,7 +1442,7 @@ file passed to init_pair() to ask curses to create a new color.
 <a name="Key-User-Interface"></a>
 <div class="header">
 <p>
-Next: <a href="#Sending-I_002fO-to-Inferior" accesskey="n" rel="next">Sending I/O to Inferior</a>, Previous: <a href="#Highlighting-Groups" accesskey="p" rel="prev">Highlighting Groups</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Terminal-Control-Flow" accesskey="n" rel="next">Terminal Control Flow</a>, Previous: <a href="#Highlighting-Groups" accesskey="p" rel="prev">Highlighting Groups</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="CGDB-key-user-interface"></a>
 <h2 class="chapter">6 CGDB key user interface</h2>
@@ -1629,28 +1636,13 @@ used in any mapping command.
 </table>
 
 <hr>
-<a name="Sending-I_002fO-to-Inferior"></a>
-<div class="header">
-<p>
-Next: <a href="#Terminal-Control-Flow" accesskey="n" rel="next">Terminal Control Flow</a>, Previous: <a href="#Key-User-Interface" accesskey="p" rel="prev">Key User Interface</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
-</div>
-<a name="Sending-I_002fO-to-the-program-being-debugged"></a>
-<h2 class="chapter">7 Sending I/O to the program being debugged</h2>
-<a name="index-sending-I_002fO-to-inferior"></a>
-
-<p>If the program being debugged takes input on the terminal it is recommended
-that the user start the program on one terminal, and attach to it with CGDB
-from another terminal.  This is the easiest way to pass input to the 
-debugged program.
-</p>
-<hr>
 <a name="Terminal-Control-Flow"></a>
 <div class="header">
 <p>
-Next: <a href="#Building-CGDB" accesskey="n" rel="next">Building CGDB</a>, Previous: <a href="#Sending-I_002fO-to-Inferior" accesskey="p" rel="prev">Sending I/O to Inferior</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
+Next: <a href="#Building-CGDB" accesskey="n" rel="next">Building CGDB</a>, Previous: <a href="#Key-User-Interface" accesskey="p" rel="prev">Key User Interface</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Allowing-terminal-control-flow-in-CGDB"></a>
-<h2 class="chapter">8 Allowing terminal control flow in CGDB</h2>
+<h2 class="chapter">7 Allowing terminal control flow in CGDB</h2>
 <a name="index-terminal-control-flow"></a>
 
 <p>A user can typically set there control flow behavior by using the stty 
@@ -1669,7 +1661,7 @@ readline, simply turn off control flow and start CGDB.
 Next: <a href="#Copying-This-Manual" accesskey="n" rel="next">Copying This Manual</a>, Previous: <a href="#Terminal-Control-Flow" accesskey="p" rel="prev">Terminal Control Flow</a>, Up: <a href="#Top" accesskey="u" rel="up">Top</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="#Index" title="Index" rel="index">Index</a>]</p>
 </div>
 <a name="Building-CGDB-from-source"></a>
-<h2 class="chapter">9 Building CGDB from source</h2>
+<h2 class="chapter">8 Building CGDB from source</h2>
 <a name="index-building-CGDB"></a>
 
 <p>Building CGDB from source requires several packages. First, CGDB is hosted
@@ -2176,7 +2168,6 @@ Previous: <a href="#Copying-This-Manual" accesskey="p" rel="prev">Copying This M
 <tr><td></td><td valign="top"><a href="#index-regular-expression-search-1">regular expression search</a>:</td><td>&nbsp;</td><td valign="top"><a href="#GDB-Window">GDB Window</a></td></tr>
 <tr><td colspan="4"> <hr></td></tr>
 <tr><th><a name="Index_cp_letter-S">S</a></th><td></td><td></td></tr>
-<tr><td></td><td valign="top"><a href="#index-sending-I_002fO-to-inferior">sending I/O to inferior</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Sending-I_002fO-to-Inferior">Sending I/O to Inferior</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-source-window">source window</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Source-Window">Source Window</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-status-bar">status bar</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Understanding-CGDB">Understanding CGDB</a></td></tr>
 <tr><td></td><td valign="top"><a href="#index-status-bar-1">status bar</a>:</td><td>&nbsp;</td><td valign="top"><a href="#Status-Bar">Status Bar</a></td></tr>
